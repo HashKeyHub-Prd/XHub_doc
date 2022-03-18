@@ -33,18 +33,6 @@
 
 UI设计稿待补充
 
-| 编号 | 场景               | 提示类型  | 消息类型  | Duration |
-| ---- | ------------------ | --------- | --------- | -------- |
-| 1    | Toast01（操作后）  | Toast01   | Success   | 2s       |
-| 2    | 错误提示（操作后） | Toast02   | Error     | 2s       |
-| 3    | 警告信息（操作后） | Toast03   | Alert     | 2s       |
-| 4    | 短提示信息         | Toast04   | info      | 2s       |
-| 5    | 长提示信息         | Toast05   | info      | 2s       |
-| 6    | 按钮加载           | loading01 | loading01 |          |
-| 7    | 列表加载           | loading02 | loading02 |          |
-| 8    | 列表加载           | loading03 | loading03 |          |
-| 9    | 页面加载           | loading04 | loading04 |          |
-
 **弹窗类型：**
 
 | 编号 | 场景                                   | 提示类型 | 消息类型         | Duration |
@@ -57,16 +45,16 @@ UI设计稿待补充
 | 6    | 输入框校验 （输入框下方出现提示）      | input01  | -                | -        |
 
 * 网络加载失败
-  * 提示类型：toast04
+  * 提示类型：Toast
   * 中文提示语：网络加载失败,请重试
   * 英文提示语：Failed to load,retry.
 * 加载数据超时
-  * 提示类型：toast04
+  * 提示类型：Toast
   * 中文提示语：加载数据超时
   * 英文提示语：Loading timeout
 * 内部服务器程序运行错误时
-  * 提示类型：toast04
-  * 中文提示语：服务暂时不可用哟，请稍后再试   
+  * 提示类型：Toast
+  * 中文提示语：服务暂时不可用，请稍后再试   
   * 英文提示语：Service is temporarily unavailable, please retry later   
 
 
@@ -76,7 +64,7 @@ UI设计稿待补充
 * 国家/地区列表待补充
 * 国家/地区下拉列表统一从后端获取配置文件（除Jumio身份信息校验国家地区从Jumio后端获取）
   * 注册登录页面，注册手机号下拉选项
-  * 提示类型：Toast04 
+  * 提示类型：Toast 
     校验规则：提交的为受限地区（不支持的国家） 
     文提示语：根据最新监管政策要求，目前暂不支持向受限地区用户提供服务  
     英文提示语：In response to the latest regulatory policy requirements, the restricted territory is temporarily suspended.  
@@ -96,10 +84,14 @@ UI设计稿待补充
 **短信发送限制**
 
 * 单个号码为每分钟一条，到达限制后，需提示“You have sent too many requests,Please try again later"
-
 * 单个号码每天限制40条，到达限制后，需提示“Daily limit reached”
 
-   
+**敏感信息展示**
+
+* 手机掩码展示规则：显示开始2个字符，最后3个字符，中间部分数字固定显示4个“*”
+* 邮箱掩码展示规则：显示开始3个字符，以及@之后的部分，中间固定显示4个“*”
+
+ 
 
 # 2.登录注册
 
@@ -170,14 +162,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：手机号为空         
     备注：不可进行下一步  
 
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
     英文提示语：Invaild phone number    
 
 * 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符。
 
-  * 提示类型：Toast01  
+  * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
@@ -198,24 +190,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 短信验证码，默认提示：短信验证码//SMS code
 * 邮箱验证码，默认提示：邮箱验证码//Email code
 * 黏贴//Paste，点击后填入表单
-  * 非数字6位，则提示（Toast04）“不符合格式要求//Invalid format”
-  * 为空则提示（Toast04）“剪贴板没有内容//Clipboard is blank”
+  * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
+  * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
 * 输入6位后，正确校验通过，自动进入下一个页面
 * 发送至邮箱，显示脱敏邮箱
 * 手机时标题显示“验证手机//Verify Phone”，邮箱时标题显示“验证邮箱//Verify Email”
 
 * 手机号或邮箱，点击“下一步"按钮，弹出滑动人机验证 ，验证成功后，发送验证码。 
-
-  * 提示类型：Toast04  
-    校验规则：发送验证码24小时超过发送限制（IP/手机号）    
-    中文提示语：发送已达当日上限   
-    英文提示语：Daily limit reached
-
-  * 提示类型：Toast04  
-    校验规则：发送验证码频率，24小时最多发送40次    
-    中文提示语：邮箱验证码发送次数已达上限    
-    英文提示语：Email verification has reached the upper limit
 
   * 提示类型：由人机验证控件决定      
     校验规则：由人机验证进行操作判断  
@@ -236,50 +218,41 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
         验证中                 | Verifying                    
 
 * 
-
-  * 提示类型：Toast04  
-
-    校验规则：发送验证码24小时超过发送限制（IP/手机号）
+  * 提示类型：Toast  
+    校验规则：发送验证码24小时超过发送限制（IP/手机号）    
     中文提示语：发送已达当日上限   
     英文提示语：Daily limit reached
-
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     校验规则：发送验证码频率，24小时最多发送40次    
     中文提示语：邮箱验证码发送次数已达上限    
     英文提示语：Email verification has reached the upper limit
-
-  * 提示类型：Toast_04    
-    场景：区域码+手机号不合法，或发送短信功能异常  
-    校验原则：发送短信功能异常  
-    中文提示语：发送短信失败，请重试  
-    英文提示语：Send sms error, please retry     
-    备注：点击人机验证通过后，产生的发送失败
-
-  * 提示类型：Toast_04  
+  * 提示类型：Toast  
     场景：发送短信与上次短信成功发送的时间间隔未大于60秒  
     校验原则：再次发送短信与上次短信成功发送的时间需要大于60秒  
     中文提示语：发送间隔太短，请1分钟后再试         
     英文提示语：Frequent request detected, retry 1 min later     
-
-  * 提示类型：Toast_04  
+  * 提示类型：Toast  
     场景：发送邮件与上次邮件成功发送的时间间隔未大于60秒  
     校验原则：再次发送邮件与上次邮件成功发送的时间需要大于60秒  
     中文提示语：发送间隔太短，请1分钟后再试         
-    英文提示语：Frequent request detected, retry 1 min later   
-
-  * 提示类型：Toast01    
+    英文提示语：Frequent request detected, retry 1 min later  
+  * 提示类型：Toast    
+    场景：区域码+手机号不合法，或发送短信功能异常  
+    校验原则：发送短信功能异常  
+    中文提示语：发送短信失败，请重试  
+    英文提示语：Send sms error, please retry     
+    备注：点击人机验证通过后，产生的发送失败 
+  * 提示类型：Toast    
     场景：验证短信发送成功    
     校验原则：电话区号与手机号码输入正确且验证短信发送成功  
     中文提示语：短信发送成功  
     英文提示语：Success   
-
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：验证邮箱发送成功    
     校验原则：邮箱输入正确且验证邮箱发送成功  
     中文提示语：邮件发送成功  
     英文提示语：Success    
-
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：人机验证失败    
     校验原则：获取的token与后端检验不一致  
     中文提示语：验证失败，请稍后再试  
@@ -287,34 +260,34 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 仅支持输入6位的验证码，自动校验，验证码状态：有效、失效、过期。校验与提示如下：
 
-  * 提示类型：Toast_04    
+  * 提示类型：Toast    
     场景：未点击发送按钮获取验证码       
     校验原则：未点击发送按钮获取验证码    
     中文提示语：请发送验证码     
     英文提示语：Please send code        
 
-  * 提示类型：Toast01   
+  * 提示类型：Toast   
     场景：验证码输入校验错误  
     校验原则：验证码正确性    
     中文提示语：验证码错误  
     英文提示语：Incorrect code      
     备注：容许2次错误，第3次需要重新发送
 
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：存在填写的验证码格式不正确    
     校验原则：验证码只能为6位整数    
     中文提示语：不符合格式要求   
     英文提示语：Invalid format     
     备注：点击“确认登录” 提交验证   
 
-  * 提示类型：Toast01   
+  * 提示类型：Toast   
     场景：验证码输入校验错误2次，第3次做失效处理  
     校验原则：验证码正确性和有效性，且为6位整数，    
     中文提示语：验证码错误多次，请重发  
     英文提示语：Incorrect code, please get a new one     
     备注：验证码做失效处理。
 
-  * 提示类型：Toast01   
+  * 提示类型：Toast   
     场景：验证码已输入6位数字，但验证码过期。或成功后得验证码失效处理。     
     校验原则：验证码不能过期  
     中文提示语：验证码过期，请重发    
@@ -331,8 +304,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 隐藏眼睛：支持密码的明文隐藏与显示切换，默认第一次输入默认隐藏。
 * 黏贴//Paste，点击后填入剪贴板
-  * 非数字或字母，则提示（Toast04）“不符合格式要求//Invalid format”
-  * 为空则提示（Toast04）“剪贴板没有内容//Clipboard is blank”
+  * 非数字或字母，则提示（Toast）“不符合格式要求//Invalid format”
+  * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮：确认//Confirm
 
 * 点击确认，依次校验如下规则：
@@ -341,7 +314,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      校验原则：密码不能为空  
      备注：为空，按钮置灰显示 
 * 完成注册：所有验证通过，完成注册。
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：用户注册成功并进入谷歌认证页面，默认登录状态 
     校验原则：用户注册成功并进入谷歌认证页面 ，默认登录状态 
     中文提示语：注册成功   
@@ -370,21 +343,21 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
    * 按钮：粘贴//Paste：
-     * 点击后黏贴复制的验证码，非数字6位，则提示（Toast04）“不符合格式要求//Invalid format”
-     * 为空则提示（Toast04）“剪贴板没有内容//Clipboard is blank”
+     * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
+     * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
  * 按钮：确认//Confirm
 
    * 点击“确认//Confirm”按钮，如未填写谷歌验证码提示：
 
-     * 提示类型：Toast04  
+     * 提示类型：Toast  
        场景：谷歌验证码为空  
        校验原则：谷歌验证码不能为空       
        中文提示语：请输入谷歌验证码   
         英文提示语：Enter the  Google Verification Code   
        备注：点击键盘内“确认”按钮   
 
-      * 提示类型：Toast04  
+      * 提示类型：Toast  
         场景：存在填写的验证码格式不正确   
         校验原则：验证码只能为6位整数   
         中文提示语：不符合格式要求   
@@ -393,13 +366,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 绑定谷歌认证结果：
 
      * 场景1：成功绑定谷歌认证    
-       提示类型：Toast01  
+       提示类型：Toast  
        中文提示语：谷歌认证成功     
        英文提示语：Activated      
        备注：成功跳转至首页
 
      * 场景2：谷歌认证失败    
-       提示类型：Toast02    
+       提示类型：Toast    
        中文提示语：谷歌认证失败            
        英文提示语：Activation Failed       
        备注：停留在当前页面，并清除已输入验证码     
@@ -466,14 +439,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：手机号为空         
     备注：不可进行下一步  
 
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
     英文提示语：Invaild phone number    
 
 * 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符。
 
-  * 提示类型：Toast01  
+  * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
@@ -498,16 +471,16 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      备注：失焦或点击登录按钮校验    
 * 登录：账号密码输入为空，登录按钮灰化无法点击。点击“登录”后，除上述校验规则与提示外，其他校验及提示方式如下。
 
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：用户登录成功  
     校验原则：所有验证正确     
     备注：登录校验通过后，进入到2FA认证页面 
-  * 提示类型：Toast01  
+  * 提示类型：Toast  
     场景：账号密码不匹配  
     校验原则：账号不存在，或账号与密码不匹配  
     中文提示语：帐号或密码不正确   
     英文提示语：User name or Password is  incorrect 
-  * 提示类型：Toast_04  
+  * 提示类型：Toast  
     场景：登录超时,登录态保持3天  
     校验原则：登录时间超过3天  
     中文提示语：登录超时  
@@ -525,38 +498,38 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击“发送//Send"，后端调用短信服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend”  
 
 * 点击“提交//Submit"，仅支持数字输入，校验规则如下：
-  * 提示类型：Toast01    
+  * 提示类型：Toast    
     场景：用户登录成功  
     校验原则：所有验证正确  
     中文提示语：登录成功   
     英文提示语：Logged in    
     备注：登录校验通过后，判定是否已绑定GA  
   * 若为新设备登录判断，如果发现用户是以往设备中的新设备（不包括第一次），则需要发送异常登陆邮件/短信提醒至用户对于邮箱和手机
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：存在未填写的验证码   
     校验原则：验证码不能为空    
     中文提示语：验证码不能为空    
     英文提示语：Code cannot be blank      
     备注：点击“提交//Submit" 提交验证  
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：存在填写的验证码格式不正确    
     校验原则：验证码只能为6位整数    
     中文提示语：不符合格式要求   
     英文提示语：Invalid format     
     备注：点击“提交//Submit"提交验证     
-  * 提示类型：Toast04   
+  * 提示类型：Toast   
     场景：验证码输入校验错误  
     校验原则：验证码正确性    
     中文提示语：验证码错误  
     英文提示语：Incorrect code      
     备注：容许2次错误，3次输对机会，谷歌验证例外
-  * 提示类型：Toast04   
+  * 提示类型：Toast   
     场景：验证码输入校验错误2次，第3次做失效处理  
     校验原则：验证码正确性和有效性，且为6位整数        
     中文提示语：验证码错误多次，请重发  
     英文提示语：Incorrect code, please get a new one     
     备注：验证码做失效处理。
-  * 提示类型：Toast04   
+  * 提示类型：Toast   
     场景：验证码已输入6位数字，但验证码过期。或成功后得验证码失效处理。     
     校验原则：验证码不能过期  
     中文提示语：验证码过期，请重发    
@@ -629,7 +602,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 确认密码//Confirm
   * 再次确认密码//Confirm the password
 * 密码本身的校验规则:同“注册得密码设置”的校验，补充校验如下：
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：密码与确认密码不一致  
     校验原则：密码与第一次输入保持一致  
     中文提示语：请保持密码一致  
@@ -715,35 +688,35 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 点击“确认//Confirm”，依次校验如下规则，如校验不通过，进行提示。
 
-  * 提示类型：Toast04   
+  * 提示类型：Toast   
     场景：旧密码输入为空   
     校验原则：旧密码不能为空    
     中文提示语：请输入旧密码  
     英文提示语：Please enter the original password  
     备注：提交校验。 
 
-  * 提示类型：Toast04 
+  * 提示类型：Toast 
     场景：新密码输入为空  
     校验原则：新密码不能为空  
     中文提示语：请输入新密码  
     英文提示语：Please enter the new password  
     备注：提交校验。 
 
-  * 提示类型：Toast04 
+  * 提示类型：Toast 
     场景：新密码格式不符合要求   
     校验原则：8-30位字符   
     中文提示语：8-30位字符   
     英文提示语：8-20 characters  
     备注：提交校验。 
 
-  * 提示类型：Toast04   
+  * 提示类型：Toast   
     场景：旧密码输错  
     校验原则：旧密码输错     
     中文提示语：原密码不正确      
     英文提示语：Password is incorrect   
     备注：提交校验。 
 
-  * 提示类型：Toast04     
+  * 提示类型：Toast     
     场景：新密码与原密码相同  
     校验原则：新密码与历史所有设置过的原密码相同       
     中文提示语：新密码不能和旧密码相同       
@@ -753,13 +726,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 校验通过后：
 
   * 场景1：成功修改密码  
-    提示类型：Toast01  
+    提示类型：Toast  
     中文提示语：修改成功    
     英文提示语：Modified       
     备注：登出帐户，跳转登录页面重新登录  
 
   * 场景2：修改密码失败    
-    提示类型：Toast02  
+    提示类型：Toast  
     中文提示语：修改失败     
     英文提示语：Modification Failed    
     备注： 保留之前的填写密码，页面不跳转     
@@ -795,28 +768,28 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入框提示：短信验证码//SMS Verification Code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
-   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast04）“不符合格式要求//Invalid format”，为空则提示（Toast04）“剪贴板没有内容//Clipboard is blank”。
+   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
 
  * 确认//Confirm
 
 
 * 点击绑定/修改手机页面“确认”,根据校验结果有如下提示：
 
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：手机号为空    
     校验原则：手机号不能为空       
     中文提示语：请输入您的手机号   
      英文提示语：Phone number cannot be blank   
     备注：点击键盘内“确认”按钮
 
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：验证码为空    
     校验原则：验证码不能为空      
     中文提示语：请输入验证码   
      英文提示语：Verification code cannot be blank   
     备注：点击键盘内“确认”按钮
 
-   * 提示类型：Toast04  
+   * 提示类型：Toast  
      场景：存在填写的验证码格式不正确   
      校验原则：验证码只能为6位整数   
      中文提示语：不符合格式要求    
@@ -832,13 +805,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 安全认证校验通过后：
 
   * 场景1：成功绑定手机认证    
-    提示类型：Toast01    
+    提示类型：Toast    
     中文提示语：手机认证成功          
     英文提示语：Verified       
     备注：成功跳转安全中心     
 
   * 场景2：绑定手机认证失败      
-    提示类型：Toast02     
+    提示类型：Toast     
     中文提示语：手机认证失败         
     英文提示语：Verification Failed           
     备注：停留在当前页面   
@@ -873,24 +846,24 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast04）“不符合格式要求//Invalid format”，为空则提示（Toast04）“剪贴板没有内容//Clipboard is blank”。
+  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
 
 * 点击“确认”后，依次校验如下规则：
-  * 提示类型：Toast04  
+  * 提示类型：Toast  
     场景：邮箱为空  
     校验原则：邮箱不能为空    
     中文提示语：请输入您的邮箱
      英文提示语：Please enter your email
     备注：点击键盘内“确认”按钮  
 
-   * 提示类型：Toast04  
+   * 提示类型：Toast  
      场景：未填写的验证码 
      校验原则：验证码不能为空
      中文提示语：验证码不能为空  
      英文提示语：Verification cannot be blank.   
      备注：点击“确认//Confirm” 提交验证    
 
-   * 提示类型：Toast04  
+   * 提示类型：Toast  
      场景：存在填写的验证码格式不正确
      校验原则：验证码只能为6位整数
      中文提示语：不符合格式要求
@@ -901,7 +874,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     英文提示语：Please fill in the correct email address
     备注：点击键盘内“确认”按钮  
     
-    * 提示类型：Toast04  
+    * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
@@ -909,13 +882,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     备注：点击“确认//Confirm” 提交验证   
     
     * 场景1：成功绑定邮箱认证  
-    提示类型：Toast01  
+    提示类型：Toast  
     中文提示语：邮箱认证成功     
     英文提示语：Verified.  
     备注：成功跳转安全中心    
     
     * 场景2：绑定邮箱认证失败    
-    提示类型：Toast02  
+    提示类型：Toast  
     中文提示语：邮箱认证失败       
     英文提示语：Verification Failed     
     备注：停留在当前页面   
