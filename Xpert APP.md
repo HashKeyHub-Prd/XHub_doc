@@ -674,10 +674,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 ### 3.1.3 需求详述
 
 【安全设置//Security Settings】
-* 交互逻辑
-  * 修改密码、修改手机、修改邮箱
+
 * 页面元素：
   * 标题：安全设置//Security Settings
+    * 提示文案1：密码//Password
+    * 提示文案2：多因素认证//Multi-Factor Authentication
 
     * 登录密码//Login Password
       * 修改//Edit
