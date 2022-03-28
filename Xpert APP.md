@@ -59,11 +59,16 @@ UI设计稿待补充
 
 
 
-**区域码（按照英文或拼音的A-Z排序）：**
+**国家/地区选择（按照英文或拼音的A-Z排序）：**
 
 * 国家/地区列表待补充
+* 国家/地区选择为通用页面
 * 国家/地区下拉列表统一从后端获取配置文件（除Jumio身份信息校验国家地区从Jumio后端获取）
-  * 注册登录页面，注册手机号下拉选项
+  * 注册登录页面，手机号下拉选项，点击“区域码”一栏，则打开【国家/地区选择】页面
+  * 支持按照关键字进行国家/地区模糊搜索，输入框中输入关键字时即搜索，列表中需展示匹配的国家/地区及区域码
+  * 点击列表中的某一个国家/地区，则表示选中该国家/地区，返回上一页需带入选中的国家/地区对应区域码选项
+  * 点击【取消//Cancel】，则返回上一页
+
   * 提示类型：Toast 
     校验规则：提交的为受限地区（不支持的国家） 
     文提示语：根据最新监管政策要求，目前暂不支持向受限地区用户提供服务  
@@ -79,7 +84,7 @@ UI设计稿待补充
 
 * 用户协议：待补充
 * 隐私政策：待补充
-* APP下载链接：待补充
+
 
 **短信发送限制**
 
@@ -133,12 +138,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **交互逻辑**
 
 * 【创建账户//Create account】
+  * 点击“区域码”一栏，打开【国家/地区选择】页面
   * 手机或邮箱填写完成后，点击”下一步//Next“，进入人机验证页面；需校验填写的手机或邮箱是否注册成功，若已注册成功，需提示“手机号码已存在//Phone number already exists"，“邮箱已存在//Email already exists”
   * 点击“登录//Login in”，进入到登录页面
   * 点击“User Agreement, Privacy Policy ”，进入协议查看页面，点击“关闭”按钮，关闭当前页面
 * 人机校验通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【设置密码//Create a password】页面
-* 【设置密码//Create a password】，设置成功后，点击“确认//Confim"，进入【谷歌认证//Google Authentication】页面
-* 【谷歌认证Google Authentication】，验证成功后，点击“确认//Confim"，进入到【Login】页面
+* 【设置密码//Create a password】，设置成功后，点击“提交//Submit"，注册成功，自动跳转至首页，弹窗提示绑定GA，确认后进入【谷歌认证//Google Authentication】页面
+* 【谷歌认证Google Authentication】，验证成功后，点击“提交//Submit"，返回首页
 
 **页面元素**
 
@@ -146,15 +152,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 用户名默认为用户注册账号，手机号或邮箱
 
-* 选择区域码（不支持输入）：默认填充中国香港的区号（+852）。
-  * 根据IP填入区域码
-  * 点击区域码，底部出现弹窗显示
-  * 国家/地区//Country/Region
-  * 点击“取消//Cancel”，关闭当前弹窗
-  * 确认//OK，填入选择
+* 选择区域码
+  * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
+  * 点击区域码，打开【国家/地区选择】页面
+  * 对应区域码参看全局说明“国家/地区选择”章节。
 
-* 对应区域码参看概述“区域码”章节。
-  * 排序规则：中文按照拼音a-z排序，英文按照字母a-z排序。
 
 * 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度。
 
@@ -179,25 +181,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：邮箱输入为空      
     备注：不可进行下一步   
 
+
+* 手机号或邮箱，校验通过后，点击“下一步"按钮，弹出滑动人机验证 ，验证成功后，发送验证码。
+
 【人机校验】
 
 * 安全验证//Account Security
-  * 人机安全验证//Anti-Bot Detection
-
-【手机/邮箱认证//Verify phone/Email】
-
-* 脱敏的手机（含区号）或邮箱
-* 短信验证码，默认提示：短信验证码//SMS code
-* 邮箱验证码，默认提示：邮箱验证码//Email code
-* 黏贴//Paste，点击后填入表单
-  * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
-  * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
-* 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
-* 输入6位后，正确校验通过，自动进入下一个页面
-* 发送至邮箱，显示脱敏邮箱
-* 手机时标题显示“验证手机//Verify Phone”，邮箱时标题显示“验证邮箱//Verify Email”
-
-* 手机号或邮箱，点击“下一步"按钮，弹出滑动人机验证 ，验证成功后，发送验证码。 
+  * 人机安全验证//Anti-Bot Detection 
 
   * 提示类型：由人机验证控件决定      
     校验规则：由人机验证进行操作判断  
@@ -217,6 +207,19 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
         验证失败，请重试        | Verify Error, please retry               
         验证中                 | Verifying                    
 
+
+【手机/邮箱认证//Verify phone/Email】
+
+* 脱敏的手机（含区号）或邮箱
+* 短信验证码，默认提示：短信验证码//SMS code
+* 邮箱验证码，默认提示：邮箱验证码//Email code
+* 黏贴//Paste，点击后填入表单
+  * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
+  * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+* 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
+* 输入6位后，正确校验通过，自动进入下一个页面
+* 发送至邮箱，显示脱敏邮箱
+* 手机时标题显示“验证手机//Verify Phone”，邮箱时标题显示“验证邮箱//Verify Email”
 * 
   * 提示类型：Toast  
     校验规则：发送验证码24小时超过发送限制（IP/手机号）    
@@ -306,63 +309,74 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 黏贴//Paste，点击后填入剪贴板
   * 非数字或字母，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
-* 按钮：确认//Confirm
+* 按钮：提交//Submit
 
 * 点击确认，依次校验如下规则：
 
   *  场景：密码输入为空  
      校验原则：密码不能为空  
      备注：为空，按钮置灰显示 
-* 完成注册：所有验证通过，完成注册。
-  * 提示类型：Toast    
-    场景：用户注册成功并进入谷歌认证页面，默认登录状态 
-    校验原则：用户注册成功并进入谷歌认证页面 ，默认登录状态 
-    中文提示语：注册成功   
-    英文提示语：registered successfully 
+* 完成注册：所有验证通过，完成注册，跳转至首页，弹窗提示绑定GA
+  *  提示类型： Modal02  
+    场景：用户注册成功并跳转至首页，默认登录状态，弹窗提示注册成功，并引导绑定GA
+     标题：重要提示//Important Notice
+     提示文案：注册成功，为了您的账号安全，请立马绑定谷歌验证//Registered successfully,for the security of your account, please bind Google verification immediately
+
+     按钮：立即绑定//Start，点击则进入【谷歌认证//Google Authentication】页面
+
+     按钮：稍后再说//Not now，点击则关闭弹窗，停留在首页
+     
 
 【谷歌认证//Google Authentication】
 
-* 密钥二维码
+* 分三个页面进行展示，页面标题：谷歌认证//Google Authentication
 
-* 具体密钥的明文显示
+* 1、下载谷歌验证器
+  * 展示文案：请在您的设备上下载谷歌验证器//Please install Google Authenticator App on your device 
+  * 按钮：下载完成，下一步//I've downloaded,Next
 
-* 复制谷歌密钥//Copy Google Secret Key 
+* 2、绑定谷歌验证器并保持密钥
+  * 展示文案：
+    *  创建//Create 
+    * 打开谷歌验证器，点击"+"，选择"输入设备密钥"，并输入您的Hashkey账户名和下方密码，以取得验证码//Open the Google Authenticator, tap"+", select "Enter a setup key" and enter your Hashkey account name and the below key manually to get the code
+    * 谷歌验证码
+    * 复制按钮，点击可进行复制
 
-* 文案提示：
+    * 保存//Save
+    * 将密钥匙记录在纸上，如遇手机遗失，您可以通过该密钥恢复您的谷歌验证//Save this Key on paper. This Key will allow you to recover your Google Authenticator in case of phone loss.
+    
 
-  * 复制谷歌密钥后，前往谷歌验证器中绑定//After copying Google Secret Key, go to Google Authenticator to bind.
-  * 开启谷歌验证操作指引按钮：如何绑定并开启谷歌认证? 点击查看> //How to bind and activate GA? Click to check >
-  * 如何开启谷歌认证，点击后页面打开H5的FAQ的相关文章页面，
+  * 按钮：已保存，下一步//I've saved,Next
+  * 如何绑定GA，更多细节请点击这里//How to blind GA，more detailed approach Click to check>> 
+  * 如何绑定谷歌认证，点击后页面打开H5的FAQ的相关文章页面，
     * 简体链接：待补充
     * 英文链接：待补充
     * 繁体链接：待补充
 
-* 谷歌验证码//GA Code
+* 3、输入验证码
+  * 展示文案：添加成功后，您将得到一组验证码，请填入下方//Enter the code generated by the Google Authenticator app in the field below
 
-  * 输入框提示：输入上方的谷歌验证码// Enter the above GA Code
-  * 输入限制：限制只能输入6位数字
+  * 谷歌验证码//Google Authenticator
+    * 输入框提示：输入验证码// Enter Code
+    * 输入限制：限制只能输入6位数字
 
-   * 按钮：粘贴//Paste：
-     * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
-     * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 按钮：提交//Submit
 
- * 按钮：确认//Confirm
-
-   * 点击“确认//Confirm”按钮，如未填写谷歌验证码提示：
+   * 点击“提交//Submit”按钮，如未填写谷歌验证码提示：
 
      * 提示类型：Toast  
        场景：谷歌验证码为空  
        校验原则：谷歌验证码不能为空       
        中文提示语：请输入谷歌验证码   
         英文提示语：Enter the  Google Verification Code   
-       备注：点击键盘内“确认”按钮   
+       
 
       * 提示类型：Toast  
         场景：存在填写的验证码格式不正确   
         校验原则：验证码只能为6位整数   
         中文提示语：不符合格式要求   
         英文提示语：Invalid format     
-        备注：点击“确认//Confirm” 提交验证     
+        
    * 绑定谷歌认证结果：
 
      * 场景1：成功绑定谷歌认证    
@@ -391,11 +405,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 2. 填写密码
 3. 帐户和密码的为空校验、格式校验、输错校验
 4. 新设备校验
-5. 输入手机验证码/谷歌验证码
-6. 手机验证码/谷歌验证码为空校验、时效性校验、正确校验
-7. 登录成功
-8. 绑定GA校验
-9. 未绑定则进入【谷歌认证Google Authentication】，已绑定则进入首页
+5. 人机校验
+6. 2FA校验
+7. 验证码为空校验、时效性校验、正确校验
+8. 登录成功
+9. 绑定GA校验
+10. 未绑定则弹窗进行提示，如需要绑定进入【谷歌认证Google Authentication】，已绑定则进入首页
 
 ### 2.2.3 UI设计稿
 
@@ -412,26 +427,32 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **交互逻辑**
 
 - 【登录//Log in】
-  - 点击”登录//Log in“, 校验成功后，若是新设备，则进入到人机验证页面,人机认证通过后，进入到【验证//Verification】页面；若非新设备，则直接进入到【验证//Verification】页面
+  - 点击”登录//Log in“, 校验成功后，进行人机校验，通过后，进入到【谷歌验证//Google Auth】页面
   - 点击”忘记密码//Forget password“，进入到【重设密码//Reset Password】页面
-- 【验证//Verification】
-  - 默认选中“Hashkey谷歌认证//Hashkey/Google Auth”，点击”提交//Submit“，校验成功后，登录成功，进入到首页
-  - 可切换选中”手机认证//Phone Verification",点击”发送//Send",发送验证码，显示倒数60s，结束后，按钮变为“重新发送//Resend"；点击”提交//Submit“，校验成功后，登录成功
-  - 判断用户是否已绑定GA，若未绑定，则弹窗强制要求进行绑定；若已绑定，则直接进入首页
+- 【谷歌验证//Google Auth】
+  - 点击”提交//Submit“，校验成功后，登录成功
+  - 点击“手机验证//Phone Auth",进入到【手机验证//Phone Auth】页面
+  - 点击“邮箱验证//Email Auth”，进入到【邮箱验证//Email Auth】页面
+  - 若用户绑定了手机未绑定邮箱，则左下角文案显示“切换至手机验证//Switch to Phone Auth";若用户绑定了邮箱未绑定手机，则左下角文案显示”切换至邮箱验证//Switch to Email Auth"；若用户手机及邮箱都绑定，按照手机>邮箱优先级进行展示
+- 【手机验证//Phone Auth】
+  - 点击”发送//Send",发送验证码，显示倒数60s，结束后，按钮变为“重新发送//Resend"
+  - 点击”提交//Submit“，校验成功后，登录成功
+  - 点击“谷歌验证//Google Auth”，进入到【谷歌验证//Google Auth】页面
+- 【邮箱验证//Email Auth】
+ - 点击”发送//Send",发送验证码，显示倒数60s，结束后，按钮变为“重新发送//Resend"
+ - 点击”提交//Submit“，校验成功后，登录成功
+ - 点击“谷歌验证//Google Auth”，进入到【谷歌验证//Google Auth】页面
+- 登录成功后，需判断用户是否已绑定GA，若未绑定，则弹窗提示进行绑定；若已绑定，则直接进入首页
 
 **页面元素**
 
 【登录//Log in】
 
-* 选择区域码（不支持输入）：默认填充中国香港的区号（+852）。
-  * 根据IP填入区域码
-  * 点击区域码，底部出现弹窗显示
-  * 国家/地区//Country/Region
-  * 点击“取消//Cancel”，关闭当前弹窗
-  * 确认//OK，填入选择
+* 选择区域码
+  * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
+  * 点击区域码，打开【国家/地区选择】页面
+  * 对应区域码参看全局说明“国家/地区选择”章节。
 
-* 对应区域码参看概述“区域码”章节。
-  * 排序规则：中文按照拼音a-z排序，英文按照字母a-z排序。
 
 * 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度。
 
@@ -452,6 +473,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     中文提示语：邮箱格式不正确    
     英文提示语：Invalid Email address  
     备注：失焦校验  
+
   * 提示类型：Input01   
     场景：邮箱输入为空      
     备注：不可进行下一步  
@@ -487,16 +509,22 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     英文提示语：Login session expired  
     备注：以每次输入帐户和密码的登录后开始计算 
 
-【验证//Verification】
+2FA校验
 
-* 谷歌认证//Hashkey/Google Auth
+* 谷歌认证//Google Auth
   * 文案展示：输入6位谷歌验证码//Enter the 6-digit code from Authenticator
-  * 输入框对应文案：Hashkey谷歌验证码//Hashkey/Google verification code
-* 手机认证//Phone Verification
-  * 文案展示：输入发送至手机(掩码展示)的6位验证码//Enter the 6-digit code sent to 18***107
-  * 输入框对应文案：手机验证码//Mobile verification code
-  * 点击“发送//Send"，后端调用短信服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend”  
-
+  * 点击“粘贴//Paste”，自动将复制好的内容粘贴至验证码输入框
+  * 若用户绑定了手机未绑定邮箱，则左下角文案显示“切换至手机验证//Switch to Phone Auth";若用户绑定了邮箱未绑定手机，则左下角文案显示”切换至邮箱验证//Switch to Email Auth"；若用户手机及邮箱都绑定，按照手机>邮箱优先级进行展示
+  *点击“手机认证//Phone Auth",进入到【手机认证//Phone Auth】页面
+  *点击“邮箱认证//Email Auth"，进入到【邮箱认证//Email Auth】页面
+* 手机认证//Phone Auth
+  * 文案展示：输入发送至手机的6位验证码//Enter the 6-digit code sent to 18****107
+  * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend” 
+  * 点击"谷歌认证//Google Auth",进入到【谷歌认证//Google Auth】页面
+* 邮箱认证//Email Auth
+  * 文案展示：输入发送至手机的6位验证码//Enter the 6-digit code sent to 18****107
+  * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend” 
+  *  点击"谷歌认证//Google Auth",进入到【谷歌认证//Google Auth】页面
 * 点击“提交//Submit"，仅支持数字输入，校验规则如下：
   * 提示类型：Toast    
     场景：用户登录成功  
@@ -505,6 +533,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     英文提示语：Logged in    
     备注：登录校验通过后，判定是否已绑定GA  
   * 若为新设备登录判断，如果发现用户是以往设备中的新设备（不包括第一次），则需要发送异常登陆邮件/短信提醒至用户对于邮箱和手机
+* 【验证码校验规则】
   * 提示类型：Toast  
     场景：存在未填写的验证码   
     校验原则：验证码不能为空    
@@ -543,7 +572,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **其他说明：**
 
-* 异常IP登录，邮件或短信提醒，具体查看短信邮件模版。
+* 异常IP登录，邮件或短信提醒，具体查看短信邮件模版
 
   
 
@@ -601,13 +630,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 请输入密码//Enter the password
 * 确认密码//Confirm
   * 再次确认密码//Confirm the password
-* 密码本身的校验规则:同“注册得密码设置”的校验，补充校验如下：
+* 密码本身的校验规则:同“注册密码设置”的校验，补充校验如下：
   * 提示类型：Toast  
     场景：密码与确认密码不一致  
     校验原则：密码与第一次输入保持一致  
     中文提示语：请保持密码一致  
     英文提示语：Enter the same password    
-    备注：点击“确定”按钮 
+    备注：点击“提交”按钮 
 * 校验通过后，完成设置，进入登录页面。
 
 ## 2.4 登出
@@ -645,7 +674,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 ### 3.1.3 需求详述
 
 【安全设置//Security Settings】
-
+* 交互逻辑
+  * 修改密码、修改手机、修改邮箱
 * 页面元素：
   * 标题：安全设置//Security Settings
 
@@ -654,14 +684,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
     * 谷歌认证//Google Authentication
       * 未设置//Disabled
-      * 修改//Edit
+      * 修改//Edit（一期暂不实现）
     * 手机认证//Mobile Authentication
       * 未设置//Disabled
       * 修改//Edit
     * 邮件认证//Email Authentication
       * 未设置//Disabled
-      * 邮箱设置后，不可修改，显示具体的用户绑定邮箱，
-        * 显示逻辑：显示开始和最后4个字符，中间字符固定显示3个“*”
+      * 修改//Edit
   * 点击左上角“返回//Back”，返回上一页。
 
 #### 3.1.3.1 修改登录密码
@@ -675,14 +704,32 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 标题：修改密码//Change Password
 * 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after Login Password has been changed.
-* 旧密码//Original Password 
-  * 输入框提示：请输入旧密码//Please enter the original password
-  * 逻辑限制：限制最大可输入长度20个字符
+* 旧密码//Original password 
+  * 输入框提示：请输入旧密码//Enter the original password
+  * 逻辑限制：限制最大可输入长度30个字符
 * 新密码//New Password
-  * 输入框提示：请输入新密码//Please enter the new password
+  * 输入框提示：请输入新密码//Enter the new password
   * 逻辑限制：限制最大可输入长度30个字符
 * 密码提示语：8-30位字符//8-30 characters
   * 如新密码输入框有值，但输入不符合描述标准，显示红字
+* 确认密码//Confirm new password
+  * 输入框提示：请输入新密码//Repeat new password
+  * 逻辑限制：限制最大可输入长度30个字符
+* 2FA校验
+  * 按照校验顺序：GA>手机>邮箱，若其中一个未绑定则按照优先顺序显示下一个
+  * 谷歌认证//Google verification
+     * 输入框提示：输入谷歌验证码//Enter GA code
+     * 点击“粘贴//Paste”，自动将复制好的内容粘贴至验证码输入框， 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 手机认证//Phone verification
+     * 输入框提示：输入手机验证码//Enter SMS code
+     * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号， toast提示“我们已发送验证码至手机18****123//
+
+       we sent a code to 18****123"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
+  * 邮箱认证//Email verification
+     * 输入框提示：输入邮箱验证码//Enter Email code
+     * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的邮箱， toast提示“我们已发送验证码至邮箱183****@163.com//
+
+       we sent a code to 183****@163.com"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
 
 * 隐藏眼睛：密码全部密文显示，点击右侧“眼睛图标”(点击后，图标点亮）显示明文。
 
@@ -693,35 +740,44 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：旧密码不能为空    
     中文提示语：请输入旧密码  
     英文提示语：Please enter the original password  
-    备注：提交校验。 
+    
 
   * 提示类型：Toast 
     场景：新密码输入为空  
     校验原则：新密码不能为空  
     中文提示语：请输入新密码  
     英文提示语：Please enter the new password  
-    备注：提交校验。 
+    
 
   * 提示类型：Toast 
     场景：新密码格式不符合要求   
     校验原则：8-30位字符   
     中文提示语：8-30位字符   
     英文提示语：8-20 characters  
-    备注：提交校验。 
+    
 
   * 提示类型：Toast   
     场景：旧密码输错  
     校验原则：旧密码输错     
     中文提示语：原密码不正确      
     英文提示语：Password is incorrect   
-    备注：提交校验。 
+    
 
   * 提示类型：Toast     
     场景：新密码与原密码相同  
     校验原则：新密码与历史所有设置过的原密码相同       
     中文提示语：新密码不能和旧密码相同       
     英文提示语：The new password can not be the same as the original one   
-    备注：提交校验。 
+   
+
+  * 提示类型：Toast  
+    场景：确认密码与新密码不一致  
+    校验原则：确认密码需与新密码输入保持一致  
+    中文提示语：请保持密码一致  
+    英文提示语：Enter the same password    
+    
+
+  * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
 
 * 校验通过后：
 
@@ -750,20 +806,16 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **页面元素**
 
+**【绑定手机】**
 * 标题：绑定手机//Bind Phone number 
-  * 绑定手机时显示
-* 标题：修改手机//Change Phone Number
-  * 修改手机时显示
-* 修改手机显示以下文案    
-  * 手机号修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after phone number has been changed.
+ 
  * 手机//Phone
    * 输入框提示：请输入您的手机号//Enter your phone number
    * 限制最多输入11位数字字符长度。
  * 按钮：发送//Send
    * 点击发送后显示（60秒内）：60s
    * 点击发送后显示（大于60秒）：重新发送//Resend
-         * 点击重新发送后显示（60秒内）：重新发送//Resend
-         * 点击重新发送后显示（大于60秒）：重新发送//Resend
+
  * 验证码//Verification Code
    * 输入框提示：短信验证码//SMS Verification Code
    * 输入限制：限制只能输入6位数字
@@ -773,34 +825,16 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
  * 确认//Confirm
 
 
-* 点击绑定/修改手机页面“确认”,根据校验结果有如下提示：
+* 点击“确认//Confirm”,根据校验结果有如下提示：
 
   * 提示类型：Toast  
     场景：手机号为空    
     校验原则：手机号不能为空       
     中文提示语：请输入您的手机号   
      英文提示语：Phone number cannot be blank   
-    备注：点击键盘内“确认”按钮
+  
 
-  * 提示类型：Toast  
-    场景：验证码为空    
-    校验原则：验证码不能为空      
-    中文提示语：请输入验证码   
-     英文提示语：Verification code cannot be blank   
-    备注：点击键盘内“确认”按钮
-
-   * 提示类型：Toast  
-     场景：存在填写的验证码格式不正确   
-     校验原则：验证码只能为6位整数   
-     中文提示语：不符合格式要求    
-     英文提示语：Invalid format     
-     备注：点击“确认//Confirm” 提交验证  
-
-* 点击绑定/修改手机页面“确认”,校验通过，进入安全认证页面（旧手机验证）：
-  * 手机显示开始2个字符，最后3个字符，中间部分数字固定显示4个“*”
-  * 交叉认证时，SMS下方的提示语（仅限于修改SMS认证的交叉安全认证）
-    * 交叉验证标题：安全认证//Security Authentication
-    * 旧的短信认证一旦丢失，请联系客服//Once original SMS Authentication is lost, please contact our customer service.
+  * 手机验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述 
 
 * 安全认证校验通过后：
 
@@ -814,14 +848,64 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     提示类型：Toast     
     中文提示语：手机认证失败         
     英文提示语：Verification Failed           
-    备注：停留在当前页面   
+    备注：停留在当前页面
+
+**【修改手机】**
+* 标题：修改手机//Change Phone Number
+
+* 提示文案    
+  * 手机号修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after phone number has been changed.
+
+* 新手机// New phone
+   * 输入框提示：请输入您的手机号//Enter your new phone number
+   * 限制最多输入11位数字字符长度。
+ * 按钮：发送//Send
+   * 点击发送后显示（60秒内）：60s
+   * 点击发送后显示（大于60秒）：重新发送//Resend
+
+ * 新手机认证//New phone verification
+   * 输入框提示：新手机短信验证码//Enter new phone Code
+   * 输入限制：限制只能输入6位数字
+ * 粘贴//Paste 
+   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+
+* 2FA校验
+  * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
+
+ 确认//Confirm
+
+
+* 点击“确认//Confirm”,根据校验结果有如下提示：
+
+  * 提示类型：Toast  
+    场景：新手机号为空    
+    校验原则：新手机号不能为空       
+    中文提示语：请输入您的新手机号   
+     英文提示语：New phone number cannot be blank   
+    
+
+  * 新手机验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+
+* 安全认证校验通过后：
+
+  * 场景1：成功修改手机    
+    提示类型：Toast    
+    中文提示语：手机修改成功          
+    英文提示语：Verified       
+    备注：成功跳转安全中心     
+
+  * 场景2：修改手机失败      
+    提示类型：Toast     
+    中文提示语：手机修改失败         
+    英文提示语：Verification Failed           
+    备注：停留在当前页面
 
 **其他说明**
 
 * 手机验证绑定成功，跳转至安全设置页面，手机认证显示”编辑//Edit",可修改
-* 修改手机认证，发邮件或短信提醒用户，限制转账24小时
+* 修改手机认证，发邮件或短信提醒用户，限制转账24小时，具体查看短信邮件模版
 
-#### 3.1.3.1 绑定邮箱认证
+#### 3.1.3.1 绑定/修改邮箱认证
 
 **前置条件**
 
@@ -830,70 +914,104 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **页面元素**
 
+**【绑定邮箱】**
+
 * 标题：绑定邮箱//Bind Email
-* 提示文案1:开启后邮箱不能更改//Unable to change when mailbox was activated.
-* 提示文案2:如果没有收到邮件，请查看邮箱的垃圾箱//If you haven't received Email, please check the trash mailbox.
+  
 * 邮箱//Email
   * 输入框提示：请输入您的邮箱//Enter your email
   * 逻辑限制：限制最多输入100个字符。
 * 按钮：发送//Send
   * 点击发送后显示（60秒内）：60s
   * 点击发送后显示（大于60秒）：重新发送//Resend
-        * 点击重新发送后显示（60秒内）：重新发送//Resend
-            * 点击重新发送后显示（大于60秒）：重新发送//Resend
+
 * 验证码//Verification Code
   * 输入框提示：邮箱验证码//Email Verification Code
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
+  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
-* 点击“确认”后，依次校验如下规则：
+* 点击“确认//Confirm”后，依次校验如下规则：
   * 提示类型：Toast  
     场景：邮箱为空  
     校验原则：邮箱不能为空    
     中文提示语：请输入您的邮箱
-     英文提示语：Please enter your email
-    备注：点击键盘内“确认”按钮  
-
-   * 提示类型：Toast  
-     场景：未填写的验证码 
-     校验原则：验证码不能为空
-     中文提示语：验证码不能为空  
-     英文提示语：Verification cannot be blank.   
-     备注：点击“确认//Confirm” 提交验证    
-
-   * 提示类型：Toast  
-     场景：存在填写的验证码格式不正确
-     校验原则：验证码只能为6位整数
-     中文提示语：不符合格式要求
-     英文提示语：Invalid format   
-     备注：点击“确认//Confirm” 提交验证    
-
-
-    英文提示语：Please fill in the correct email address
-    备注：点击键盘内“确认”按钮  
-    
-    * 提示类型：Toast  
+    英文提示语：Please enter your email
+   
+  * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
     英文提示语：Invalid Email address  
-    备注：点击“确认//Confirm” 提交验证   
+
+   * 邮箱验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+   
     
     * 场景1：成功绑定邮箱认证  
     提示类型：Toast  
     中文提示语：邮箱认证成功     
-    英文提示语：Verified.  
+    英文提示语：Verified 
     备注：成功跳转安全中心    
     
     * 场景2：绑定邮箱认证失败    
     提示类型：Toast  
     中文提示语：邮箱认证失败       
     英文提示语：Verification Failed     
-    备注：停留在当前页面   
+    备注：停留在当前页面  
+
+**【修改邮箱】**
+* 标题：修改邮箱//Change Email
+
+* 提示文案    
+  * 邮箱修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after email address has been changed.
+
+* 新邮箱//New email address
+  * 输入框提示：请输入您的新邮箱//Enter your new email address
+  * 逻辑限制：限制最多输入100个字符。
+* 按钮：发送//Send
+  * 点击发送后显示（60秒内）：60s
+  * 点击发送后显示（大于60秒）：重新发送//Resend
+
+* 新邮箱验证//New email verification
+  * 输入框提示：新邮箱验证码//New email Verification Code
+  * 输入限制：限制只能输入6位数字
+
+* 按钮：粘贴//Paste 
+  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+
+* 2FA校验
+  * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
+
+* 点击“确认//Confirm”后，依次校验如下规则：
+  * 提示类型：Toast  
+    场景：邮箱为空  
+    校验原则：邮箱不能为空    
+    中文提示语：请输入您的邮箱
+    英文提示语：Please enter your email
+   
+  * 提示类型：Toast  
+    场景：邮箱格式不正确 
+    校验原则：以“@”符号及“.xx”作为格式校验依据       
+    中文提示语：邮箱格式不正确    
+    英文提示语：Invalid Email address  
+
+  * 新邮箱验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+
+  * 场景1：成功修改邮箱  
+    提示类型：Toast  
+    中文提示语：邮箱修改成功     
+    英文提示语：Verified 
+    备注：成功跳转安全中心    
+    
+  * 场景2：邮箱修改失败    
+    提示类型：Toast  
+    中文提示语：邮箱修改失败       
+    英文提示语：Verification Failed     
+    备注：停留在当前页面  
 
 **其他说明**
 
-* 成功绑定邮箱验证，跳转至安全设置页面，邮箱认证掩码显示已绑定好的邮箱，不可再点击
+* 邮箱绑定成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",可修改
+* 修改邮箱认证，发邮件或短信提醒用户，限制转账24小时，具体查看短信邮件模版
 
