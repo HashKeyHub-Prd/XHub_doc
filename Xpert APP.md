@@ -167,7 +167,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
-    英文提示语：Invaild phone number    
+    英文提示语：Invalid phone number    
 
 * 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符。
 
@@ -463,7 +463,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
-    英文提示语：Invaild phone number    
+    英文提示语：Invalid phone number    
 
 * 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符。
 
@@ -785,13 +785,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 场景1：成功修改密码  
     提示类型：Toast  
     中文提示语：修改成功    
-    英文提示语：Modified       
+    英文提示语：Updated Success      
     备注：登出帐户，跳转登录页面重新登录  
 
   * 场景2：修改密码失败    
     提示类型：Toast  
     中文提示语：修改失败     
-    英文提示语：Modification Failed    
+    英文提示语：Updated Failed    
     备注： 保留之前的填写密码，页面不跳转     
 
 **其他说明**
@@ -817,8 +817,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 点击发送后显示（60秒内）：60s
    * 点击发送后显示（大于60秒）：重新发送//Resend
 
- * 验证码//Verification Code
-   * 输入框提示：短信验证码//SMS Verification Code
+ * 手机验证//Phone verification
+   * 输入框提示：手机验证码//Enter phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
    * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
@@ -865,7 +865,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 点击发送后显示（大于60秒）：重新发送//Resend
 
  * 新手机认证//New phone verification
-   * 输入框提示：新手机短信验证码//Enter new phone Code
+   * 输入框提示：新手机短信验证码//Enter new phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
    * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
@@ -892,13 +892,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 场景1：成功修改手机    
     提示类型：Toast    
     中文提示语：手机修改成功          
-    英文提示语：Verified       
+    英文提示语：Updated Success       
     备注：成功跳转安全中心     
 
   * 场景2：修改手机失败      
     提示类型：Toast     
     中文提示语：手机修改失败         
-    英文提示语：Verification Failed           
+    英文提示语：Updated Failed           
     备注：停留在当前页面
 
 **其他说明**
@@ -926,8 +926,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击发送后显示（60秒内）：60s
   * 点击发送后显示（大于60秒）：重新发送//Resend
 
-* 验证码//Verification Code
-  * 输入框提示：邮箱验证码//Email Verification Code
+* 邮箱验证码/Email Verification
+  * 输入框提示：邮箱验证码//Enter email verification code
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
@@ -975,7 +975,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击发送后显示（大于60秒）：重新发送//Resend
 
 * 新邮箱验证//New email verification
-  * 输入框提示：新邮箱验证码//New email Verification Code
+  * 输入框提示：新邮箱验证码//Enter new email Verification code
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
@@ -1002,13 +1002,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 场景1：成功修改邮箱  
     提示类型：Toast  
     中文提示语：邮箱修改成功     
-    英文提示语：Verified 
+    英文提示语：Updated Success 
     备注：成功跳转安全中心    
     
   * 场景2：邮箱修改失败    
     提示类型：Toast  
     中文提示语：邮箱修改失败       
-    英文提示语：Verification Failed     
+    英文提示语：Updated Failed     
     备注：停留在当前页面  
 
 **其他说明**
