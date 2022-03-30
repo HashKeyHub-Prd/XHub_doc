@@ -65,7 +65,7 @@ UI设计稿待补充
 * 国家/地区选择为通用页面
 * 国家/地区下拉列表统一从后端获取配置文件（除Jumio身份信息校验国家地区从Jumio后端获取）
   * 注册登录页面，手机号下拉选项，点击“区域码”一栏，则打开【国家/地区选择】页面
-  * 支持按照关键字进行国家/地区模糊搜索，输入框中输入关键字时即搜索，列表中需展示匹配的国家/地区及区域码
+  * 支持按照关键字进行国家/地区模糊搜索，输入框中输入关键字时即搜索，输入关键字时默认文案“Search//搜索”消失，列表中需展示匹配的国家/地区及区域码
   * 点击列表中的某一个国家/地区，则表示选中该国家/地区，返回上一页需带入选中的国家/地区对应区域码选项
   * 点击【取消//Cancel】，则返回上一页
 
@@ -151,6 +151,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 【创建账户//Create account】 
 
 * 用户名默认为用户注册账号，手机号或邮箱
+* 展示文案1：已有账号，登录//Already have an accout? Login
+* 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By create an account,I agree with Hashkey User Agreement,Privacy Policy
 
 * 选择区域码
   * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
@@ -447,6 +449,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **页面元素**
 
 【登录//Log in】
+* 展示文案：还未有账号？注册//Don't have an accout? Sign up
 
 * 选择区域码
   * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
@@ -617,7 +620,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 【忘记密码//Forget password】
 
-* 文案展示：For security purpose,no withdrawals are allowed for 24 hours after security changes.
+* 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after Login Password has been changed.
 * 校验规则同注册模块2.1.4【创建账户//Create account】 ，不再复述
 
 【手机/邮箱认证//Verify phone/Email】
@@ -722,7 +725,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      * 输入框提示：输入谷歌验证码//Enter GA code
      * 点击“粘贴//Paste”，自动将复制好的内容粘贴至验证码输入框， 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
   * 手机认证//Phone verification
-     * 输入框提示：输入手机验证码//Enter SMS code
+     * 输入框提示：输入手机验证码//Enter Phone code
      * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号， toast提示“我们已发送验证码至手机18****123//
 
        we sent a code to 18****123"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
@@ -854,7 +857,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【修改手机】**
 * 标题：修改手机//Change Phone Number
 
-* 提示文案    
+* 展示文案    
   * 手机号修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after phone number has been changed.
 
 * 新手机// New phone
@@ -964,7 +967,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【修改邮箱】**
 * 标题：修改邮箱//Change Email
 
-* 提示文案    
+* 展示文案    
   * 邮箱修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after email address has been changed.
 
 * 新邮箱//New email address
@@ -975,7 +978,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击发送后显示（大于60秒）：重新发送//Resend
 
 * 新邮箱验证//New email verification
-  * 输入框提示：新邮箱验证码//Enter new email Verification code
+  * 输入框提示：请输入新邮箱验证码//Enter new email Verification code
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
