@@ -151,7 +151,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 【创建账户//Create account】 
 
 * 用户名默认为用户注册账号，手机号或邮箱
-* 展示文案1：已有账号，登录//Already have an accout? Login
+* 展示文案1：已有账号，登录//Already have an account? Login
 * 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By create an account,I agree with Hashkey User Agreement,Privacy Policy
 
 * 选择区域码
