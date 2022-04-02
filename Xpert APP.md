@@ -5,7 +5,7 @@
 | 序号 | 变更内容                                                     | 变更人 | 变更时间   |
 | ---- | ------------------------------------------------------------ | ------ | ---------- |
 | 1    | 新增Sprint1.0.0:   1、登录注册、忘记密码、修改密码、绑定/修改手机、修改邮箱 | 黄金叶 | 2022-03-14 |
-
+| 2    | 新增Sprint1.1.0:   1、KYC认证；2、法币结算 | 黄金叶 | 2022-04-02 |
 <!-- TOC -->
 
     - [版本变更记录](#版本变更记录)
@@ -14,10 +14,12 @@
 - [2.登录注册](#2-登录注册)
   - [2.1 注册](#21-注册)
   - [2.2 登录](#22-登录)
-  - [2.3 忘记密码](#23忘记密码)
-  - [2.4 登出](#24登出)
-- [3. 用户中心](#3-用户中心)
-  - [3.1 安全设置](#31安全设置)
+  - [2.3 忘记密码](#23-忘记密码)
+  - [2.4 登出](#24-登出)
+- [3.用户中心](#3-用户中心)
+  - [3.1安全设置](#31-安全设置)
+  - [3.2KYC认证](#32-kyc认证)
+  - [3.3法币结算](#33-法币结算信息)
 
 <!-- /TOC -->
 
@@ -96,7 +98,34 @@ UI设计稿待补充
 * 手机掩码展示规则：显示开始2个字符，最后3个字符，中间部分数字固定显示4个“*”
 * 邮箱掩码展示规则：显示开始3个字符，以及@之后的部分，中间固定显示4个“*”
 
- 
+ **上传图片说明**
+
+* 按钮：“上传//Upload”。点击“上传”，下方弹出选择
+    * 相机//Camera
+    * 从相册选择//Choose from Albums
+    * 按钮：取消//Cancel，点击后关闭弹出
+    * 授权获取相机调用权限
+    
+    
+* 校验以下场景：  
+      
+    * 场景1：证件格式正确但体积过大,在上传时提示      
+          提示类型：toast    
+          中文提示语：文件上传最大不超过10M    
+          英文提示语：Upload image within 10M.     
+      
+    * 场景2：必填项证件格式错误，点击提交验证   
+          提示类型：toast
+          中文提示语：请以jpg、png、pdf格式上传   
+          英文提示语：Upload image in jpg or png or pdf format.     
+
+    * 场景3：上传图片失败，在上传时提示
+          提示类型：固定显示在图片上    
+          中文提示语：上传失败  
+          英文提示语：Upload failed    
+          备注：不支持点击，放大预览图片
+
+* 点击上传的图片，全屏放大预览，再次点击关闭全屏。
 
 # 2.登录注册
 
@@ -162,14 +191,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度。
 
-  * 提示类型：Input01    
-    场景：手机号为空         
-    备注：不可进行下一步  
-
   * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
-    英文提示语：Invalid phone number    
+    英文提示语：Invalid phone number 
+    备注：点击“下一步”校验   
 
 * 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符。
 
@@ -178,13 +204,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
     英文提示语：Invalid Email address  
-    备注：失焦校验  
-  * 提示类型：Input01   
-    场景：邮箱输入为空      
-    备注：不可进行下一步   
+    备注：点击“下一步”校验  
+   
 
 
-* 手机号或邮箱，校验通过后，点击“下一步"按钮，弹出滑动人机验证 ，验证成功后，发送验证码。
+* 手机号或邮箱，“下一步"按钮默认为置灰不可点击，填写后，变为高亮可点击状态，点击“下一步”必填项校验成功后，弹出滑动人机验证，验证成功后，发送验证码。
 
 【人机校验】
 
@@ -219,7 +243,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
-* 输入6位后，正确校验通过，自动进入下一个页面
+* 输入6位后，按钮“下一步//Next”由置灰状态变为高亮可点击状态，点击后，校验通过，则进入下一个页面
 * 发送至邮箱，显示脱敏邮箱
 * 手机时标题显示“验证手机//Verify Phone”，邮箱时标题显示“验证邮箱//Verify Email”
 * 
@@ -311,13 +335,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 黏贴//Paste，点击后填入剪贴板
   * 非数字或字母，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
-* 按钮：提交//Submit
+* 按钮：提交//Submit，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
-* 点击确认，依次校验如下规则：
-
-  *  场景：密码输入为空  
-     校验原则：密码不能为空  
-     备注：为空，按钮置灰显示 
 * 完成注册：所有验证通过，完成注册，跳转至首页，弹窗提示绑定GA
   *  提示类型： Modal02  
     场景：用户注册成功并跳转至首页，默认登录状态，弹窗提示注册成功，并引导绑定GA
@@ -362,16 +381,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 输入框提示：输入验证码// Enter Code
     * 输入限制：限制只能输入6位数字
 
-  * 按钮：提交//Submit
+  * 按钮：提交//Submit，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
-   * 点击“提交//Submit”按钮，如未填写谷歌验证码提示：
-
-     * 提示类型：Toast  
-       场景：谷歌验证码为空  
-       校验原则：谷歌验证码不能为空       
-       中文提示语：请输入谷歌验证码   
-        英文提示语：Enter the  Google Verification Code   
-       
+   * 点击“提交//Submit”按钮
 
       * 提示类型：Toast  
         场景：存在填写的验证码格式不正确   
@@ -459,10 +471,6 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度。
 
-  * 提示类型：Input01    
-    场景：手机号为空         
-    备注：不可进行下一步  
-
   * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
@@ -475,25 +483,17 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
     英文提示语：Invalid Email address  
-    备注：失焦校验  
-
-  * 提示类型：Input01   
-    场景：邮箱输入为空      
-    备注：不可进行下一步  
+    备注：失焦校验   
 
  * 登录密码//Login Password：限制最大可输入长度30个字符，默认提示“请输入密码//Enter the password”密码输入默认隐藏(点击后，图标点亮，明文显示)。校验规则如下，如校验不通过，进行提示。
-
-   * 提示类型：Input01  
-     场景：密码输入为空  
-     校验原则：密码不能为空     
-     备注：为空不可进入下一步
 
    * 提示类型：Input01  
      场景：密码不符合规范  
      校验原则：8-30位，不能为空  
      中文提示语：8-30位字符    
      英文提示语：8-30 characters  
-     备注：失焦或点击登录按钮校验    
+     备注：失焦或点击登录按钮校验   
+
 * 登录：账号密码输入为空，登录按钮灰化无法点击。点击“登录”后，除上述校验规则与提示外，其他校验及提示方式如下。
 
   * 提示类型：Toast    
@@ -537,12 +537,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     备注：登录校验通过后，判定是否已绑定GA  
   * 若为新设备登录判断，如果发现用户是以往设备中的新设备（不包括第一次），则需要发送异常登陆邮件/短信提醒至用户对于邮箱和手机
 * 【验证码校验规则】
-  * 提示类型：Toast  
-    场景：存在未填写的验证码   
-    校验原则：验证码不能为空    
-    中文提示语：验证码不能为空    
-    英文提示语：Code cannot be blank      
-    备注：点击“提交//Submit" 提交验证  
+  * 按钮：“提交//Submit”，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态  
   * 提示类型：Toast  
     场景：存在填写的验证码格式不正确    
     校验原则：验证码只能为6位整数    
@@ -735,15 +730,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
        we sent a code to 183****@163.com"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
 
-* 隐藏眼睛：密码全部密文显示，点击右侧“眼睛图标”(点击后，图标点亮）显示明文。
+* 隐藏眼睛：密码全部密文显示，点击右侧“眼睛图标”(点击后，图标点亮）显示明文
 
-* 点击“确认//Confirm”，依次校验如下规则，如校验不通过，进行提示。
+* 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
-  * 提示类型：Toast   
-    场景：旧密码输入为空   
-    校验原则：旧密码不能为空    
-    中文提示语：请输入旧密码  
-    英文提示语：Please enter the original password  
+* 点击“确认//Confirm”，依次校验如下规则，如校验不通过，进行提示
+
     
 
   * 提示类型：Toast 
@@ -826,17 +818,10 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
  * 粘贴//Paste 
    * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
 
- * 确认//Confirm
+ * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
 
-* 点击“确认//Confirm”,根据校验结果有如下提示：
-
-  * 提示类型：Toast  
-    场景：手机号为空    
-    校验原则：手机号不能为空       
-    中文提示语：请输入您的手机号   
-     英文提示语：Phone number cannot be blank   
-  
+* 点击“确认//Confirm”
 
   * 手机验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述 
 
@@ -876,18 +861,10 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
 
- 确认//Confirm
+ * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
 
-* 点击“确认//Confirm”,根据校验结果有如下提示：
-
-  * 提示类型：Toast  
-    场景：新手机号为空    
-    校验原则：新手机号不能为空       
-    中文提示语：请输入您的新手机号   
-     英文提示语：New phone number cannot be blank   
-    
-
+* 点击“确认//Confirm”
   * 新手机验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
 
 * 安全认证校验通过后：
@@ -936,13 +913,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 按钮：粘贴//Paste 
   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
-* 点击“确认//Confirm”后，依次校验如下规则：
-  * 提示类型：Toast  
-    场景：邮箱为空  
-    校验原则：邮箱不能为空    
-    中文提示语：请输入您的邮箱
-    英文提示语：Please enter your email
-   
+* 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
+
+* 点击“确认//Confirm”后，依次校验如下规则：   
   * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
@@ -986,14 +959,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
-
+* 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 * 点击“确认//Confirm”后，依次校验如下规则：
-  * 提示类型：Toast  
-    场景：邮箱为空  
-    校验原则：邮箱不能为空    
-    中文提示语：请输入您的邮箱
-    英文提示语：Please enter your email
-   
   * 提示类型：Toast  
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
@@ -1018,4 +985,419 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 邮箱绑定成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",可修改
 * 修改邮箱认证，发邮件或短信提醒用户，限制转账24小时，具体查看短信邮件模版
+
+## 3.2 KYC认证
+
+### 3.2.1 功能概述
+支持个人用户KYC认证，暂不支持企业用户KYC认证；个人用户KYC流程包括：普通用户认证（Verified）、专业投资者用户认证（Verified PI），普通用户认证通过后才可以进行专业投资者认证
+
+### 3.2.2 业务流程
+流程图链接：http://assets.processon.com/chart_image/586c5e48e4b0f7a9c366b484.png
+
+1、用户登录后进行KYC认证；
+
+2、默认个人KYC认证，机构认证引导至Web端进行；
+
+3、开始进行普通认证，填写个人信息；
+
+4、进入Jumio页面进行国家/地区及证件类型选择、证件上传、活体检测；（当用户做完Jumio认证流程后，若Jumio此时已有结果返回，无论结果如何，都暂不更新用户普通认证状态）；
+
+5、上传自拍照、地址证明、其他证明；
+
+6、获取Jumio认证结果，若为通过，则普通认证状态翻转为审核中//In Review，并进入到后台进行人工审核；若未通过，则普通认证状态翻转为驳回//Rejected，并返回Jumio失败原因，用户需重新进行Jumio认证（无需填写个人信息，上传证明），直到Jumio校验结果为通过为止；
+
+7、后台人工审核，若结果为通过，则普通认证状态翻转为通过//Approved,总状态翻转为已认证//Verified；若结果为驳回，则普通认证状态翻转为驳回//Rejected，并返回人工驳回原因，用户需重新进行个人信息填写及上传证明流程（展示用户最近一次填写的信息），无需进行Jumio认证；若结果为拒绝，则普通认证状态翻转为认证失败//Failed,并返回人工拒绝原因，用户不可再重新进行认证；
+
+8、普通认证通过的用户，才能进行专业认证，上传PI证明后，则专业认证状态翻转为审核中//In Review，并进入到后台进行人工审核；
+
+9、后台人工审核，若结果为通过，则专业认证状态翻转为通过//Approved,总状态翻转为已认证//Verified PI；若结果为驳回，则专业认证状态翻转为驳回//Rejected，并返回人工驳回原因，用户需重新上传PI证明；若结果为拒绝，则专业认证状态翻转为认证失败//Failed,并返回人工拒绝原因，用户不可再重新进行PI认证；
+
+### 3.2.3 UI设计稿
+
+### 3.2.3 需求详述
+
+**前置条件**
+
+  用户登录，进入个人中心，进行KYC认证
+
+**交互逻辑**
+
+* 【我的//Me】
+
+   * 用户进入个人中心，点击"KYC认证//KYC Verification",进入【KYC认证//KYC Verification】
+   * 总状态枚举值如下：（个人用户、机构用户状态枚举相同）
+  ![KYC认证](./image/kyc/kycstatus.png)
+
+
+* 【KYC认证//KYC Verification】
+
+  * 默认展示【普通认证//Verified】，点击Tab“专业认证//Verified PI”，切换至【专业认证//Verified PI】，在普通认证未通过前，不可进行专业认证，按钮“开始认证//Start Verify”置灰；
+
+  * 点击右上角“机构认证//Institutional”，弹窗引导用户至Web端进行操作
+
+   **普通认证//Verified**
+
+   点击“开始认证//Start Verify”，进入到【个人信息填写】页面
+
+  【个人信息填写】：点击“下一步”，进入JUMIO页面，进行国家/地区及证件类型选择，并上传证件和活体检测
+
+    【Jumio-国家/地区及证件类型选择】：国家/地区枚举值：详见国家/地区列表清单，下一步，进入Jumio-证件照上传页面
+
+    【Jumio-证件照上传】：根据选择的证件照类型进入到对应的证件照上传页面，不同的证件类型上传数量不一样，上传完成后，下一步，进入Jumio-证件照确认页面
+
+    【Jumio-证件照确认】：可重新上传，也可继续进行下一步，下一步，进入Jumio-活体检测页面
+
+    【Jumio-活体检测】：用户完成活体检测后，下一步，进入上传自拍照页面
+
+    【上传自拍照】：点击“下一步”，进入【上传居住证明】页面
+
+    【上传居住证明】：点击“下一步”，进入【其他补充证明】页面
+
+    【上传其他证明】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”，普通认证状态翻转为“In Review”
+
+
+  **专业认证//Verified PI**
+
+  当普通认证通过时，才能进行专业认证,点击“开始认证//Start Verify”,进入到【上传PI证明】页面
+
+  【上传PI证明】：点击“提交”，则返回【KYC认证//KYC Verification】页面，Tab栏为“专业认证//Verified PI",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”，专业认证状态翻转为“In Review”
+
+
+**页面元素**
+
+**【KYC认证//KYC Verification】**
+
+* 标题：KYC认证//KYC Verification
+
+* 文案说明
+
+
+  ①当普通认证//Verified状态为未认证、审核中、驳回、认证失败时
+
+  展示文案1：您的帐户目前还未认证，只是处于查看状态。完成认证以访问所需的服务。//Your account is currently not verified, just in a read-only status. Complete verification to access services you need.
+
+  ②当普通认证//Verified状态为通过，专业认证//Verified PI为未认证、审核中、驳回、认证失败时
+
+  展示文案1：待补充
+
+  ③当普通认证//Verified状态为通过，专业认证//Verified PI也为通过时
+
+  展示文案1：待补充
+
+  Tab1:普通认证//Verified
+
+  * 展示文案2：
+    *  信息要求//Information Required 
+    *  要求内容文案待补充
+  * 展示文案3：
+    * 服务提供//Services Provided
+    * 服务内容文案待补充
+  * 状态文案：
+
+     **个人认证**
+    * 审核中//In Review
+    * 通过//Approved
+    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示原因，点击其他区域，关闭弹窗
+       * 原因分两种：Jumio校验失败返回的原因；人工审核驳回的原因
+    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+
+    **机构认证**
+    * 审核中//In Review
+    * 通过//Approved
+    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
+    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+
+  * 底部按钮
+
+     **个人认证**
+    * 普通认证//Verified状态为未认证时，显示“开始认证//Start Verify”，高亮可点击
+    * 普通认证//Verified状态为审核中、通过、认证失败时，不显示按钮
+    * 普通认证//Verified状态为驳回时，显示“重新认证//Verify Again”，高亮可点击
+      * 若为Jumio校验失败，点击该按钮，重新进入Jumio页面进行认证，无需走平台流程；若为人工驳回，点击该按钮，则重新走平台认证流程（需展示用户之前填写的信息），无需走Jumio认证流程
+
+     **机构认证**
+
+     * 不展示该按钮
+  
+  Tab2:专业认证//Verified PI
+    * 展示文案2：
+    *  信息要求//Information Required 
+    *  要求内容文案待补充
+  * 展示文案3：
+    * 服务提供//Services Provided
+    * 服务内容文案待补充
+  * 状态文案：
+
+     **个人认证**
+    * 审核中//In Review
+    * 通过//Approved
+    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
+    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+  * 展示文案4：在您进行专业认证前，请先完成普通认证//Before you go to  verified PI,you have to complete the verified first
+
+       **机构认证**
+    * 审核中//In Review
+    * 通过//Approved
+    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
+    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+  * 底部按钮
+
+     **个人认证**
+    * 普通认证//Verified状态不为通过时，显示“开始认证//Start Verify”，置灰不可点击
+    * 普通认证//Verified状态为通过且专业认证//Verified PI状态为未认证时，显示显示“开始认证//Start Verify”，高亮可点击
+    * 专业认证//Verified PI状态为审核中、通过、认证失败时，不显示按钮
+    * 专业认证//Verified PI状态为驳回时，显示“重新认证//Verify Again”，高亮可点击
+      * 点击该按钮，则进入【上传PI证明】页面，无需展示之前用户上传的信息
+
+     **机构认证**
+
+     * 不展示该按钮
+    
+* 右上角文字按钮：机构认证//Institutional
+
+
+**【机构认证提示弹窗】**
+
+* 标题：温馨提示//Tips
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication，you need to perform on the Wed terminal.web端链接待补充
+* 按钮：复制链接//Copy Link
+  * 点击后，toast提示“复制成功//Copy success” 
+
+*按钮：关闭icon
+  * 点击后关闭提示弹窗
+
+**【个人信息填写】**
+* 标题：KYC认证//KYC Verification
+* 输入框：法定名称//Full legal name
+    * 默认显示（中文）：请输入法定名称
+    * 默认显示（英文）：Enter Full legal name
+    * 字符数限制：50个字符,超出禁止输入
+
+* 输入框：证件号码//ID Number
+    * 默认显示（中文）：请输入证件号码
+    * 默认显示（英文）：Enter ID Number
+    * 提示文案：证件类型可为护照、身份证、驾驶证//The type of certificate can be passport, ID card or driver's license
+    * 字符数限制：30个字符,超出禁止输入
+    
+  
+  * 校验场景：证件号码已存在  
+    提示类型：Toast 
+    * 中文提示语：证件号码已存在，请检查后重新填写     
+    * 英文提示语：ID number has been existed, please check it and refill later       
+    备注：点击“Next//下一步”校验
+
+* 选择框：证件到期日//ID Expiry Date
+    * 勾选框：永久（permanent)
+    * 默认显示（中文）：请选择证件到期日
+    * 默认显示（英文）：Select Date of expiry
+    * 日期控件：日期默认当日日期
+    * 备注：勾选框与日期选择为互斥，且日期最多可从当前日期往后选择40年
+    * 可选择具体日期，也可选择“永久”
+ 
+
+* 选择框：出生日期//Date of Birth
+
+  * 默认显示（中文）：请选择日期
+  * 默认显示（英文）：Please select a date.
+  * 日期控件：日期默认当日日期
+  * 备注：由研发选取相应的控件实现
+  * 备注：最多可从当前日期往前选择100年
+  * 逻辑限制：禁止选择当日之后的日期，校验规则如下：
+
+  * 场景：未满18岁 
+    * 提示类型：Toast 
+    * 中文提示语：请确认您已年满18周岁 
+    * 英文提示语：Make sure you are over 18 years old   
+          备注：点击“Next//下一步”校验
+
+* 居住地址//Residential address 
+  * 选择框： 国家/地区：  
+    * 根据IP填入国家/地区，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（China Hongkong）。
+    * 点击下拉选择，打开【国家/地区选择】页面
+    * 对应国家列表参照全局说明“国家/地区选择”章节
+  
+  * 输入框： 居住地址//Residential address
+    * 默认显示（中文）：请输入居住地址
+    * 默认显示（英文）：Enter Residential Address
+    * 字符数限制：120个字符,超出禁止输入
+
+* 输入框：邮编//Postcode
+
+  * 默认显示（中文）：(选填)请输入邮政编码
+  * 默认显示（英文）：(Optional)Enter Postcode
+  * 字符数限制：40个数字,超出禁止输入
+       备注：非必填
+* 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
+
+**【上传自拍照】**
+* 标题：KYC认证//KYC Verification
+* 注意事项：(默认展开，点击折叠icon可收起，收起后默认展示第一条)
+
+  Tips:
+
+	•	Documents must be in the following formats: .jpg, .png, .pdf (max 100 files)
+
+	•	ALL documents must be a full page image, in color and with a minimum of 300dpi resolution (each file max 10 MB, total max 500 MB)
+
+	•	If your documents are not in English, please submit both the original and the English translated versions. The translated version must be notarized by a lawyer or legal translator
+
+* 自拍照//Selfie
+  * 展示文案：需提供手持包含手写内容的纸张，纸张内容必须包括：“HashKey”及申请日期（年、月、日）//Please provide photo of the person holding a note showing "Hashkey" and application date by handwriting together with your ID 
+* 按钮：上传//Upload
+* 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
+
+**【上传地址证明】**
+* 标题与注意事项同上一页
+* 地址证明//Residence proof
+  * 展示文案：待补充
+* 按钮：上传//Upload
+* 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
+
+**【上传其他证明】**
+* 标题与注意事项同上一页
+* 其他证明//Other document
+   * 展示文案：(选填)请上传我们要求您或您希望提供给我们的其他文件//(Optional)Please upload any additional document we have requested from you or you wish to provide to us
+  * 备注：非必填
+* 按钮：上传//Upload
+* 按钮：提交//Submit，默认高亮可点
+
+**【上传PI证明】**
+* 标题与注意事项同上
+* PI证明//PI document
+  * 展示文案：待补充
+* 按钮：上传//Upload
+* 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
+
+
+## 3.3 法币结算
+
+### 3.3.1 功能概述
+用户在做法币结算时，需要绑定银行卡，银行卡信息需进行人工审核，审核结果为通过时则绑定成功；驳回时则可修改银行卡信息，审核通过的银行卡可以解绑
+
+### 3.3.2 业务流程图
+N/A
+
+### 3.3.3 UI设计稿
+待补充
+
+### 3.3.4 需求详述
+
+**前置条件**
+
+用户登录
+
+**交互逻辑**
+
+ 【我的//Me】
+
+   * 用户进入个人中心，点击"法币结算//Fiat Settlement ",进入【法币结算//Fiat Settlement】页面
+
+【法币结算//Fiat Settlement】
+  * 若用户暂未添加过银行卡，点击“添加银行账号//ADD BANK ACCOUNT”，需判断用户KYC总状态，若为Verified或Verified PI，则进入【添加银行账号//Add bank account】页面；若KYC总状态为Unverified,则弹窗引导用户进行普通认证
+
+  * 若用户已添加过银行卡，则点击列表中状态为“审核中//In Review”或“已认证//Verified”的银行卡，可进入【银行账号信息//Bank account info】页面；若点击列表中状态为“驳回//Rejected”的银行卡，则进入【添加银行账号//Add bank account】页面，并展示最近一次填写的银行账号信息，可编辑
+
+【添加银行账号//Add bank account】
+  * 添加新银行账号信息或被驳回后编辑银行卡信息，提交成功后，返回【法币结算//Fiat Settlement】页面，并Toast提示“您的法币结算信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Fiat Settlement has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”
+
+【银行账号信息//Bank account info】
+  * 银行账号状态若为审核通过//Verified，点击右上角“...”按钮，则底部弹窗展示删除按钮，点击“删除//Delete”，则弹窗确认是否删除；点击“取消//Cancel”，关闭底部弹窗
+
+【引导普通认证弹窗】
+  * 点击“立即认证//Verify now”，则进入普通认证//Verifived【个人信息填写】页面
+  * 点击“稍后//Later”，则关闭弹窗
+
+【确认删除弹窗】
+  * 点击“确认//Confirm”，则删除成功
+  * 点击“取消//Cancel”，则关闭弹窗
+
+**页面元素**
+
+【法币结算//Fiat Settlement】
+ * 标题：法币结算//Fiat Settlement
+ * 列表中无银行信息
+   *  展示文案：待定
+   * 按钮：添加银行账号//ADD BANK ACCOUNT
+
+* 列表汇中有银行信息
+  * 排序：按照添加时间由近及远排序
+  * 展示文案：
+    * 银行账号X//Bank account X （X为数字1、2、3...代表银行账号数量）
+    * ... ... ...XXXX (银行账号，掩码展示，仅展示后4位,前面固定展示... ... ...)
+    * 状态枚举：审核中//In Review、已认证//Verified、驳回//Rejected
+      * 点击“驳回//Rejected”，Toast弹窗展示驳回原因，点击其他区域，弹窗关闭
+  
+【添加银行账号//Add bank account】
+
+ * 标题：添加银行账号//Add bank account
+ * 输入框：受益人银行名称//Beneficiary bank
+    * 默认显示（中文）：请输入受益人银行名称
+    * 默认显示（英文）：Enter beneficiary bank
+    * 限制输入100字符，超过则无法进行输入
+
+
+  * 输入框：银行账号//Account number
+    * 默认显示（中文）：请输入银行账号
+    * 默认显示（英文）：Enter account number
+    * 限制输入50位数字，超过则无法进行输入
+
+  * 输入框：SWIFT//SWIFT
+    * 默认显示（中文）：请输入SWIFT代码
+    * 默认显示（英文）：Enter SWIFT code
+    * 限制输入100字符，超过则无法进行输入
+
+  * 输入框：受益人银行地址//Beneficiary bank address 
+    * 默认显示（中文）：请输入受益人银行地址
+    * 默认显示（英文）：Enter beneficiary bank address
+    * 限制输入100字符，超过则无法进行输入
+
+  * 输入框：受益人名称//Beneficiary name on account 
+    * 默认显示（中文）：请输入受益人名称
+    * 默认显示（英文）：Enter beneficiary name on account
+    * 限制输入100字符，超过则无法进行输入
+  
+  * 输入框：受益人地址//Beneficiary address
+    * 默认显示（中文）：请输入受益人地址
+    * 默认显示（英文）：Enter beneficiary address
+    * 限制输入100字符，超过则无法进行输入
+
+  * 输入框：路由传输号码/ABA号码//Routing number/ABA code
+    * 默认显示（中文）：（选填）请输入路由传输号码/ABA号码
+    * 默认显示（英文）：(Optional)Enter routing number/ABA code
+    * 限制输入100字符，超过则无法进行输入
+  
+  * 输入框：补充信息//Additional information
+    * 默认显示（中文）：（选填）请输入其他补充信息
+    * 默认显示（英文）：(Optional)Enter additional information
+    * 限制输入100字符，超过则无法进行输入
+  * 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态，进入【上传银行证明】页面
+
+  【上传银行证明】
+  * 标题：添加银行账号//Add bank account
+  * 注意事项：同普通认证【上传自拍照】，不再复述
+  * 银行证明//Proof document
+    * 展示文案：待补充
+  * 按钮：提交//Submit,默认置灰，不可点击，上传成功后，变为高亮可点击状态
+
+  【银行账号信息//Bank account info】
+  * 标题：添加银行账号//Add bank account
+  * 银行信息//Bank Infomation
+    * 受益人银行名称//Beneficiary bank
+    * 银行账号//Account number :掩码展示后四位,前面固定展示... ... ...
+    * SWIFT//SWIFT: 明码展示
+    * 路由传输号码/ABA号码//Routing number/ABA code：明码展示
+    * 受益人银行地址//Beneficiary bank address
+  * 受益人信息//Beneficiary Infomation
+    * 受益人名称//Beneficiary name on account
+    * 受益人地址//Beneficiary address 
+  * 其他信息//Other Infomation
+    * 银行证明//Proof document
+    * 补充信息//Additional information
+  
+
+   
+
+
+
+
 
