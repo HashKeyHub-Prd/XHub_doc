@@ -658,6 +658,15 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   - 关闭//Close：点击后，关闭当前弹窗。
 
 # 3.用户中心
+ **个人信息**
+
+ 默认头像，暂不可修改
+
+ 账户名：取用户注册的邮箱或手机，掩码展示
+
+ 角色：用户个人认证总状态为Verified或Verified PI时，展示个人用户icon;用户机构认证总状态为Verified或Verified PI时，展示机构用户icon
+
+ 用户ID：UID,明码展示用户ID，点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
 
 ## 3.1 安全设置
 
@@ -989,7 +998,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 ## 3.2 KYC认证
 
 ### 3.2.1 功能概述
-支持个人用户KYC认证，暂不支持企业用户KYC认证；个人用户KYC流程包括：普通用户认证（Verified）、专业投资者用户认证（Verified PI），普通用户认证通过后才可以进行专业投资者认证
+支持个人用户KYC认证，暂不支持企业用户KYC认证(可查看认证进度)；个人用户KYC流程包括：普通用户认证（Verified）、专业投资者用户认证（Verified PI），普通用户认证通过后才可以进行专业投资者认证
 
 ### 3.2.2 业务流程
 流程图链接：http://assets.processon.com/chart_image/586c5e48e4b0f7a9c366b484.png
@@ -1010,7 +1019,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 8、普通认证通过的用户，才能进行专业认证，上传PI证明后，则专业认证状态翻转为审核中//In Review，并进入到后台进行人工审核；
 
-9、后台人工审核，若结果为通过，则专业认证状态翻转为通过//Approved,总状态翻转为已认证//Verified PI；若结果为驳回，则专业认证状态翻转为驳回//Rejected，并返回人工驳回原因，用户需重新上传PI证明；若结果为拒绝，则专业认证状态翻转为认证失败//Failed,并返回人工拒绝原因，用户不可再重新进行PI认证；
+9、后台人工审核，若结果为通过，则专业认证状态翻转为通过//Approved,总状态翻转为PI已认证//Verified PI；若结果为驳回，则专业认证状态翻转为驳回//Rejected，并返回人工驳回原因，用户需重新上传PI证明；若结果为拒绝，则专业认证状态翻转为认证失败//Failed,并返回人工拒绝原因，用户不可再重新进行PI认证；
 
 ### 3.2.3 UI设计稿
 
@@ -1039,7 +1048,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
    点击“开始认证//Start Verify”，进入到【个人信息填写】页面
 
-  【个人信息填写】：点击“下一步”，进入JUMIO页面，进行国家/地区及证件类型选择，并上传证件和活体检测
+  【个人信息填写】：点击“下一步”，进入Jumio页面，进行国家/地区及证件类型选择，并上传证件和活体检测
 
     【Jumio-国家/地区及证件类型选择】：国家/地区枚举值：详见国家/地区列表清单，下一步，进入Jumio-证件照上传页面
 
@@ -1094,18 +1103,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 服务内容文案待补充
   * 状态文案：
 
-     **个人认证**
     * 审核中//In Review
     * 通过//Approved
     * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示原因，点击其他区域，关闭弹窗
        * 原因分两种：Jumio校验失败返回的原因；人工审核驳回的原因
     * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
 
-    **机构认证**
-    * 审核中//In Review
-    * 通过//Approved
-    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
-    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
 
   * 底部按钮
 
@@ -1170,12 +1173,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题：KYC认证//KYC Verification
 * 输入框：法定名称//Full legal name
     * 默认显示（中文）：请输入法定名称
-    * 默认显示（英文）：Enter Full legal name
+    * 默认显示（英文）：Enter full legal name
     * 字符数限制：50个字符,超出禁止输入
 
 * 输入框：证件号码//ID Number
     * 默认显示（中文）：请输入证件号码
-    * 默认显示（英文）：Enter ID Number
+    * 默认显示（英文）：Enter ID number
     * 提示文案：证件类型可为护照、身份证、驾驶证//The type of certificate can be passport, ID card or driver's license
     * 字符数限制：30个字符,超出禁止输入
     
@@ -1189,7 +1192,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 选择框：证件到期日//ID Expiry Date
     * 勾选框：永久（permanent)
     * 默认显示（中文）：请选择证件到期日
-    * 默认显示（英文）：Select Date of expiry
+    * 默认显示（英文）：Select date of expiry
     * 日期控件：日期默认当日日期
     * 备注：勾选框与日期选择为互斥，且日期最多可从当前日期往后选择40年
     * 可选择具体日期，也可选择“永久”
@@ -1198,7 +1201,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 选择框：出生日期//Date of Birth
 
   * 默认显示（中文）：请选择日期
-  * 默认显示（英文）：Please select a date.
+  * 默认显示（英文）：Select date of birth
   * 日期控件：日期默认当日日期
   * 备注：由研发选取相应的控件实现
   * 备注：最多可从当前日期往前选择100年
@@ -1212,19 +1215,19 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 居住地址//Residential address 
   * 选择框： 国家/地区：  
-    * 根据IP填入国家/地区，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（China Hongkong）。
+    * 根据IP填入国家/地区，若用户IP不在支持的国家/列表中，则默认填充中国香港（China Hongkong）。
     * 点击下拉选择，打开【国家/地区选择】页面
     * 对应国家列表参照全局说明“国家/地区选择”章节
   
   * 输入框： 居住地址//Residential address
     * 默认显示（中文）：请输入居住地址
-    * 默认显示（英文）：Enter Residential Address
+    * 默认显示（英文）：Enter residential address
     * 字符数限制：120个字符,超出禁止输入
 
 * 输入框：邮编//Postcode
 
   * 默认显示（中文）：(选填)请输入邮政编码
-  * 默认显示（英文）：(Optional)Enter Postcode
+  * 默认显示（英文）：(Optional)Enter postcode
   * 字符数限制：40个数字,超出禁止输入
        备注：非必填
 * 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
@@ -1295,7 +1298,8 @@ N/A
 【法币结算//Fiat Settlement】
   * 若用户暂未添加过银行卡，点击“添加银行账号//ADD BANK ACCOUNT”，需判断用户KYC总状态，若为Verified或Verified PI，则进入【添加银行账号//Add bank account】页面；若KYC总状态为Unverified,则弹窗引导用户进行普通认证
 
-  * 若用户已添加过银行卡，则点击列表中状态为“审核中//In Review”或“已认证//Verified”的银行卡，可进入【银行账号信息//Bank account info】页面；若点击列表中状态为“驳回//Rejected”的银行卡，则进入【添加银行账号//Add bank account】页面，并展示最近一次填写的银行账号信息，可编辑
+  * 若用户已添加过银行卡，则点击列表中状态为“审核中//In Review”或“已认证//Verified”的银行卡，可进入【银行账号信息//Bank account info】页面,仅可查看；若点击列表中状态为“驳回//Rejected”的银行卡，则进入【添加银行账号//Add bank account】页面，并展示最近一次填写的银行账号信息，可编辑
+    * 点击状态“驳回//Rejected”，toast弹窗展示人工驳回的原因，点击其他区域，弹窗关闭
 
 【添加银行账号//Add bank account】
   * 添加新银行账号信息或被驳回后编辑银行卡信息，提交成功后，返回【法币结算//Fiat Settlement】页面，并Toast提示“您的法币结算信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Fiat Settlement has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”
