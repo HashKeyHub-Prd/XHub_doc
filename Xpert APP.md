@@ -104,7 +104,39 @@ UI设计稿待补充
     * 相机//Camera
     * 从相册选择//Choose from Albums
     * 按钮：取消//Cancel，点击后关闭弹出
-    * 授权获取相机调用权限
+   
+* 用户点击“相机//Camera”，授权获取相机调用权限
+    * 提示类型：系统弹窗  
+    场景：第一次点击“相机//Camera"，授权权限  
+    中文标题：允许“HashKey”获取相机权限  
+    英文标题：Allow HashKey to access your camera.  
+    中文提示语：确认允许“HashKey”获取相机，以便于扫码识别、实名认证使用等      
+    英文提示语：Do you allow HashKey to access your camera to extract the QRcode or verify identity,etc.      
+    立即打开//Enable now：获得权限。  
+    不允许//Don't allow：点击后，关闭当前弹窗。  
+
+   * 提示类型：系统弹窗  
+    场景：点击“相机//Camera”按钮，授权权限已被关闭  
+    中文标题：在系统“设置”->"隐私"->"相机“允许“HashKey”授权相机使用权限  
+    英文标题：Allow HashKey to access your camera in "Settings"->"Privacy"->"Camera"   
+    立即打开//Enable now：打开系统设置页面。  
+
+* 用户点击“相册//Album”，授权获取相册调用权限
+
+    * 提示类型：系统弹窗  
+    场景：第一次点击“相册”按钮，授权权限  
+    中文标题：“HashKey”想访问您的相册  
+    英文标题：Allow HashKey to acesss your photos  
+    中文提示语：确认允许“HashKey”访问读取您的照片，以便于扫码识别、实名认证使用等  
+    英文提示语:Do you allow HashKey to acesss your photos to extract the QRcode or verify identity,etc.  
+    立即打开//Enable now：获得权限。  
+    不允许//Don't allow：点击后，关闭当前弹窗。  
+
+    * 提示类型：系统弹窗  
+    场景：点击“相册”按钮，授权权限已被关闭  
+    中文标题：在系统“设置”->"隐私"->"相册“允许“HashKey”授权照片访问权限  
+    英文标题：Allow HashKey to access your camera in "Settings"->"Privacy"->"photos"   
+    立即打开//Enable now：打开系统设置页面。 
     
     
 * 校验以下场景：  
@@ -116,8 +148,8 @@ UI设计稿待补充
       
     * 场景2：必填项证件格式错误，点击提交验证   
           提示类型：toast
-          中文提示语：请以jpg、png、pdf格式上传   
-          英文提示语：Upload image in jpg or png or pdf format.     
+          中文提示语：请以jpg、png格式上传   
+          英文提示语：Upload image in jpg or png format.     
 
     * 场景3：上传图片失败，在上传时提示
           提示类型：固定显示在图片上    
@@ -1175,19 +1207,21 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 默认显示（中文）：请输入法定名称
     * 默认显示（英文）：Enter full legal name
     * 字符数限制：50个字符,超出禁止输入
+    * 是否必填：必填
 
 * 输入框：证件号码//ID Number
     * 默认显示（中文）：请输入证件号码
     * 默认显示（英文）：Enter ID number
     * 提示文案：证件类型可为护照、身份证、驾驶证//The type of certificate can be passport, ID card or driver's license
     * 字符数限制：30个字符,超出禁止输入
+    * 是否必填：必填
     
   
-  * 校验场景：证件号码已存在  
-    提示类型：Toast 
-    * 中文提示语：证件号码已存在，请检查后重新填写     
-    * 英文提示语：ID number has been existed, please check it and refill later       
-    备注：点击“Next//下一步”校验
+      * 校验场景：证件号码已存在  
+        提示类型：Toast 
+      * 中文提示语：证件号码已存在，请检查后重新填写     
+      * 英文提示语：ID number has been existed, please check it and refill later       
+      备注：点击“Next//下一步”校验
 
 * 选择框：证件到期日//ID Expiry Date
     * 勾选框：永久（permanent)
@@ -1196,6 +1230,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 日期控件：日期默认当日日期
     * 备注：勾选框与日期选择为互斥，且日期最多可从当前日期往后选择40年
     * 可选择具体日期，也可选择“永久”
+    * 是否必填：必填
  
 
 * 选择框：出生日期//Date of Birth
@@ -1205,6 +1240,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 日期控件：日期默认当日日期
   * 备注：由研发选取相应的控件实现
   * 备注：最多可从当前日期往前选择100年
+  * 是否必填：必填
   * 逻辑限制：禁止选择当日之后的日期，校验规则如下：
 
   * 场景：未满18岁 
@@ -1218,18 +1254,20 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 根据IP填入国家/地区，若用户IP不在支持的国家/列表中，则默认填充中国香港（China Hongkong）。
     * 点击下拉选择，打开【国家/地区选择】页面
     * 对应国家列表参照全局说明“国家/地区选择”章节
+    * 是否必填：必填
   
   * 输入框： 居住地址//Residential address
     * 默认显示（中文）：请输入居住地址
     * 默认显示（英文）：Enter residential address
     * 字符数限制：120个字符,超出禁止输入
+    * 是否必填：必填
 
 * 输入框：邮编//Postcode
 
   * 默认显示（中文）：(选填)请输入邮政编码
   * 默认显示（英文）：(Optional)Enter postcode
   * 字符数限制：40个数字,超出禁止输入
-       备注：非必填
+  * 是否必填：非必填
 * 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
 
 **【上传自拍照】**
@@ -1238,7 +1276,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   Tips:
 
-	•	Documents must be in the following formats: .jpg, .png, .pdf (max 100 files)
+	•	Documents must be in the following formats: .jpg, .png (max 100 files)
 
 	•	ALL documents must be a full page image, in color and with a minimum of 300dpi resolution (each file max 10 MB, total max 500 MB)
 
@@ -1246,6 +1284,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 自拍照//Selfie
   * 展示文案：需提供手持包含手写内容的纸张，纸张内容必须包括：“HashKey”及申请日期（年、月、日）//Please provide photo of the person holding a note showing "Hashkey" and application date by handwriting together with your ID 
+* 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
@@ -1253,6 +1292,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题与注意事项同上一页
 * 地址证明//Residence proof
   * 展示文案：待补充
+* 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
@@ -1260,7 +1300,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题与注意事项同上一页
 * 其他证明//Other document
    * 展示文案：(选填)请上传我们要求您或您希望提供给我们的其他文件//(Optional)Please upload any additional document we have requested from you or you wish to provide to us
-  * 备注：非必填
+* 是否必填：非必填
 * 按钮：上传//Upload
 * 按钮：提交//Submit，默认高亮可点
 
@@ -1268,6 +1308,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题与注意事项同上
 * PI证明//PI document
   * 展示文案：待补充
+* 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
@@ -1297,6 +1338,7 @@ N/A
 
 【法币结算//Fiat Settlement】
   * 若用户暂未添加过银行卡，点击“添加银行账号//ADD BANK ACCOUNT”，需判断用户KYC总状态，若为Verified或Verified PI，则进入【添加银行账号//Add bank account】页面；若KYC总状态为Unverified,则弹窗引导用户进行普通认证
+  * 用户KYC总状态为Verified或Verified PI，还需判断银行卡的数量，若审核通过以及审核中的银行卡数量等于5张，则点击“添加银行账号//ADD BANK ACCOUNT”，弹窗提示用户无法再添加
 
   * 若用户已添加过银行卡，则点击列表中状态为“审核中//In Review”或“已认证//Verified”的银行卡，可进入【银行账号信息//Bank account info】页面,仅可查看；若点击列表中状态为“驳回//Rejected”的银行卡，则进入【添加银行账号//Add bank account】页面，并展示最近一次填写的银行账号信息，可编辑
     * 点击状态“驳回//Rejected”，toast弹窗展示人工驳回的原因，点击其他区域，弹窗关闭
@@ -1308,10 +1350,18 @@ N/A
   * 银行账号状态若为审核通过//Verified，点击右上角“...”按钮，则底部弹窗展示删除按钮，点击“删除//Delete”，则弹窗确认是否删除；点击“取消//Cancel”，关闭底部弹窗
 
 【引导普通认证弹窗】
+  * 标题：重要提示//Tips
+  * 展示文案：Complete the kyc verification before you accessing the service//请先完成KYC认证在您使用此服务前
   * 点击“立即认证//Verify now”，则进入普通认证//Verifived【个人信息填写】页面
   * 点击“稍后//Later”，则关闭弹窗
 
+【提示无法添加银行卡弹窗】
+ * 温馨提示//Tips
+ * 展示文案：银行卡数量达到上限，无法添加，如需新增，清先将已认证的银行卡删除//The number of bank cards has reached the upper limit and cannot be added. If you need, delete the verified bank cards first.
+ * 点击“我知道了//I Understant”，关闭弹窗
+
 【确认删除弹窗】
+  * 展示文案：确实是否要删除银行卡？//Are you sure to delete the card？
   * 点击“确认//Confirm”，则删除成功
   * 点击“取消//Cancel”，则关闭弹窗
 
@@ -1338,42 +1388,50 @@ N/A
     * 默认显示（中文）：请输入受益人银行名称
     * 默认显示（英文）：Enter beneficiary bank
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
 
 
   * 输入框：银行账号//Account number
     * 默认显示（中文）：请输入银行账号
     * 默认显示（英文）：Enter account number
     * 限制输入50位数字，超过则无法进行输入
+    * 是否必填：必填
 
   * 输入框：SWIFT//SWIFT
     * 默认显示（中文）：请输入SWIFT代码
     * 默认显示（英文）：Enter SWIFT code
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
 
   * 输入框：受益人银行地址//Beneficiary bank address 
     * 默认显示（中文）：请输入受益人银行地址
     * 默认显示（英文）：Enter beneficiary bank address
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
 
   * 输入框：受益人名称//Beneficiary name on account 
     * 默认显示（中文）：请输入受益人名称
     * 默认显示（英文）：Enter beneficiary name on account
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
   
   * 输入框：受益人地址//Beneficiary address
     * 默认显示（中文）：请输入受益人地址
     * 默认显示（英文）：Enter beneficiary address
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
 
   * 输入框：路由传输号码/ABA号码//Routing number/ABA code
     * 默认显示（中文）：（选填）请输入路由传输号码/ABA号码
     * 默认显示（英文）：(Optional)Enter routing number/ABA code
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：非必填
   
   * 输入框：补充信息//Additional information
     * 默认显示（中文）：（选填）请输入其他补充信息
     * 默认显示（英文）：(Optional)Enter additional information
     * 限制输入100字符，超过则无法进行输入
+    * 是否必填：非必填
   * 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态，进入【上传银行证明】页面
 
   【上传银行证明】
@@ -1381,6 +1439,7 @@ N/A
   * 注意事项：同普通认证【上传自拍照】，不再复述
   * 银行证明//Proof document
     * 展示文案：待补充
+  * 是否必填：必填
   * 按钮：提交//Submit,默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
   【银行账号信息//Bank account info】
