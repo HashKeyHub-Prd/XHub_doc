@@ -1358,7 +1358,7 @@ N/A
 【提示无法添加银行卡弹窗】
  * 温馨提示//Tips
  * 展示文案：银行卡数量达到上限，无法添加，如需新增，清先将已认证的银行卡删除//The number of bank cards has reached the upper limit and cannot be added. If you need, delete the verified bank cards first.
- * 点击“我知道了//I Understant”，关闭弹窗
+ * 点击“我知道了//I Understand”，关闭弹窗
 
 【确认删除弹窗】
   * 展示文案：确实是否要删除银行卡？//Are you sure to delete the card？
@@ -1371,7 +1371,7 @@ N/A
  * 标题：法币结算//Fiat Settlement
  * 列表中无银行信息
    *  展示文案：待定
-   * 按钮：添加银行账号//ADD BANK ACCOUNT
+   * 按钮：+添加银行账号//+ADD BANK ACCOUNT
 
 * 列表汇中有银行信息
   * 排序：按照添加时间由近及远排序
@@ -1443,17 +1443,17 @@ N/A
   * 按钮：提交//Submit,默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
   【银行账号信息//Bank account info】
-  * 标题：添加银行账号//Add bank account
-  * 银行信息//Bank Infomation
+  * 标题：银行账号信息//Bank account info
+  * 银行信息//Bank information
     * 受益人银行名称//Beneficiary bank
     * 银行账号//Account number :掩码展示后四位,前面固定展示... ... ...
     * SWIFT//SWIFT: 明码展示
     * 路由传输号码/ABA号码//Routing number/ABA code：明码展示
     * 受益人银行地址//Beneficiary bank address
-  * 受益人信息//Beneficiary Infomation
+  * 受益人信息//Beneficiary information
     * 受益人名称//Beneficiary name on account
     * 受益人地址//Beneficiary address 
-  * 其他信息//Other Infomation
+  * 其他信息//Other information
     * 银行证明//Proof document
     * 补充信息//Additional information
   
