@@ -126,9 +126,9 @@ UI设计稿待补充
     * 提示类型：系统弹窗  
     场景：第一次点击“相册”按钮，授权权限  
     中文标题：“HashKey”想访问您的相册  
-    英文标题：Allow HashKey to acesss your photos  
+    英文标题：Allow HashKey to accesss your photos  
     中文提示语：确认允许“HashKey”访问读取您的照片，以便于扫码识别、实名认证使用等  
-    英文提示语:Do you allow HashKey to acesss your photos to extract the QRcode or verify identity,etc.  
+    英文提示语:Do you allow HashKey to accesss your photos to extract the QRcode or verify identity,etc.  
     立即打开//Enable now：获得权限。  
     不允许//Don't allow：点击后，关闭当前弹窗。  
 
@@ -298,7 +298,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     中文提示语：发送间隔太短，请1分钟后再试         
     英文提示语：Frequent request detected, retry 1 min later  
   * 提示类型：Toast    
-    场景：区域码+手机号不合法，或发送短信功能异常  
+    场景：发送短信功能异常  
     校验原则：发送短信功能异常  
     中文提示语：发送短信失败，请重试  
     英文提示语：Send sms error, please retry     
@@ -1115,15 +1115,15 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   ①当普通认证//Verified状态为未认证、审核中、驳回、认证失败时
 
-  展示文案1：您的帐户目前还未认证，只是处于查看状态。完成认证以访问所需的服务。//Your account is currently not verified, just in a read-only status. Complete verification to access services you need.
+  展示文案1：您的账户尚未进行身份认证，处于只读状态。请及时完成认证，以获得所需服务。//Your account is currently not verified, just in a read-only status. Complete verification to access services you need.
 
   ②当普通认证//Verified状态为通过，专业认证//Verified PI为未认证、审核中、驳回、认证失败时
 
-  展示文案1：待补充
+  展示文案1：您的账号已完成了普通认证，如果您需要更多的服务，请完成下一步专业投资者认证。//Your account is verified，if you need more services, please complete the next step of PI verification.
 
   ③当普通认证//Verified状态为通过，专业认证//Verified PI也为通过时
 
-  展示文案1：待补充
+  展示文案1：恭喜您，您的账号已完成所有的认证//Congratulations, your account have completed all verification.
 
   Tab1:普通认证//Verified
 
@@ -1194,7 +1194,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【机构认证提示弹窗】**
 
 * 标题：温馨提示//Tips
-* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication，you need to perform on the Wed terminal.web端链接待补充
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication，you need to perform on the Wed terminal.
+
+   Web链接：https://xpert.hashkey.com/
 * 按钮：复制链接//Copy Link
   * 点击后，toast提示“复制成功//Copy success” 
 
@@ -1274,7 +1276,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题：KYC认证//KYC Verification
 * 注意事项：(默认展开，点击折叠icon可收起，收起后默认展示第一条)
 
-  Tips:
+  • 文件必须采用以下格式: .jpg, .jpeg, .png（最多100个文件）
+
+  • 所有文件必须是整页的彩色图像，且分辨率至少为300dpi（每个文件最大10MB，所有文件总共最大500 MB
+
+  • 如果您上传的是非英文文件，请同时提交原件和英文翻译件。翻译件必须经过律师或法律翻译人员公证
+
+  • 如果地址证明是电子版，则应提交整份PDF文档（所有页面）
+
 
 	•	Documents must be in the following formats: .jpg, .png (max 100 files)
 
@@ -1291,7 +1300,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【上传地址证明】**
 * 标题与注意事项同上一页
 * 地址证明//Residence proof
-  * 展示文案：待补充
+  * 展示文案：需提供3个月以内签发的银行或公用事业对账单，清晰地显示签发日期、地址和个人名字//Please provide a bank or utility statement no more than 3 months old, clearly showing the issuance date, address and individual's name
 * 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
@@ -1351,7 +1360,7 @@ N/A
 
 【引导普通认证弹窗】
   * 标题：重要提示//Tips
-  * 展示文案：Complete the kyc verification before you accessing the service//请先完成KYC认证在您使用此服务前
+  * 展示文案：Complete the kyc verification before you access the service//请先完成KYC认证在您使用此服务前
   * 点击“立即认证//Verify now”，则进入普通认证//Verifived【个人信息填写】页面
   * 点击“稍后//Later”，则关闭弹窗
 
@@ -1370,7 +1379,8 @@ N/A
 【法币结算//Fiat Settlement】
  * 标题：法币结算//Fiat Settlement
  * 列表中无银行信息
-   *  展示文案：待定
+   *  展示文案：您需要绑定银行卡，才能使用平台提供的法币结算服务//Please bind your bank card to use the fiat settlement service provided by the platform
+
    * 按钮：+添加银行账号//+ADD BANK ACCOUNT
 
 * 列表汇中有银行信息
