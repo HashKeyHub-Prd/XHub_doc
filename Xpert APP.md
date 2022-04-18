@@ -886,6 +886,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 展示文案    
   * 手机号修改后，转账功能将被禁止24小时。//Transfer function will be disabled for 24 hours after phone number has been changed.
 
+* 选择区域码
+  * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
+  * 点击区域码，打开【国家/地区选择】页面
+  * 对应区域码参看全局说明“国家/地区选择”章节。
+  
 * 新手机// New phone
    * 输入框提示：请输入您的手机号//Enter your new phone number
    * 限制最多输入11位数字字符长度。
