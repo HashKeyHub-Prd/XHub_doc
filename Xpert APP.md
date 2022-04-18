@@ -173,8 +173,8 @@ UI设计稿待补充
 
 1. 进入注册页面
 2. 填写手机或邮箱 
-3. 校验帐户(邮箱、手机号)为空校验、人机验证、唯一性、格式校验
-4. 人机验证
+3. 人机验证
+4. 校验帐户(邮箱、手机号)为空校验、人机验证、唯一性、格式校验
 5. 调用第三方发送验证码
 6. 填写验证码，验证注册账号
 7. 验证码为空校验、时效性校验、正确校验
@@ -200,10 +200,10 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 【创建账户//Create account】
   * 点击“区域码”一栏，打开【国家/地区选择】页面
-  * 手机或邮箱填写完成后，点击”下一步//Next“，进入人机验证页面；需校验填写的手机或邮箱是否注册成功，若已注册成功，需提示“手机号码已存在//Phone number already exists"，“邮箱已存在//Email already exists”
+  * 手机或邮箱填写完成后，点击”下一步//Next“，先进行人机验证，通过后再进行格式校验，最后判断填写的手机或邮箱是否注册成功，若已注册成功，需提示“手机号码已存在//Phone number already exists"，“邮箱已存在//Email already exists”
   * 点击“登录//Login in”，进入到登录页面
   * 点击“User Agreement, Privacy Policy ”，进入协议查看页面，点击“关闭”按钮，关闭当前页面
-* 人机校验通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【设置密码//Create a password】页面
+* 人机校验及其他校验通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【设置密码//Create a password】页面
 * 【设置密码//Create a password】，设置成功后，点击“提交//Submit"，注册成功，自动跳转至首页，弹窗提示绑定GA，确认后进入【谷歌认证//Google Authentication】页面
 * 【谷歌认证Google Authentication】，验证成功后，点击“提交//Submit"，返回首页
 
@@ -284,7 +284,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     中文提示语：发送已达当日上限   
     英文提示语：Daily limit reached
   * 提示类型：Toast  
-    校验规则：发送验证码频率，24小时最多发送40次    
+    校验规则：发送验证码频率，24小时最多发送100次 （邮箱）   
     中文提示语：邮箱验证码发送次数已达上限    
     英文提示语：Email verification has reached the upper limit
   * 提示类型：Toast  
@@ -332,7 +332,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：验证码正确性    
     中文提示语：验证码错误  
     英文提示语：Incorrect code      
-    备注：容许2次错误，第3次需要重新发送
+    备注：容许9次错误，第10次开始需要重新发送
 
   * 提示类型：Toast  
     场景：存在填写的验证码格式不正确    
@@ -342,7 +342,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     备注：点击“确认登录” 提交验证   
 
   * 提示类型：Toast   
-    场景：验证码输入校验错误2次，第3次做失效处理  
+    场景：验证码输入校验错误9次，第10次开始做失效处理  
     校验原则：验证码正确性和有效性，且为6位整数，    
     中文提示语：验证码错误多次，请重发  
     英文提示语：Incorrect code, please get a new one     
@@ -353,7 +353,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：验证码不能过期  
     中文提示语：验证码过期，请重发    
     英文提示语：Code expired, please get a new one       
-    备注：短信5分钟过期，邮件30分钟过期   
+    备注：短信10分钟过期，邮件60分钟过期   
 
 【设置密码//Create a password】
 
@@ -417,11 +417,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
    * 点击“提交//Submit”按钮
 
-      * 提示类型：Toast  
-        场景：存在填写的验证码格式不正确   
-        校验原则：验证码只能为6位整数   
-        中文提示语：不符合格式要求   
-        英文提示语：Invalid format     
+      * 验证码校验规则参照【登录/Login】-2FA校验-验证码校验规则，不再复述     
         
    * 绑定谷歌认证结果：
 
@@ -449,9 +445,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 1. 填写手机号或邮箱
 2. 填写密码
-3. 帐户和密码的为空校验、格式校验、输错校验
+3. 人机校验
 4. 新设备校验
-5. 人机校验
+5. 帐户和密码格式校验、输错校验
 6. 2FA校验
 7. 验证码为空校验、时效性校验、正确校验
 8. 登录成功
@@ -473,7 +469,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **交互逻辑**
 
 - 【登录//Log in】
-  - 点击”登录//Log in“, 校验成功后，进行人机校验，通过后，进入到【谷歌验证//Google Auth】页面
+  - 点击”登录//Log in“，先进行人机校验，通过后，再进行格式及正确性校验，通过后，进入到【谷歌验证//Google Auth】页面
   - 点击”忘记密码//Forget password“，进入到【重设密码//Reset Password】页面
 - 【谷歌验证//Google Auth】
   - 点击”提交//Submit“，校验成功后，登录成功
@@ -581,9 +577,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：验证码正确性    
     中文提示语：验证码错误  
     英文提示语：Incorrect code      
-    备注：容许2次错误，3次输对机会，谷歌验证例外
+    备注：容许9次错误，10次输对机会，谷歌验证例外
   * 提示类型：Toast   
-    场景：验证码输入校验错误2次，第3次做失效处理  
+    场景：验证码输入校验错误9次，第10次开始做失效处理  
     校验原则：验证码正确性和有效性，且为6位整数        
     中文提示语：验证码错误多次，请重发  
     英文提示语：Incorrect code, please get a new one     
@@ -593,7 +589,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：验证码不能过期  
     中文提示语：验证码过期，请重发    
     英文提示语：Code expired, please get a new one       
-    备注：短信5分钟过期，邮件30分钟过期，谷歌按照谷歌过期时间
+    备注：短信10分钟过期，邮件60分钟过期，谷歌按照谷歌过期时间
 * 【绑定GA弹窗】
   * 标题：温馨提示//Tips
     正文：为给您提供持续稳定的服务，建议您绑定谷歌验证。//To provide you with better services, please bind Google Authentication to your account.
@@ -639,8 +635,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **交互逻辑**
 
 * 【忘记密码//Forget password】
-  * 点击”下一步//Next“，需校验填写的手机或邮箱需是否注册成功，若未注册成功，需提示“用户不存在//User no exists”,验证成功后，进行人机校验
-* 人机校验通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【重置密码//Reset password】页面
+  * 点击”下一步//Next“，先进行人机校验，通过后，再校验填写的手机或邮箱需是否注册成功，若未注册成功，需提示“用户不存在//User no exists”
+* 上一步校验都通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【重置密码//Reset password】页面
 * 【重置密码//Reset password】，设置成功后，点击“确认//Confim"，进入到登录页面
 
 **页面元素**
@@ -747,7 +743,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 旧密码//Original password 
   * 输入框提示：请输入旧密码//Enter the original password
   * 逻辑限制：限制最大可输入长度30个字符
-* 新密码//New Password
+* 新密码//New password
   * 输入框提示：请输入新密码//Enter the new password
   * 逻辑限制：限制最大可输入长度30个字符
 * 密码提示语：8-30位字符//8-30 characters
@@ -845,6 +841,10 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **【绑定手机】**
 * 标题：绑定手机//Bind Phone number 
+* 区域码
+  * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
+  * 点击区域码，打开【国家/地区选择】页面
+  * 对应区域码参看全局说明“国家/地区选择”章节。
  
  * 手机//Phone
    * 输入框提示：请输入您的手机号//Enter your phone number
@@ -906,6 +906,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 
 * 点击“确认//Confirm”
+   * 提示类型：Toast
+
+     场景：手机是否重复校验
+
+     校验原则：新手机不能与原手机一样       
+    中文提示语：新手机不能与原手机一样   
+    英文提示语：The new phone cannot be the same as the original phone
   * 新手机验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
 
 * 安全认证校验通过后：
@@ -942,7 +949,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   
 * 邮箱//Email
   * 输入框提示：请输入您的邮箱//Enter your email
-  * 逻辑限制：限制最多输入100个字符。
+  * 逻辑限制：限制最多输入50个字符。
 * 按钮：发送//Send
   * 点击发送后显示（60秒内）：60s
   * 点击发送后显示（大于60秒）：重新发送//Resend
@@ -1006,7 +1013,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：邮箱格式不正确 
     校验原则：以“@”符号及“.xx”作为格式校验依据       
     中文提示语：邮箱格式不正确    
-    英文提示语：Invalid Email address  
+    英文提示语：Invalid Email address 
+  * 提示类型：Toast
+
+    场景：邮箱是否重复校验
+    校验原则：新邮箱不能与原有邮箱一样       
+    中文提示语：新邮箱不能与原邮箱一样   
+    英文提示语：The new email cannot be the same as the original email
+     
 
   * 新邮箱验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
 
@@ -1123,7 +1137,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   ③当普通认证//Verified状态为通过，专业认证//Verified PI也为通过时
 
-  展示文案1：恭喜您，您的账号已完成所有的认证//Congratulations, your account have completed all verification.
+  展示文案1：您的账号已完成所有的认证，可以开始访问你所需的服务。//Your account has completed all verification.Please access the services you need.
 
   Tab1:普通认证//Verified
 
@@ -1371,7 +1385,7 @@ N/A
 
 【确认删除弹窗】
   * 展示文案：确实是否要删除银行卡？//Are you sure to delete the card？
-  * 点击“确认//Confirm”，则删除成功
+  * 点击“确认//Confirm”，则删除成功，Toast提示“删除成功//Delete Success”，若删除失败，Toast提示“删除失败，请重试//Delete failed, try again”
   * 点击“取消//Cancel”，则关闭弹窗
 
 **页面元素**
