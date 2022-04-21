@@ -6,6 +6,7 @@
 | ---- | ------------------------------------------------------------ | ------ | ---------- |
 | 1    | 新增Sprint1.0.0:   1、登录注册、忘记密码、修改密码、绑定/修改手机、修改邮箱 | 黄金叶 | 2022-03-14 |
 | 2    | 新增Sprint1.1.0:   1、KYC认证；2、法币结算 | 黄金叶 | 2022-04-02 |
+| 3    | 新增Sprint1.2.0:   1、钱包资产呈现；2、充值、提现、划转；3、地址薄管理 | 黄金叶 | 2022-04-18 |
 <!-- TOC -->
 
     - [版本变更记录](#版本变更记录)
@@ -271,7 +272,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 脱敏的手机（含区号）或邮箱
 * 短信验证码，默认提示：短信验证码//SMS code
 * 邮箱验证码，默认提示：邮箱验证码//Email code
-* 黏贴//Paste，点击后填入表单
+* 粘贴//Paste，点击后填入表单
   * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
@@ -364,7 +365,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 如新密码输入框有值，但输入不符合描述标准，显示红字
 
 * 隐藏眼睛：支持密码的明文隐藏与显示切换，默认第一次输入默认隐藏。
-* 黏贴//Paste，点击后填入剪贴板
+* 粘贴//Paste，点击后填入剪贴板
   * 非数字或字母，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮：提交//Submit，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
@@ -857,7 +858,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入框提示：手机验证码//Enter phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
-   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
+   * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
 
  * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
@@ -902,7 +903,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入框提示：新手机短信验证码//Enter new phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
-   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+   * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
@@ -964,7 +965,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
@@ -1008,7 +1009,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
@@ -1085,7 +1086,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 【我的//Me】
 
    * 用户进入个人中心，点击"KYC认证//KYC Verification",进入【KYC认证//KYC Verification】
-   * 总状态枚举值如下：（个人用户、机构用户状态枚举相同）
+   * 总状态枚举值如下：默认为“未认证//Unverified”（个人用户、机构用户状态枚举相同）
   ![KYC认证](./image/kyc/kycstatus.png)
 
 
@@ -1148,10 +1149,19 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   * 展示文案2：
     *  信息要求//Information Required 
-    *  要求内容文案待补充
+       *  1.申请人详细信息//Applicant Details
+       *  2.KYC文件//KYC Documentation
+       
   * 展示文案3：
     * 服务提供//Services Provided
-    * 服务内容文案待补充
+      * Crypto deposit//加密货币充值
+      * Crypto withdrawal//加密货币提现
+      * Trade Crypto//加密货币交易
+      * Fiat deposit//法币充值
+      * Fiat withdrawal//法币提现
+      * Buy/Sell cryptocurrency//加密货币买卖
+      * Staking//抵押
+      * Savings//理财
   * 状态文案：
 
     * 审核中//In Review
@@ -1176,10 +1186,21 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   Tab2:专业认证//Verified PI
     * 展示文案2：
     *  信息要求//Information Required 
-    *  要求内容文案待补充
+       *  PI 文件//PI Documentation
+
+
   * 展示文案3：
     * 服务提供//Services Provided
-    * 服务内容文案待补充
+       * Crypto deposit//加密货币充值
+      * Crypto withdrawal//加密货币提现
+      * Trade Crypto//加密货币交易
+      * Fiat deposit//法币充值
+      * Fiat withdrawal//法币提现
+      * Buy/Sell cryptocurrency//加密货币买卖
+      * Staking//抵押
+      * Savings//理财
+      * Trade OTC//OTC交易
+
   * 状态文案：
 
      **个人认证**
@@ -1300,8 +1321,6 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   • 所有文件必须是整页的彩色图像，且分辨率至少为300dpi（每个文件最大10MB，所有文件总共最大500 MB
 
   • 如果您上传的是非英文文件，请同时提交原件和英文翻译件。翻译件必须经过律师或法律翻译人员公证
-
-  • 如果地址证明是电子版，则应提交整份PDF文档（所有页面）
 
 
 	•	Documents must be in the following formats: .jpg, .png (max 100 files)
@@ -1485,7 +1504,8 @@ N/A
   * 其他信息//Other information
     * 银行证明//Proof document
     * 补充信息//Additional information
-  
+
+
 
    
 
