@@ -6,6 +6,7 @@
 | ---- | ------------------------------------------------------------ | ------ | ---------- |
 | 1    | 新增Sprint1.0.0:   1、登录注册、忘记密码、修改密码、绑定/修改手机、修改邮箱 | 黄金叶 | 2022-03-14 |
 | 2    | 新增Sprint1.1.0:   1、KYC认证；2、法币结算 | 黄金叶 | 2022-04-02 |
+| 3    | 新增Sprint1.2.0:   1、钱包资产呈现；2、充值、提现、划转；3、新增地址 | 黄金叶 | 2022-04-18 |
 <!-- TOC -->
 
     - [版本变更记录](#版本变更记录)
@@ -271,7 +272,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 脱敏的手机（含区号）或邮箱
 * 短信验证码，默认提示：短信验证码//SMS code
 * 邮箱验证码，默认提示：邮箱验证码//Email code
-* 黏贴//Paste，点击后填入表单
+* 粘贴//Paste，点击后填入表单
   * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
@@ -364,7 +365,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 如新密码输入框有值，但输入不符合描述标准，显示红字
 
 * 隐藏眼睛：支持密码的明文隐藏与显示切换，默认第一次输入默认隐藏。
-* 黏贴//Paste，点击后填入剪贴板
+* 粘贴//Paste，点击后填入剪贴板
   * 非数字或字母，则提示（Toast）“不符合格式要求//Invalid format”
   * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 * 按钮：提交//Submit，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
@@ -857,7 +858,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入框提示：手机验证码//Enter phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
-   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
+   * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
 
  * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
@@ -902,7 +903,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入框提示：新手机短信验证码//Enter new phone verification code
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
-   * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+   * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
@@ -964,7 +965,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
@@ -1008,7 +1009,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
-  * 点击后黏贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
 * 2FA校验
   * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
@@ -1148,10 +1149,19 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   * 展示文案2：
     *  信息要求//Information Required 
-    *  要求内容文案待补充
+       * 1.申请人详细信息//Applicant Details
+       * 2.KYC文件//KYC Documentation
   * 展示文案3：
     * 服务提供//Services Provided
-    * 服务内容文案待补充
+       * Crypto deposit//加密货币充值
+       * Crypto withdrawal//加密货币提现
+       * Trade Crypto//加密货币交易
+       * Fiat deposit//法币充值
+       * Fiat withdrawal//法币提现
+       * Buy/Sell cryptocurrency//加密货币买卖
+       * Staking//抵押
+       * Savings//理财
+
   * 状态文案：
 
     * 审核中//In Review
@@ -1175,11 +1185,20 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   
   Tab2:专业认证//Verified PI
     * 展示文案2：
-    *  信息要求//Information Required 
-    *  要求内容文案待补充
+       * 信息要求//Information Required 
+        * PI文件//PI Documentation
+        
   * 展示文案3：
     * 服务提供//Services Provided
-    * 服务内容文案待补充
+       * Crypto deposit//加密货币充值
+       * Crypto withdrawal//加密货币提现
+       * Trade Crypto//加密货币交易
+       * Fiat deposit//法币充值
+       * Fiat withdrawal//法币提现
+       * Buy/Sell cryptocurrency//加密货币买卖
+       * Staking//抵押
+       * Savings//理财
+       * Trade structured products//结构化产品交易
   * 状态文案：
 
      **个人认证**
@@ -1301,7 +1320,6 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   • 如果您上传的是非英文文件，请同时提交原件和英文翻译件。翻译件必须经过律师或法律翻译人员公证
 
-  • 如果地址证明是电子版，则应提交整份PDF文档（所有页面）
 
 
 	•	Documents must be in the following formats: .jpg, .png (max 100 files)
@@ -1385,7 +1403,7 @@ N/A
 
 【提示无法添加银行卡弹窗】
  * 温馨提示//Tips
- * 展示文案：银行卡数量达到上限，无法添加，如需新增，清先将已认证的银行卡删除//The number of bank cards has reached the upper limit and cannot be added. If you need, delete the verified bank cards first.
+ * 展示文案：银行卡数量达到上限，无法添加，如需新增，请先将已认证的银行卡删除//The number of bank cards has reached the upper limit and cannot be added. If you need, delete the verified bank cards first.
  * 点击“我知道了//I Understand”，关闭弹窗
 
 【确认删除弹窗】
@@ -1485,11 +1503,663 @@ N/A
   * 其他信息//Other information
     * 银行证明//Proof document
     * 补充信息//Additional information
+
+# 4.钱包
+## 4.1 资产呈现
+
+### 4.1.1 功能概述
+用户通过钱包管理，可进行钱包资产查询，充值、提现、以及划转。个人用户钱包仅包含系统默认的业务钱包；机构用户钱包包含系统默认的业务钱包和自定义钱包。
+### 4.1.2 业务流程
+N/A
+### 4.1.3 UI设计稿
+待补充
+### 4.1.4 需求详述
+**前置条件**
+
+用户登录，点击底部Tab栏“钱包//Wallet”，进入钱包页面
+
+**功能描述**
+
+【钱包//Wallet】
+ * 页面元素
+   * 标题：总览//Overview
+   * 总资产估值（BTC）//Total Value(BTC)
+      * 总资产计算公式=∑默认钱包（可用资产+冻结资产）+自定义钱包（可用资产+冻结资产）
+      * 以BTC为默认单位，并展示对应的USDT估值
+      * BTC精度从后端获取
+   * 钱包列表
+      * 个人用户仅展示系统默认钱包，文案：我的钱包//My Wallet
+      * 机构用户展示系统默认钱包和自定义钱包，文案：默认钱包//Default Wallet 自定义钱包//Customized Wallet
+      * 数据来源：系统默认钱包可由超级管理员在Xpert后管系统中进行配置，包括钱包的名称、钱包logo、支持的币种；自定义钱包由机构用户在Web端xpert系统中进行配置，包括钱包的名称、钱包logo、支持的币种
+      * 展示顺序：系统默认钱包及自定义钱包均按照钱包创建时间由远及近排序
+      * 展示内容：钱包logo、钱包名称、钱包资产总额（BTC）、钱包资产总额对应USDT估值
+      * 单个钱包资产总额：计算公式=∑币种（可用资产+冻结资产）；以BTC为默认单位，并展示对应的USDT估值
+         * 计算逻辑：①每个币种数量*BTC汇率换算  ②求和 ③按照BTC精度进行截断
+* 交互逻辑
+  * 隐藏眼睛，默认开启，点击后关闭钱包资产总额、列表单个钱包资产总额，以4个“*”显示
+  * 充值//Deposit
+      * 点击“充值//Deposit”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+  * 提现//Withdraw
+      * 点击“提现//Withdraw”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
+  * 划转//Transfer
+      * 点击“划转//Transfer”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
+  * 钱包列表
+      * 点击具体某个钱包列表，进入钱包详情页面
+
+【钱包详情页】
+ * 页面元素
+   * 标题：钱包名称，从后端获取
+   * 资产估值（BTC）//Equity Value(BTC)
+     * 钱包资产估值计算同上“单个钱包资产总额”
+   * 钱包ID//Wallet ID
+   * 币种列表
+     * 展示顺序：默认按照资产对应USDT估值由大到小排序，若估值相等，则随机排列
+     * 展示内容：币种logo、币种简称、币种所属链、币种数量、对应USDT估值
+* 交互逻辑
+  * 切换钱包
+    * 点击右上角切换icon，进入到选择钱包页面，可快速切换到其他钱包详情页
+  * 隐藏眼睛，默认开启，点击后关闭钱包资产估值、列表币种数量及对应估值，以4个“*”显示，关闭后，估值一栏不展示内容
+  * 复制钱包ID
+    * 点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
+  * 充值//Deposit（仅资金钱包//Custodial Wallet展示）
+      * 若钱包状态为暂停或冻结，则按钮置灰，不可点击；当钱包状态为正常时，才为高亮可点击状态
+      * 点击“充值//Deposit”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+  * 提现//Withdraw（仅资金钱包//Custodial Wallet展示）
+      * 若钱包状态为暂停或冻结，则按钮置灰，不可点击；当钱包状态为正常时，才为高亮可点击状态
+      * 点击“提现//Withdraw”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
+  * 划转//Transfer
+      * 若钱包状态为暂停或冻结，则按钮置灰，不可点击；当钱包状态为正常时，才为高亮可点击状态
+      * 点击“划转//Transfer”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
+  * 交易//Transaction
+      * 点击进入交易页面，详见章节“4.5 交易”说明 
+  * 隐藏小额币种//Hide small balances
+    * 默认不勾选，勾选后，列表中数量小于0.0001的币种则隐藏不展示
+  * 币种搜索//Seach Coin
+    * 点击搜索框后，自动在当前页调出手机键盘，仅限输入字母（大小写不限）与数字，限制10个字符内，超过则无法输入，根据输入的内容进行模糊搜索
+    * 输入内容后，需展示“X”按钮,点击后则清空搜索框内容
+  * 币种列表
+     * 点击具体某个币种，弹窗展示币种详情
+
+【币种详情弹窗】
+  * 页面元素
+    * 弹窗标题：币种简称
+    * 总额//Toal
+      * 计算公式=币种的可用+冻结数量，以及总数量对应USDT估值
+    * 可用//Avaliable
+      * 该币种的可用数量
+    * 冻结//Frozen
+      * 该币种的冻结数量
+  * 交互逻辑
+     * 充值//Deposit（仅资金钱包//Custodial Wallet展示）
+        * 点击“充值//Deposit”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+     * 提现//Withdraw（仅资金钱包//Custodial Wallet展示）
+        * 点击“提现//Withdraw”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入提现页面，详见章节“4.3 提现”说明
+     * 划转//Transfer
+        * 点击“划转//Transfer”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入划转页面，详见章节“4.4 划转”说明
+     * 关闭
+       * 点击右上角关闭按钮，则关闭币种详情弹窗 
+
+【三要素验证引导弹窗】
+* 页面元素
+    * 弹窗标题：请先完成以下操作//Complete the following steps
+    * 文案1：谷歌认证//Google Authentication
+    * 文案2：邮箱认证//Email Authentication
+    * 文案3：KYC认证//KYC Verification
+    * 按钮：我知道了//I Understand
+* 交互逻辑
+    * 谷歌认证
+      * 点击“去设置//Go”，进入谷歌认证页面，详见章节“2.1 注册-【谷歌认证//Google Authentication】”说明
+    * 邮箱认证
+      * 点击“去设置//Go”，进入绑定邮箱页面，详见章节“3.1.3.1 绑定/修改邮箱认证”说明
+    * KYC认证
+      *点击“立即认证//Go”，进入【KYC认证//KYC Verification】页面，详见章节“3.2 KYC认证”说明
+
+## 4.2 充值
+
+### 4.2.1 功能概述
+用户充值，需通过GA、邮箱绑定、KYC认证，三者都完成了才可以展示充值地址；充值进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则充值不成功
+
+### 4.2.2 业务流程
+http://assets.processon.com/chart_image/586b78bce4b0f7a9c35f7d26.png
+    
+### 4.2.3 UI设计稿
+待补充
+
+### 4.2.4 需求详述
+
+**前置条件**
+
+用户登录
+
+已绑定GA
+
+已绑定邮箱
+
+KYC认证已通过（Verified、Verified PI）
+
+**功能描述**
+ 
+【充值//Deposit】
+* 页面元素
+  * 标题：充值//Deposit
+  * 资产
+    * 带入上一步所选择的币种
+  * 充值二维码
+  * 文案1：保存二维码//Save QR code
+  * 文案2：接收地址//Receive Address
+    * 展示对应币种充值地址
+  * 文案3：MEMO
+    * 若币种有MEMO则展示，无则不展示MEMO模块内容
+    * 展示对应币种MEMO
+  * 文案3：TAG
+    * 若币种有TAG则展示，无则不展示TAG模块内容
+    * 展示对应币种TAG
+  * 底部提示文案
+    * 从后端获取对应资产的充值提示文案
+* 交互逻辑
+  * 选择币种
+    * 点击“>”进入【币种选择//Select Coin】页面
+  * 保存二维码//Save QR code
+    * 场景：保存二维码
+      * 提示类型：Toast
+      * 中文提示语：保存成功
+      * 英文提示语：Saved success   
+    
+    * 场景：授权获取相册调用权限
+
+      * 详见章节“全局说明-相册调用权限”说明
+  * 复制地址
+    * 点击充值地址的复制icon,将充值地址复制到粘贴板，并Toast提示“复制成功//Copy success”
+  * 复制MEMO
+    * 点击MEMO的复制icon,将MEMO复制到粘贴板，Toast提示“复制成功//Copy success”
+  * 复制TAG
+    * 点击TAG的复制icon,将TAG复制到粘贴板，并Toast提示“复制成功//Copy success”
+
+
+## 4.3 提现
+
+### 4.3.1 功能概述
+用户从资金钱包//Custodial Wallet提现，需通过GA、邮箱绑定、KYC认证，三者都完成了才可以进行提现；提现需进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功；用户从自定义钱包//Customized  Wallet提现，除了需要做三要素验证之外，若配置了风控策略，还需进行风控策略的校验，通过之后也需要进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功
+
+### 4.3.2 业务流程
+http://assets.processon.com/chart_image/586b21a5e4b0f7a9c3562962.png
+
+### 4.3.3 UI设计稿
+待补充
+
+### 4.3.4 需求详述
+
+**前置条件**
+
+用户登录
+
+已绑定GA
+
+已绑定邮箱
+
+KYC认证已通过（Verified、Verified PI）  
+
+**功能描述**
+
+【提现//Withdraw】
+* 页面元素
+  * 标题：提现//Withdraw
+  * 资产
+    * 带入上一步所选择的币种
+  *输入框：接收地址//Receiver's address
+    * 提示语：请输入接收地址//Enter receiver's address
+    * 限制100字符内，超过则无法输入
+    * 是否必填：必填
+  * 输入框：数量//Amount
+    * 提示语：最小数量XXX//Minimun XXX
+    * XXXX为后台资产配置的最小可提现数量
+    * 单位：对应资产
+    * 按钮：全部//All
+    * 限制只能输入数字及小数点，最大值为999999999，超过则无法输入
+    * 是否必填：必填
+  * 可用XXX[币种简称]//Available XXX[币种简称]
+    * 展示该资产当前可用余额
+
+  * 输入框：MEMO
+    * 仅MEMO资产才展示
+    * 提示语：请输入MEMO//Enter memo
+    * 限制100字符内，超过则无法输入
+    * 是否必填：非必填
   
+  * 输入框：TAG
+    * 仅TAG资产才展示
+    * 提示语：请输入TAG//Enter tag
+    * 限制100字符内，超过则无法输入
+    * 是否必填：非必填
+  
+  * 手续费//Fee
+    * 后端获取该资产提现对应手续费
 
-   
+  * 收到的数量//Receive amount
+    * 输入提现数量后展示
+    * 计算公式：Receive amount= Withdraw amount - Fee
+  
+  * 底部提示文案
+    * 从后端获取对应资产的提现提示文案
+ 
+* 交互逻辑
+  * 选择币种
+    * 点击“>”进入【币种选择//Select Coin】页面
+  * 地址薄
+    * 点击接收地址输入框内的地址簿icon,进入【地址选择//Select address】页面，详见【地址选择//Select address】说明；地址选择成功后，将地址带入到接收地址输入框中
+  * 扫一扫
+    * 点击接收地址输入框内的扫一扫icon，打开扫一扫功能
+    * 场景：识别成功
+      * 将识别成功的地址带入到接收地址输入框中
+    * 场景：授权获取相册调用权限
+      * 详见章节“全局说明-相册调用权限”说明
+  * 全部//All
+    * 点击数量输入框中的“All”,则将该资产可用余额全部带入到数量输入框中
+  * 提现//Withdraw
+    * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
+    * 点击“提现//Withdraw”按钮后，按照以下顺序进行校验
+      * 提示类型：Toast   
+        校验原则：提现数量应大于等于该资产最小可提现数量。  
+        中文提示语：提现数量不能小于【后台资产配置的最小可提现数量】   
+        英文提示语： The withdrawal amount cannot be less than 【后台资产配置的最小可提现数量】
+      * 提示类型：Toast 
+
+         校验原则：提现数量不能超过可用余额  
+         中文提示语：超过您所拥有的数量总额    
+         英文提示语：Your withdrawal amount has exceeded the available balance.
+      * 提示类型：Toast
+
+         校验原则：提现数量不能超过每笔限额
+  
+         中文提示语：每笔提现数量不能超过【自定义设置的每笔出金额度限制】
+
+         英文提示语：Your amount of each withdrawal cannot exceed【自定义设置的每笔出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每笔额度限制才进行校验
+      * 提示类型：Toast
+
+         校验原则：一小时内提现总数量不能超过每小时限额
+  
+         中文提示语：每小时提现数量不能超过【自定义设置的每小时出金额度限制】
+
+         英文提示语：Your amount of withdrawal per hour cannot exceed 【自定义设置的每小时出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
+      
+      * 提示类型：Toast
+
+         校验原则：24小时内提现总数量不能超过每天限额
+  
+         中文提示语：24小时内提现数量不能超过【自定义设置的每天出金额度限制】
+
+         英文提示语：Your amount of withdrawal 24 hours cannot exceed 【自定义设置的每天出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
+      * 提示类型：Toast
+
+          校验原则：提币地址格式校验
+
+          中文提示语：转账地址格式错误  
+          英文提示语：Incorrect address format
+    * 以上条件校验通过后，弹出提现确认弹窗
+
+【确认订单//Confirm order】
+* 页面元素
+  * 标题：确认订单//Confirm order
+  * 到账数量//Receive amount
+    * 计算公式：Receive amount= Withdraw amount - Fee
+  * 接收地址//Receiver's address
+    * 展示填写的提现地址
+  * 币种//Coin
+    * 展示填写的币种
+  * 手续费//Fee
+    * 展示该笔提现所属的手续费
+    * 后端获取该资产提现对应手续费
+  * 按钮：确认//Confirm
+* 交互逻辑
+  * 关闭
+    * 点击右上角关闭icon，关闭确认订单弹窗
+  * 按钮：确认//Confirm
+    * 点击“确认//Confirm”,弹出【输入谷歌验证码】弹窗
+
+【输入谷歌验证码//Enter GA code】
+* 页面元素
+  * 标题：输入谷歌验证码//Enter GA code
+* 交互逻辑
+  * 输入6位数验证码后，系统自动进行校验
+  * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+  * 校验成功后，跳转至【交易//Transaction】页面
+
+【地址选择//Select address】
+* 页面元素
+  * 标题：地址选择//Select address
+  * 地址搜索框
+    * 提示语：请输入地址名称或标签//Seach Address name or lable
+  * 地址列表
+    * 选择哪个币种则展示对应币种的地址列表
+    * 展示顺序：默认按照创建时间由近及远排序
+  * 按钮：添加新地址//Add new address
+  * 按钮：确认//Confirm
+* 交互逻辑
+  * 地址搜索框
+    * 点击搜索框后，清空默认提示语，限制50个字符内，超过则无法输入，根据输入的内容进行模糊搜索
+    * 点击“取消//Cancel”后则清空搜索框内容
+  * 确认//Confirm
+    * 点击“确认//Confirm”，关闭该页面，自动将选中的地址带入上一页面
+  * 添加新地址//Add new address
+    * 点击“添加新地址//Add new address”，进入【添加新地址//Add new address】页面
+
+【添加新地址//Add new address】
+* 页面元素
+  * 标题：添加新地址//Add new address
+  * 资产
+    * 带入选择地址中的同一币种
+  * 输入框：地址名称//Address name
+    * 提示语：请输入地址名称//Enter address name
+    * 限制输入50字符，超过则无法进行输入
+    * 是否必填：必填
+  * 输入框：地址//Address
+    * 提示语：请输入地址//Enter address
+    * 限制输入100字符，超过则无法进行输入
+    * 是否必填：必填
+  * 标签//Lable
+    * 提示语：（非必填）请输入地址标签//(Optional)Enter address lable
+    * 限制输入50字符，超过则无法进行输入
+    * 是否必填：非必填
+* 交互逻辑
+  * 扫一扫
+    * 点击地址输入框内的扫一扫icon，打开扫一扫功能
+    * 场景：识别成功
+      * 将识别成功的地址带入到地址输入框中
+    * 场景：授权获取相册调用权限
+      * 详见章节“全局说明-相册调用权限”说明
+  * 保存//Save
+    * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
+  * 点击“保存//Save”，需继续地址格式及唯一性校验
+    * 提示类型：Toast
+
+      校验原则：地址格式校验
+
+      中文提示语：地址格式错误  
+          英文提示语：Incorrect address format
+    * 提示类型：Toast
+
+      校验原则：同一个资产的地址唯一性
+
+      中文提示语：地址已存在
+
+      英文提示语：Address already exists.
 
 
 
+## 4.4 内部划转
 
+### 4.4.1 功能概述
+分个人用户及机构用户划转，个人用户划转仅能系统默认钱包间进行划转；机构用户可进行同一机构下系统默认钱包及自定义钱包之间划转，也可以给其他机构的默认钱包/自定义钱包进行转账，内部划转无需收取手续费
+### 4.4.2 业务流程
+N/A
 
+### 4.4.3 UI设计稿
+
+### 4.4.4 需求详述
+
+**前置条件**
+
+用户登录
+
+已绑定GA
+
+已绑定邮箱
+
+KYC认证已通过（Verified、Verified PI）
+
+**功能描述**
+
+【个人用户：内部转账】
+* 页面元素
+  * 标题：转账//Transfer
+  * 币种//Coin
+    * 带入上一步所选择的币种
+  * From
+    * 默认带入上一步所在钱包的Wallet name
+    * 若从钱包总览页面的划转入口而来，则默认展示资金钱包//Custodial Wallet
+  * To
+    * 默认为空
+    * 提示语：请选择钱包//Select wallet
+    * 是否必填：必填
+  * 输入框：数量//Amount  
+    * 提示语：请输入转账数量//Enter transfer amount
+    * 按钮：全部//Transfer all
+    * 限制只能输入数字及小数点，最大值为999999999，超过则无法输入
+    * 是否必填：必填
+  * 可用XXX[币种简称]//Available XXX[币种简称]
+    * 展示该资产当前可用余额
+  * 输入框：备注//Note
+    * 提示语：（非必填）请输入转账备注//(optional) Enter transfer note
+    * 限制100字符内，超过则无法输入
+    * 是否必填：非必填
+  * 底部提示文案：
+    * 钱包内部转账无需手续费//Transfer between wallets are free of charge
+
+* 交互逻辑
+  * 选择币种
+    * 点击“>”进入【币种选择//Select Coin】页面,选择完成后，将选择好的币种带入到当前页面 
+  * 选择钱包
+    * 点击From/To旁的“>”进入【钱包选择//Select Wallet】页面，下拉选项仅包括系统默认钱包，选择完成后，将选择好的钱包带入到当前页面，To钱包的选项里不包含From钱包选项
+  * 切换From/To钱包
+    * 点击切换icon,则将From、To钱包顺序进行调换
+    * 默认置灰，当From及To钱包都有内容时变为高亮可点击状态
+  * 全部//Transfer all
+    * 点击数量输入框中的“全部//Transfer all”,则将该资产可用余额全部带入到数量输入框中
+  * 确认//Confirm
+    * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
+    * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
+      * 提示类型：Toast
+
+        校验原则：转账数量应大于等于该资产最小可转账小数位。  
+     中文提示语：请勿输入超过 【后台资产配置的小数位】位小数   
+     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places.
+      * 提示类型：Toast 
+
+         校验原则：转账数量不能超过可用余额  
+         中文提示语：超过您所拥有的数量总额    
+         英文提示语：Your transfer amount has exceeded the available balance.
+      
+      *  提示类型：Toast
+
+         校验原则：To钱包需支持转账的币种
+  
+         中文提示语：【To钱包名称】不支持【币种简称】，无法转账
+
+         英文提示语：【To钱包名称】does not support【币种简称】, cannot transfer 
+      * 提示类型：Toast 
+
+         校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
+         中文提示语：【To钱包名称】已【钱包状态】   
+         英文提示语：【To钱包名称】has been【钱包状态】 
+    * 以上条件校验通过后，弹出【输入谷歌验证码】弹窗
+
+【输入谷歌验证码//Enter GA code】
+* 页面元素
+  * 标题：输入谷歌验证码//Enter GA code
+* 交互逻辑
+  * 输入6位数验证码后，系统自动进行校验
+  * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+  * 校验成功后，Toast提示“转账成功//Transfer success”，停留在该页面，并清空数量及备注输入框
+  * 转账成功后，From钱包可用余额减少转账数量，To钱包可用余额增加转账数量
+
+【机构用户：内部转账】
+* 页面元素
+  * 标题：转账//Transfer
+  * 币种//Coin
+    * 带入上一步所选择的币种     
+  * 单选项：类型//Type
+    * 选项内容：内部//Internal、外部//External
+    * 默认选中“内部//Internal”
+  *  From
+    * 默认带入上一步所在钱包的Wallet name
+    * 若从钱包总览页面的划转入口而来，则默认展示资金钱包//Custodial Wallet
+  * To
+
+    **Internal**
+    * 选择框
+    * 默认为空
+    * 提示语：请选择钱包//Select wallet
+    * 是否必填：必填
+
+    **External**
+    * 文本输入框
+    * 默认为空
+    * 提示语：请输入需转账到的钱包ID//Enter destination wallet ID
+    * 机构名//Team
+      * To钱包所属机构名
+      * 根据输入的wallet ID进行匹配
+      * 若获取不到或无，则不展示该字段
+    * 钱包名称//Wallet name
+      * To钱包名称
+      * 根据输入的wallet ID进行匹配
+  * 输入框：数量//Amount
+    * 提示语：请输入转账数量//Enter transfer amount
+    * 按钮：全部//Transfer all
+    * 限制只能输入数字及小数点，最大值为999999999，超过则无法输入
+    * 是否必填：必填
+  * 可用XXX[币种简称]//Available XXX[币种简称]
+    * 展示该资产当前可用余额
+  * 输入框：备注//Note
+    * 提示语：（非必填）请输入转账备注//(optional) Enter transfer note
+    * 限制100字符内，超过则无法输入
+    * 是否必填：非必填
+  * 底部提示文案：
+    * 钱包内部转账无需手续费//Transfer between wallets are free of charge
+* 交互逻辑
+  * 选择币种
+    * 点击“>”进入【币种选择//Select Coin】页面,选择完成后，将选择好的币种带入到当前页面 
+  * 选择钱包
+    * 点击From旁的“>”进入【钱包选择//Select Wallet】页面，选项内容包括系统默认钱包+自定义钱包，选择完成后，将选择好的钱包带入到当前页面
+  * 切换Internal/External
+    * 选中具体类型后，展示对应的页面元素
+  * 全部//Transfer all
+    * 点击数量输入框中的“全部//Transfer all”,则将该资产可用余额全部带入到数量输入框中
+  * 确认//Confirm
+    * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
+    * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
+      * 提示类型：Toast
+
+        校验原则：转账数量应大于等于该资产最小可转账小数位。  
+     中文提示语：请勿输入超过 【后台资产配置的小数位】位小数   
+     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places.
+      * 提示类型：Toast 
+
+         校验原则：转账数量不能超过可用余额  
+         中文提示语：超过您所拥有的数量总额    
+         英文提示语：Your transfer amount has exceeded the available balance.
+      * 提示类型：Toast
+
+         校验原则：提现数量不能超过每笔限额
+  
+         中文提示语：每笔提现数量不能超过【自定义设置的每笔出金额度限制】
+
+         英文提示语：Your amount of each transfer cannot exceed【自定义设置的每笔出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每笔额度限制才进行校验
+      * 提示类型：Toast
+
+         校验原则：一小时内转账总数量不能超过每小时限额
+  
+         中文提示语：每小时转账数量不能超过【自定义设置的每小时出金额度限制】
+
+         英文提示语：Your amount of transfer per hour cannot exceed 【自定义设置的每小时出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
+      
+      * 提示类型：Toast
+
+         校验原则：24小时内转账总数量不能超过每天限额
+  
+         中文提示语：24小时内转账数量不能超过【自定义设置的每天出金额度限制】
+
+         英文提示语：Your amount of transfer 24 hours cannot exceed 【自定义设置的每天出金额度限制】
+         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
+      
+      *  提示类型：Toast
+
+         校验原则：To钱包需支持转账的币种
+  
+         中文提示语：【To钱包名称】不支持【币种简称】，无法转账
+
+         英文提示语：【To钱包名称】does not support【币种简称】, cannot transfer
+      * 提示类型：Toast 
+
+         校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
+
+         中文提示语：【To钱包名称】已【钱包状态】   
+         英文提示语：【To钱包名称】has been【钱包状态】
+    * 以上条件校验通过后，弹出【输入谷歌验证码】或【输入谷歌验证码钱包资金密码】弹窗，当From钱包为系统默认钱包时，仅需谷歌验证码校验；当From钱包为自定义钱包时，需要谷歌验证码及钱包资金密码校验
+
+【输入谷歌验证码//Enter GA code】
+* 页面元素
+  * 标题：输入谷歌验证码//Enter GA code
+* 交互逻辑
+  * 输入6位数验证码后，系统自动进行校验
+  * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+  * 校验成功后，Toast提示“转账成功//Transfer success”，停留在该页面，并清空数量及备注输入框
+  * 转账成功后，From钱包可用余额减少转账数量，To钱包可用余额增加转账数量
+
+【输入谷歌验证码钱包资金密码】
+ 
+ 待补充
+
+## 4.5 交易记录
+
+### 4.5.1 功能概述
+记录用户所有币种充值、提现、内部转账的行为
+### 4.5.2 业务流程
+N/A
+
+### 4.5.3 UI设计稿
+
+### 4.5.4 需求详述
+
+**前置条件**
+
+用户登录
+
+交易记录需与钱包对应，展示该钱包充值、提现、内部划转出去、或内部划转进来的记录
+
+**功能描述** 
+【交易//Transaction】
+* 页面元素
+  * 标题：交易//Transaction
+  * 币种搜索框
+    * 默认提示文案：搜索币种//Search Coin
+    * 取消//Cancel
+  * 类型//Tpye
+    * 选项内容：充值//Deposit、提现//Withdraw、内部转账//Transfer、授信//Credit
+    * 资金钱包//Custodial Wallet的交易页面类型选项内容包括：充值//Deposit、提现//Withdraw、内部转账//Transfer、授信//Credit
+    * 业务钱包的交易页面类型选项内容仅为：内部转账//Transfer
+    * 机构用户自定义钱包的交易页面类型选项内容包括：充值//Deposit、提现//Withdraw、内部转账//Transfer
+  * 日期//Date
+    * 交易日期选择
+  * 交易列表
+    * 顺序：按照交易时间由近及远进行排序
+    * 列表内容：币种简称、交易日期（精确到秒）、交易类型、交易数量（+代表钱包入金；-代表钱包出金）、手续费、订单状态
+    * 状态枚举
+
+      Done：已成功完成的订单状态。
+
+      Pending：正在进行中的订单状态。对于充值/提现订单需加上区块确认数，例如：pending (当前确认数/订单完成所需确认数）
+      
+      Awaiting approval：对于机构账户的自定义钱包，如果设置了审批策略，出金请求（提现和划出）发起后，订单状态为“awaiting approval"。
+      
+      Segregated：对于违反了AML的充值, 运营人员审核拒绝后，充值订单状态变成“segregated"。
+      
+      Terminated：对于违反了AML的提现, 运营人员审核拒绝后，提现订单状态变成“terminated”。对于“awaiting approval"状态的订单，在用户审批拒绝后，状态变为"terminated"。
+      
+      Failed：订单失败状态。
+* 交互逻辑
+  * 币种搜索//Seach Coin
+    * 点击搜索框后，清空默认提示语，仅限输入字母（大小写不限）与数字，限制10个字符内，超过则无法输入，根据输入的内容进行模糊搜索
+    * 点击“取消//Cancel”后则清空搜索框内容 
+  * 类型//Type
+    * 点击“类型//Type”，下拉展示对应类型选项内容，点击对应的类型后默认选中，并收起下拉框，列表按照选中的类型进行搜索
+  * 日期//Date
+    * 点击“日期//Date”，下拉展示日期控件，点击“确认//Confirm”后，收起日期控件，列表按照选中的日期范围进行搜索
+
+  
+  
+        
