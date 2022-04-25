@@ -1589,7 +1589,7 @@ N/A
 【币种详情弹窗】
   * 页面元素
     * 弹窗标题：币种简称
-    * 总额//total
+    * 总额//Total
       * 计算公式=币种的可用+冻结数量，以及总数量对应USDT估值
     * 可用//Available
       * 该币种的可用数量
@@ -1861,13 +1861,18 @@ KYC认证已通过（Verified、Verified PI）
   * 按钮：确认//Confirm
     * 点击“确认//Confirm”,弹出【输入谷歌验证码】弹窗
 
-【输入谷歌验证码//Enter GA code】
+【输入谷歌验证码】
 * 页面元素
-  * 标题：输入谷歌验证码//Enter GA code
+  * 标题：安全验证//Safety verification
+  * 输入框：谷歌验证//Google verification
+    * 提示语：输入谷歌验证码//Enter GA code
 * 交互逻辑
-  * 输入6位数验证码后，系统自动进行校验
-  * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
-  * 校验成功后，跳转至【交易//Transaction】页面
+  * 粘贴//Paste
+    * 点击粘贴，自动将复制好的内容粘贴至验证码输入框， 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 确认//Confirm
+    * 按钮默认置灰，输入框有内容后，变为高亮可点击状态
+    * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+    * 校验成功后，跳转至【交易//Transaction】页面
 
 【地址选择//Select address】
 * 页面元素
