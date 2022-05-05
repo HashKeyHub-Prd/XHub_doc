@@ -70,7 +70,7 @@ UI设计稿待补充
 
 **国家/地区选择（按照英文或拼音的A-Z排序）：**
 
-* 国家/地区列表待补充
+* 国家/地区列表参照文件：document-->countries.jason
 * 国家/地区选择为通用页面
 * 国家/地区下拉列表统一从后端获取配置文件（除Jumio身份信息校验国家地区从Jumio后端获取）
   * 注册登录页面，手机号下拉选项，点击“区域码”一栏，则打开【国家/地区选择】页面
@@ -216,6 +216,9 @@ UI设计稿待补充
   * 扫一扫未识别出地址二维码，则Toast提示“无法识别二维码//Failed to read QR code”
   * 地址二维码成功识别后，返回上一页，并将识别到的地址带入对应的输入框中
 
+ **支持币种**
+  * 当前支持充提的币种链接：https://shimo.im/sheets/m5kv9XvKMlC4RqX0/BMkwJ
+    * 参照UserHotWallet BCTSHotWallet-Coins(Support Now)部分
 
 
 # 2.登录注册
