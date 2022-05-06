@@ -83,6 +83,20 @@ UI设计稿待补充
     文提示语：根据最新监管政策要求，目前暂不支持向受限地区用户提供服务  
     英文提示语：In response to the latest regulatory policy requirements, the restricted territory is temporarily suspended.  
 
+**重复登录校验**
+* 一个账号只能同时在一个设备上进行登录，当账号在其他设备（Web或APP）上进行登录时，当前账号下线，点击进行任何操作时进行提示
+
+* 下线通知弹窗
+  * 标题：下线通知//Logoff Notice
+  * 内容：您的账号已在其他设备进行登录，如非本人操作，账号已存在泄漏风险，请及时更改密码//Your account has been logged in on another device, if not operated by youself, your account is at risk of leakage, please change your password promptly
+  * 按钮：退出//Log out
+    * 点击则退出当前账号，返回首页
+  * 按钮：重新登录//Relogin
+    * 点击则进入登录页面
+
+
+ 
+
 **手机系统功能**
 
 * 【IOS】支持手机自动读取短信填入输入框
@@ -236,7 +250,7 @@ UI设计稿待补充
 1. 进入注册页面
 2. 填写手机或邮箱 
 3. 人机验证
-4. 校验帐户(邮箱、手机号)为空校验、人机验证、唯一性、格式校验
+4. 帐户(邮箱、手机号)唯一性、格式校验
 5. 调用第三方发送验证码
 6. 填写验证码，验证注册账号
 7. 验证码为空校验、时效性校验、正确校验
@@ -660,7 +674,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **其他说明：**
 
-* 异常IP登录，邮件或短信提醒，具体查看短信邮件模版
+* 异常IP登录，邮件或短信提醒，具体查看短信邮件模版（暂不实现）
 
   
 
@@ -752,7 +766,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
  默认头像，暂不可修改
 
- 账户名：取用户注册的邮箱或手机，掩码展示
+ 账户名：取用户注册的邮箱或手机，掩码展示，即用户用手机注册，则展示注册的手机号，若手机号后续进行了更改，则展示更新的手机号；若用户用邮箱注册，则展示注册的邮箱，若邮箱后续进行了更改，则展示更新的邮箱
 
  角色：用户个人认证总状态为Verified或Verified PI时，展示个人用户icon;用户机构认证总状态为Verified或Verified PI时，展示机构用户icon
 
@@ -890,7 +904,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **其他说明**
 
-* 跳转登录页面重新登录，限制转账24小时。
+* 跳转登录页面重新登录
 
 #### 3.1.3.2 绑定/修改手机认证
 
@@ -920,13 +934,16 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
    * 输入限制：限制只能输入6位数字
  * 粘贴//Paste 
    * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”。
+  
+* 2FA校验
+  * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
 
  * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
 
 * 点击“确认//Confirm”
 
-  * 手机验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述 
+  * 手机验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述 
 
 * 安全认证校验通过后：
 
@@ -999,7 +1016,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **其他说明**
 
 * 手机验证绑定成功，跳转至安全设置页面，手机认证显示”编辑//Edit",可修改
-* 修改手机认证，发邮件或短信提醒用户，限制转账24小时，具体查看短信邮件模版
+* 修改手机认证，发邮件或短信提醒用户，具体查看短信邮件模版
 
 #### 3.1.3.1 绑定/修改邮箱认证
 
@@ -1028,6 +1045,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 按钮：粘贴//Paste 
   * 点击后粘贴复制的验证码，非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
 
+* 2FA校验
+  * 参照【3.1.3.1 修改登录密码】2FA校验说明，不再复述
+
 * 按钮：确认//Confirm，默认置灰不可点击，必填项都填写之后，变为高亮可点击状态
 
 * 点击“确认//Confirm”后，依次校验如下规则：   
@@ -1037,7 +1057,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     中文提示语：邮箱格式不正确    
     英文提示语：Invalid Email address  
 
-   * 邮箱验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+   * 新邮箱验证及2FA校验，验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
    
     
     * 场景1：成功绑定邮箱认证  
@@ -1106,7 +1126,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **其他说明**
 
 * 邮箱绑定成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",可修改
-* 修改邮箱认证，发邮件或短信提醒用户，限制转账24小时，具体查看短信邮件模版
+* 修改邮箱认证，发邮件或短信提醒用户，具体查看短信邮件模版
 
 ## 3.2 KYC认证
 
@@ -1178,6 +1198,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     【上传其他证明】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”，普通认证状态翻转为“In Review”
 
 
+
   **专业认证//Verified PI**
 
   当普通认证通过时，才能进行专业认证,点击“开始认证//Start Verify”,进入到【上传PI证明】页面
@@ -1227,10 +1248,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
     * 审核中//In Review
     * 通过//Approved
-    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示原因，点击其他区域，关闭弹窗
+    * 驳回//Rejected，点击“驳回//Rejected”，展示原因弹窗
        * 原因分两种：Jumio校验失败返回的原因；人工审核驳回的原因
-    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
-
+    * 认证失败//Failed，点击“认证失败//Failed”，展示原因弹窗
 
   * 底部按钮
 
@@ -1265,15 +1285,15 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      **个人认证**
     * 审核中//In Review
     * 通过//Approved
-    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
-    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+    * 驳回//Rejected，点击“驳回//Rejected”，展示原因弹窗
+    * 认证失败//Failed，点击“认证失败//Failed”，展示原因弹窗
   * 展示文案4：在您进行专业认证前，请先完成普通认证//Before you go to  verified PI,you have to complete the verified first
 
        **机构认证**
     * 审核中//In Review
     * 通过//Approved
-    * 驳回//Rejected，点击“驳回//Rejected”，Toast弹窗展示人工驳回原因，点击其他区域，关闭弹窗
-    * 认证失败//Failed，点击“认证失败//Failed”，Toast弹窗展示人工拒绝原因，点击其他区域，关闭弹窗
+    * 驳回//Rejected，点击“驳回//Rejected”，展示原因弹窗
+    * 认证失败//Failed，点击“认证失败//Failed”，展示原因弹窗
   * 底部按钮
 
      **个人认证**
@@ -1288,6 +1308,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      * 不展示该按钮
     
 * 右上角文字按钮：机构认证//Institutional
+
+**【原因弹窗】**
+
+   * 标题：查看原因//Check the reason
+      * 按钮：我知道了//I Understand
+        * 点击后关闭弹窗
+      *按钮：关闭icon
+        * 点击后关闭提示弹窗
 
 
 **【机构认证提示弹窗】**
@@ -1375,7 +1403,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题：KYC认证//KYC Verification
 * 注意事项：(默认展开，点击折叠icon可收起，收起后默认展示第一条)
 
-  • 文件必须采用以下格式: .jpg, .jpeg, .png（最多100个文件）
+  • 文件必须采用以下格式: .jpg, .jpeg, .png
 
   • 所有文件必须是整页的彩色图像，且分辨率至少为300dpi（每个文件最大10MB，所有文件总共最大500 MB
 
@@ -1383,7 +1411,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 
 
-	•	Documents must be in the following formats: .jpg, .png (max 100 files)
+	•	Documents must be in the following formats: .jpg, .png 
 
 	•	ALL documents must be a full page image, in color and with a minimum of 300dpi resolution (each file max 10 MB, total max 500 MB)
 
@@ -1414,7 +1442,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【上传PI证明】**
 * 标题与注意事项同上
 * PI证明//PI document
-  * 展示文案：待补充
+  * 展示文案：拥有至少800万港元（或等值外币）投资组合的个人//Individuals who have a portfolio of at least HK$8 million (or its foreign currency equivalent)
 * 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
@@ -1452,6 +1480,8 @@ N/A
 
 【添加银行账号//Add bank account】
   * 添加新银行账号信息或被驳回后编辑银行卡信息，提交成功后，返回【法币结算//Fiat Settlement】页面，并Toast提示“您的法币结算信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Fiat Settlement has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”
+  * 无法重复添加银行卡，根据银行账号进行唯一判断，点击提交后，Toast提示“银行账号已存在，请检查后重新填写//Account number has been existed, please check it and refill later”    
+     
 
 【银行账号信息//Bank account info】
   * 银行账号状态若为审核通过//Verified，点击右上角“...”按钮，则底部弹窗展示删除按钮，点击“删除//Delete”，则弹窗确认是否删除；点击“取消//Cancel”，关闭底部弹窗
@@ -1546,7 +1576,8 @@ N/A
   * 标题：添加银行账号//Add bank account
   * 注意事项：同普通认证【上传自拍照】，不再复述
   * 银行证明//Proof document
-    * 展示文案：待补充
+    * 展示文案：请提供最近三个月的银行对账单//Please provide latest 3 months bank statement
+
   * 是否必填：必填
   * 按钮：提交//Submit,默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
