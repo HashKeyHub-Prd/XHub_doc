@@ -344,13 +344,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 【手机/邮箱认证//Verify phone/Email】
 * 手机时标题显示“验证手机//Verify Phone”，邮箱时标题显示“验证邮箱//Verify Email”
-* 文案：已发送验证码至【邮箱/手机】//we sent code to【邮箱/手机】
+* 手机认证文案
+  * 中文文案展示：输入发送至手机18****107的6位验证码
+  * 英文文案展示：Enter the 6-digit code sent to 18****107
+* 邮箱认证文案
+  * 中文文案展示：输入发送至邮箱12****@163.com的6位验证码
+  * 英文文案展示：Enter the 6-digit code sent to 12****@163.com
   * 手机及邮箱需脱敏
-* 短信验证码，默认提示：短信验证码//SMS code
-* 邮箱验证码，默认提示：邮箱验证码//Email code
-* 粘贴//Paste，点击后填入表单
-  * 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”
-  * 为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+
 * 按钮“发送验证码//Send”，用户点击“发送验证码//Send”按钮在发送成功后将显示为“60s”，可再点击“重新发送//Resend。
 * 输入6位后，按钮“下一步//Next”由置灰状态变为高亮可点击状态，点击后，校验通过，则进入下一个页面
 
@@ -625,11 +626,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   *点击“手机认证//Phone Auth",进入到【手机认证//Phone Auth】页面
   *点击“邮箱认证//Email Auth"，进入到【邮箱认证//Email Auth】页面
 * 手机认证//Phone Auth
-  * 文案展示：输入发送至手机的6位验证码//Enter the 6-digit code sent to 18****107
+  * 中文文案展示：输入发送至手机18****107的6位验证码
+  * 英文文案展示：Enter the 6-digit code sent to 18****107
   * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend” 
   * 点击"谷歌认证//Google Auth",进入到【谷歌认证//Google Auth】页面
 * 邮箱认证//Email Auth
-  * 文案展示：输入发送至手机的6位验证码//Enter the 6-digit code sent to 18****107
+  * 中文文案展示：输入发送至邮箱12****@163.com的6位验证码
+  * 英文文案展示：Enter the 6-digit code sent to 12****@163.com
   * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号，显示倒数60s，结束后，按钮变为“重新发送//Resend” 
   *  点击"谷歌认证//Google Auth",进入到【谷歌认证//Google Auth】页面
 * 点击“提交//Submit"，仅支持数字输入，校验规则如下：
@@ -800,9 +803,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 手机认证//Mobile Authentication
       * 未设置//Disabled
       * 修改//Edit
+      * 若已绑定手机，则掩码展示最新的手机号
     * 邮件认证//Email Authentication
       * 未设置//Disabled
       * 修改//Edit
+      * 若已绑定邮箱，则掩码展示最新的邮箱
   * 点击左上角“返回//Back”，返回上一页。
 
 #### 3.1.3.1 修改登录密码
@@ -951,7 +956,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     提示类型：Toast    
     中文提示语：手机认证成功          
     英文提示语：Verified       
-    备注：成功跳转安全中心     
+    备注：成功跳转安全中心  
 
   * 场景2：绑定手机认证失败      
     提示类型：Toast     
@@ -1015,7 +1020,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **其他说明**
 
-* 手机验证绑定成功，跳转至安全设置页面，手机认证显示”编辑//Edit",可修改
+* 手机绑定或修改成功，跳转至安全设置页面，手机认证显示”编辑//Edit",并掩码展示最新的手机号，可修改
 * 修改手机认证，发邮件或短信提醒用户，具体查看短信邮件模版
 
 #### 3.1.3.1 绑定/修改邮箱认证
@@ -1125,7 +1130,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **其他说明**
 
-* 邮箱绑定成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",可修改
+* 邮箱绑定或修改成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",并掩码展示最新的邮箱，可修改
 * 修改邮箱认证，发邮件或短信提醒用户，具体查看短信邮件模版
 
 ## 3.2 KYC认证
