@@ -855,12 +855,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 点击“确认//Confirm”，依次校验如下规则，如校验不通过，进行提示
 
     
-
-  * 提示类型：Toast 
-    场景：新密码输入为空  
-    校验原则：新密码不能为空  
-    中文提示语：请输入新密码  
-    英文提示语：Please enter the new password  
+  * 提示类型：Toast   
+    场景：旧密码输错  
+    校验原则：旧密码输错     
+    中文提示语：原密码不正确      
+    英文提示语：Password is incorrect   
     
 
   * 提示类型：Toast 
@@ -868,13 +867,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：8-30位字符   
     中文提示语：8-30位字符   
     英文提示语：8-20 characters  
-    
-
-  * 提示类型：Toast   
-    场景：旧密码输错  
-    校验原则：旧密码输错     
-    中文提示语：原密码不正确      
-    英文提示语：Password is incorrect   
+ 
     
 
   * 提示类型：Toast     
