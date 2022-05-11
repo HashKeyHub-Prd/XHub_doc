@@ -241,7 +241,7 @@ UI设计稿待补充
 
 ### 2.1.1 功能概述
 
-为实现Hashkey用户在一次注册后能够使用HashKey各业务线的产品和服务，提升用户体验、优化开发资源，需要将Xpert、Hub、Bcts进行账户整合，打造全新的APP
+为实现HashKey用户在一次注册后能够使用HashKey各业务线的产品和服务，提升用户体验、优化开发资源，需要将Xpert、Hub、Bcts进行账户整合，打造全新的APP
 
 ### 2.1.2 业务流程
 
@@ -288,8 +288,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 【创建账户//Create account】 
 
 * 用户名默认为用户注册账号，手机号或邮箱
-* 展示文案1：已有账号，登录//Already have an account? Login
-* 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By create an account,I agree with Hashkey User Agreement,Privacy Policy
+* 展示文案1：已有账号，登录//Already have an account? Log in
+* 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By create an account, I agree with HashKey User Agreement,Privacy Policy
 
 * 选择区域码
   * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
@@ -368,12 +368,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：发送短信与上次短信成功发送的时间间隔未大于60秒  
     校验原则：再次发送短信与上次短信成功发送的时间需要大于60秒  
     中文提示语：请求次数太多，请稍后再试         
-    英文提示语：You have sent too many requests,Please try again later     
+    英文提示语：You have sent too many requests, please try again later     
   * 提示类型：Toast  
     场景：发送邮件与上次邮件成功发送的时间间隔未大于60秒  
     校验原则：再次发送邮件与上次邮件成功发送的时间需要大于60秒  
     中文提示语：请求次数太多，请稍后再试         
-    英文提示语：You have sent too many requests,Please try again later 
+    英文提示语：You have sent too many requests,please try again later 
   * 提示类型：Toast    
     场景：发送短信功能异常  
     校验原则：发送短信功能异常  
@@ -460,21 +460,21 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 1、下载谷歌验证器
   * 展示文案：请在您的设备上下载谷歌验证器//Please install Google Authenticator App on your device 
-  * 按钮：下载完成，下一步//I've downloaded,Next
+  * 按钮：下载完成，下一步//I've downloaded, Next
 
 * 2、绑定谷歌验证器并保持密钥
   * 展示文案：
     *  创建//Create 
-    * 打开谷歌验证器，点击"+"，选择"输入设备密钥"，并输入您的Hashkey账户名和下方密码，以取得验证码//Open the Google Authenticator, tap"+", select "Enter a setup key" and enter your Hashkey account name and the below key manually to get the code
+    * 打开谷歌验证器，点击"+"，选择"输入设备密钥"，并输入您的HashKey账户名和下方密码，以取得验证码//Open the Google Authenticator, tap"+", select "Enter a setup key" and enter your HashKey account name and the below key manually to get the code
     * 谷歌验证码
     * 复制按钮，点击可进行复制
 
     * 保存//Save
-    * 将密钥匙记录在纸上，如遇手机遗失，您可以通过该密钥恢复您的谷歌验证//Save this Key on paper. This Key will allow you to recover your Google Authenticator in case of phone loss.
+    * 将密钥匙记录在纸上，如遇手机遗失，您可以通过该密钥恢复您的谷歌验证//Save this key on paper. This key will allow you to recover your Google Authenticator in case of phone loss.
     
 
-  * 按钮：已保存，下一步//I've saved,Next
-  * 如何绑定GA，更多细节请点击这里//How to blind GA，more detailed approach Click to check>> 
+  * 按钮：已保存，下一步//I've saved, Next
+  * 如何绑定GA，更多细节请点击这里//How to blind GA, more detailed approach click to check>> 
   * 如何绑定谷歌认证，点击后页面打开H5的FAQ的相关文章页面，
     * 简体链接：待补充
     * 英文链接：待补充
@@ -606,7 +606,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：账号密码不匹配  
     校验原则：账号不存在，或账号与密码不匹配  
     中文提示语：帐号或密码不正确   
-    英文提示语：User name or Password is  incorrect 
+    英文提示语：User name or password is incorrect 
   * 提示类型：Toast  
     场景：登录超时,登录态保持3天  
     校验原则：登录时间超过3天  
@@ -719,7 +719,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 【忘记密码//Forget password】
 
-* 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after Login Password has been changed.
+* 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after login password has been changed.
 * 校验规则同注册模块2.1.4【创建账户//Create account】 ，不再复述
 
 【手机/邮箱认证//Verify phone/Email】
@@ -817,7 +817,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **页面元素**
 
 * 标题：修改密码//Change Password
-* 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after Login Password has been changed.
+* 展示文案：登录密码修改后，转账功能将被禁止24小时。//The transfer function will be disabled for 24 hours after login password has been changed.
 * 旧密码//Original password 
   * 输入框提示：请输入旧密码//Enter the original password
   * 逻辑限制：限制最大可输入长度30个字符
@@ -1081,7 +1081,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击发送后显示（大于60秒）：重新发送//Resend
 
 * 新邮箱验证//New email verification
-  * 输入框提示：请输入新邮箱验证码//Enter new email Verification code
+  * 输入框提示：请输入新邮箱验证码//Enter new email verification code
   * 输入限制：限制只能输入6位数字
 
 * 按钮：粘贴//Paste 
@@ -1318,7 +1318,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 标题：温馨提示//Tips
 * 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication，you need to perform on the Wed terminal.
 
-   Web链接：https://xpert.hashkey.com/
+   Web链接：https://xpert.HashKey.com/
 * 按钮：复制链接//Copy Link
   * 点击后，toast提示“复制成功//Copy success” 
 
@@ -1413,7 +1413,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 	•	If your documents are not in English, please submit both the original and the English translated versions. The translated version must be notarized by a lawyer or legal translator
 
 * 自拍照//Selfie
-  * 展示文案：需提供手持包含手写内容的纸张，纸张内容必须包括：“HashKey”及申请日期（年、月、日）//Please provide photo of the person holding a note showing "Hashkey" and application date by handwriting together with your ID 
+  * 展示文案：需提供手持包含手写内容的纸张，纸张内容必须包括：“HashKey”及申请日期（年、月、日）//Please provide photo of the person holding a note showing "HashKey" and application date by handwriting together with your ID 
 * 是否必填：必填
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
