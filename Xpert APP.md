@@ -117,6 +117,7 @@ UI设计稿待补充
 **敏感信息展示**
 
 * 手机掩码展示规则：显示开始2个字符，最后3个字符，中间部分数字固定显示4个“*”
+  * 后端返回的手机号码带区域号，需要进行统一处理，所有前端手机号的展示均不展示区域号，仅展示手机号，手机号掩码处理
 * 邮箱掩码展示规则：显示开始3个字符，以及@之后的部分，中间固定显示4个“*”
 
  **上传图片说明**
@@ -869,7 +870,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   * 提示类型：Toast     
     场景：新密码与原密码相同  
-    校验原则：新密码与历史所有设置过的原密码相同       
+    校验原则：新密码当前设置的密码相同       
     中文提示语：新密码不能和旧密码相同       
     英文提示语：The new password can not be the same as the original one   
    
@@ -1283,6 +1284,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 驳回//Rejected，点击“驳回//Rejected”，展示原因弹窗
     * 认证失败//Failed，点击“认证失败//Failed”，展示原因弹窗
   * 展示文案4：在您进行专业认证前，请先完成普通认证//Before you go to  verified PI,you have to complete the verified first
+    * 普通认证通过后，不展示该文案
 
        **机构认证**
     * 审核中//In Review
