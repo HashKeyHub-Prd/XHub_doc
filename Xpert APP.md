@@ -836,12 +836,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
      * 输入框提示：输入谷歌验证码//Enter GA code
      * 点击“粘贴//Paste”，自动将复制好的内容粘贴至验证码输入框， 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
   * 手机认证//Phone verification
-     * 输入框提示：输入手机验证码//Enter Phone code
+     * 输入框提示：输入手机验证码//Enter phone code
      * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的手机号， toast提示“我们已发送验证码至手机18****123//
 
        we sent a code to 18****123"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
   * 邮箱认证//Email verification
-     * 输入框提示：输入邮箱验证码//Enter Email code
+     * 输入框提示：输入邮箱验证码//Enter email code
      * 点击“发送//Send"，后端调用服务商发送验证码短信至用户绑定的邮箱， toast提示“我们已发送验证码至邮箱183****@163.com//
 
        we sent a code to 183****@163.com"，并显示倒数60s，结束后，按钮变为“重新发送//Resend” 
@@ -1343,7 +1343,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
     
   
-      * 校验场景：证件号码已存在  
+      * 校验场景：证件号码已存在，不能与已认证通过的证件号码重复  
         提示类型：Toast 
       * 中文提示语：证件号码已存在，请检查后重新填写     
       * 英文提示语：ID number has been existed, please check it and refill later       
@@ -1695,11 +1695,14 @@ N/A
     * 按钮：我知道了//I Understand
 * 交互逻辑
     * 谷歌认证
+      * 若未设置，则展示“去设置//Go”；若已设置，则展示已完成icon
       * 点击“去设置//Go”，进入谷歌认证页面，详见章节“2.1 注册-【谷歌认证//Google Authentication】”说明
     * 邮箱认证
+      * 若未设置，则展示“去设置//Go”；若已设置，则展示已完成icon
       * 点击“去设置//Go”，进入绑定邮箱页面，详见章节“3.1.3.1 绑定/修改邮箱认证”说明
     * KYC认证
-      *点击“立即认证//Go”，进入【KYC认证//KYC Verification】页面，详见章节“3.2 KYC认证”说明
+      * 若未认证，则展示“立即认证//Go”；若已认证（总状态为Verified或Verified PI），则展示已完成icon
+      * 点击“立即认证//Go”，进入【KYC认证//KYC Verification】页面，详见章节“3.2 KYC认证”说明
 
 ## 4.2 充值【1.2.0新增】
 
