@@ -290,7 +290,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 用户名默认为用户注册账号，手机号或邮箱
 * 展示文案1：已有账号，登录//Already have an account? Log in
-* 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By create an account, I agree with HashKey User Agreement,Privacy Policy
+* 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By creating an account, I agree with HashKey User Agreement, Privacy Policy
 
 * 选择区域码
   * 根据IP填入区域码，若用户IP不在支持的国家/列表中，则默认填充中国香港的区号（+852）。
@@ -358,7 +358,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 * 
   * 提示类型：Toast  
-    校验规则：发送验证码24小时超过发送限制（IP/手机号）    
+    校验规则：发送验证码24小时超过发送限制40条（IP/手机号）    
     中文提示语：发送已达当日上限   
     英文提示语：Daily limit reached
   * 提示类型：Toast  
@@ -380,6 +380,12 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     校验原则：发送短信功能异常  
     中文提示语：发送短信失败，请重试  
     英文提示语：Send sms error, please retry     
+    备注：点击人机验证通过后，产生的发送失败 
+  * 提示类型：Toast    
+    场景：发送邮件功能异常  
+    校验原则：发送邮件功能异常  
+    中文提示语：发送邮件失败，请重试  
+    英文提示语：Send email error, please retry     
     备注：点击人机验证通过后，产生的发送失败 
   * 提示类型：Toast    
     场景：验证短信发送成功    
@@ -769,7 +775,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
  账户名：取用户注册的邮箱或手机，掩码展示，即用户用手机注册，则展示注册的手机号，若手机号后续进行了更改，则展示更新的手机号；若用户用邮箱注册，则展示注册的邮箱，若邮箱后续进行了更改，则展示更新的邮箱
 
- 角色：用户个人认证总状态为Verified或Verified PI时，展示个人用户icon;用户机构认证总状态为Verified或Verified PI时，展示机构用户icon
+ 角色：用户机构认证总状态为Verified或Verified PI时，展示机构用户icon,若认证为个人用户，不展示个人用户icon
 
  用户ID：UID,明码展示用户ID，点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
 
@@ -782,7 +788,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 ### 3.1.2 UI设计稿
 
 待补充
-
+ 
 ### 3.1.3 需求详述
 
 【安全设置//Security Settings】
@@ -1217,11 +1223,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   ②当普通认证//Verified状态为通过，专业认证//Verified PI为未认证、审核中、驳回、认证失败时
 
-  展示文案1：您的账号已完成了普通认证，如果您需要更多的服务，请完成下一步专业投资者认证。//Your account is verified，if you need more services, please complete the next step of PI verification.
+  展示文案1：您的账号已完成了普通认证，如果您需要更多的服务，请完成下一步专业投资者认证。//Your account is verified, if you need more services, please complete the next step of PI verification.
 
   ③当普通认证//Verified状态为通过，专业认证//Verified PI也为通过时
 
-  展示文案1：您的账号已完成所有的认证，可以开始访问你所需的服务。//Your account has completed all verification.Please access the services you need.
+  展示文案1：您的账号已完成所有的认证，可以开始访问你所需的服务。//Your account has completed all verification, please access the services you need.
 
   Tab1:普通认证//Verified
 
@@ -1476,7 +1482,7 @@ N/A
     * 点击状态“驳回//Rejected”，toast弹窗展示人工驳回的原因，点击其他区域，弹窗关闭
 
 【添加银行账号//Add bank account】
-  * 添加新银行账号信息或被驳回后编辑银行卡信息，提交成功后，返回【法币结算//Fiat Settlement】页面，并Toast提示“您的法币结算信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Fiat Settlement has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”
+  * 添加新银行账号信息或被驳回后编辑银行卡信息，提交成功后，返回【法币结算//Fiat Settlement】页面，并Toast提示“您的法币结算信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Fiat Settlement has been submitted, it is expected to be completed in 1-3 working days, please wait patiently”
   * 无法重复添加银行卡，根据银行账号进行唯一判断，点击提交后，Toast提示“银行账号已存在，请检查后重新填写//Account number has been existed, please check it and refill later”    
      
 
@@ -1627,11 +1633,14 @@ N/A
 * 交互逻辑
   * 隐藏眼睛，默认开启，点击后关闭钱包资产总额、列表单个钱包资产总额，以4个“*”显示
   * 充值//Deposit
-      * 点击“充值//Deposit”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法充值//Wallet has been 【钱包状态】,cannot deposit”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+      * 默认选中资金钱包进行充值
+      * 点击“充值//Deposit”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法充值//Wallet is unavailable, cannot deposit”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
   * 提现//Withdraw
-      * 点击“提现//Withdraw”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法提现//Wallet has been 【钱包状态】,cannot withdraw”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
+      * 默认选中资金钱包进行提现
+      * 点击“提现//Withdraw”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法提现//Wallet is unavailable, cannot withdraw”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
   * 划转//Transfer
-      * 点击“划转//Transfer”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法划转//Wallet has been 【钱包状态】,cannot transfer”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
+      * 默认选中资金钱包进行划转，为划转的From钱包
+      * 点击“划转//Transfer”首先进行资金钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法划转//Wallet is unavailable, cannot transfer”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
   * 钱包列表
       * 点击具体某个钱包列表，进入钱包详情页面
 
@@ -1652,11 +1661,11 @@ N/A
   * 复制钱包ID
     * 点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
   * 充值//Deposit（仅资金钱包//Custodial Wallet，自定义钱包展示）
-      * 点击“充值//Deposit”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法充值//Wallet has been 【钱包状态】,cannot deposit”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+      * 点击“充值//Deposit”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法充值//Wallet is unavailable, cannot deposit”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入【充值//Deposit】页面，详见章节“4.2 充值”说明
   * 提现//Withdraw（仅资金钱包//Custodial Wallet,自定义钱包展示）
-      * 点击“提现//Withdraw”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法提现//Wallet has been 【钱包状态】,cannot withdraw”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
+      * 点击“提现//Withdraw”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法提现//Wallet is unavailable, cannot withdraw”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入提现页面，详见章节“4.3 提现”说明
   * 划转//Transfer
-      * 点击“划转//Transfer”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包已【钱包状态】，无法划转//Wallet has been 【钱包状态】,cannot transfer”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
+      * 点击“划转//Transfer”首先进行当前所处钱包状态判断，若钱包状态为暂停或冻结状态，则Toast提示“钱包不可用，无法划转//Wallet is unavailable, cannot transfer”，若钱包状态正常，则进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【币种选择//Select Coin】页面，选择币种后，进入划转页面，详见章节“4.4 划转”说明
   * 交易//Transaction
       * 点击进入交易页面，详见章节“4.5 交易”说明 
   * 隐藏小额币种//Hide small balances
@@ -1826,7 +1835,7 @@ KYC认证已通过（Verified、Verified PI）
   * 标题：提现//Withdraw
   * 资产
     * 带入上一步所选择的币种
-  *输入框：接收地址//Receiver's address
+  * 输入框：接收地址//Receiver's address
     * 提示语：请输入接收地址//Enter receiver's address
     * 限制100字符内，超过则无法输入
     * 是否必填：必填
@@ -1880,37 +1889,40 @@ KYC认证已通过（Verified、Verified PI）
     * 点击“提现//Withdraw”按钮后，按照以下顺序进行校验
       * 提示类型：Toast   
         校验原则：提现数量应大于等于该资产最小可提现数量。  
-        中文提示语：提现数量不能小于【后台资产配置的最小可提现数量】   
-        英文提示语： The withdrawal amount cannot be less than 【后台资产配置的最小可提现数量】
+        中文提示语：数量必须大于【后台资产配置的最小可提现数量】   
+        英文提示语： The amount must be greater than  【后台资产配置的最小可提现数量】
       * 提示类型：Toast 
 
          校验原则：提现数量不能超过可用余额  
          中文提示语：超过您所拥有的数量总额    
-         英文提示语：Your withdrawal amount has exceeded the available balance.
+         英文提示语：The amount has exceeded the available balance
       * 提示类型：Toast
 
          校验原则：提现数量不能超过每笔限额
   
-         中文提示语：每笔提现数量不能超过【自定义设置的每笔出金额度限制】
+         中文提示语：金额超过了钱包风控中的每笔限额
 
-         英文提示语：Your amount of each withdrawal cannot exceed【自定义设置的每笔出金额度限制】
+         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
+
          备注：仅机构户自定义钱包提现且配置了风控策略的出金每笔额度限制才进行校验
       * 提示类型：Toast
 
          校验原则：一小时内提现总数量不能超过每小时限额
   
-         中文提示语：每小时提现数量不能超过【自定义设置的每小时出金额度限制】
+         中文提示语：金额超过了钱包风控中的每小时限额
 
-         英文提示语：Your amount of withdrawal per hour cannot exceed 【自定义设置的每小时出金额度限制】
+         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
+
          备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
       
       * 提示类型：Toast
 
          校验原则：24小时内提现总数量不能超过每天限额
   
-         中文提示语：24小时内提现数量不能超过【自定义设置的每天出金额度限制】
+         中文提示语：金额超过了钱包风控中的每日限额
 
-         英文提示语：Your amount of withdrawal 24 hours cannot exceed 【自定义设置的每天出金额度限制】
+         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
+
          备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
       * 提示类型：Toast
 
@@ -2015,7 +2027,7 @@ KYC认证已通过（Verified、Verified PI）
 
       中文提示语：地址已存在
 
-      英文提示语：Address already exists.
+      英文提示语：Address already exists
   * 以上条件校验通过后，弹出【输入谷歌验证码】弹窗，弹窗说明参照提现时的【输入谷歌验证码】说明，不再复述
   * 谷歌验证通过后，地址添加成功，返回上一级页面
   * 地址添加成功，Toast提示“地址添加成功//Address added successfully"
@@ -2103,36 +2115,28 @@ KYC认证已通过（Verified、Verified PI）
 
          校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
 
-         中文提示语：【To钱包名称】已【钱包状态】   
-         英文提示语：【To钱包名称】has been【钱包状态】
+         中文提示语：接收钱包不可用   
+         英文提示语：Receiving wallet is unavailable
 
       *  提示类型：Toast
 
          校验原则：To钱包需支持转账的币种
   
-         中文提示语：【To钱包名称】不支持【币种简称】，无法转账
+         中文提示语：划转失败，接收钱包目前还没有支持该币种
 
-         英文提示语：【To钱包名称】does not support【币种简称】, cannot transfer 
+         英文提示语：Failed to transfer, the receiving wallet does not support this coin currently 
 
       * 提示类型：Toast 
 
          校验原则：转账数量不能超过可用余额  
          中文提示语：超过您所拥有的数量总额    
-         英文提示语：Your transfer amount has exceeded the available balance.
+         英文提示语：The amount has exceeded the available balance
 
       * 提示类型：Toast
 
         校验原则：转账数量应大于等于该资产最小可转账小数位。  
      中文提示语：请勿输入超过 【后台资产配置的小数位】位小数   
-     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places.
-      * 提示类型：Toast 
-
-         校验原则：转账数量不能超过可用余额  
-         中文提示语：超过您所拥有的数量总额    
-         英文提示语：Your transfer amount has exceeded the available balance.
-      
-      
-       
+     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places  
 
     * 以上条件校验通过后，弹出【输入谷歌验证码】页面
 
@@ -2212,55 +2216,55 @@ KYC认证已通过（Verified、Verified PI）
          校验原则：To钱包用户状态为冻结
 
          中文提示语：用户已被冻结，无法转账   
-         英文提示语：Users have been frozen,cannot to transfer
+         英文提示语：Users have been frozen, cannot transfer
 
       * 提示类型：Toast 
 
          校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
 
-         中文提示语：【To钱包名称】已【钱包状态】   
-         英文提示语：【To钱包名称】has been【钱包状态】
+         中文提示语：接收钱包不可用 
+         英文提示语：Receiving wallet is unavailable
       *  提示类型：Toast
 
          校验原则：To钱包需支持转账的币种
   
-         中文提示语：【To钱包名称】不支持【币种简称】，无法转账
+         中文提示语：划转失败，接收钱包目前还没有支持该币种
 
-         英文提示语：【To钱包名称】does not support【币种简称】, cannot transfer
+         英文提示语：Failed to transfer, the receiving wallet does not support this coin currently
       * 提示类型：Toast
 
         校验原则：转账数量应大于等于该资产最小可转账小数位。  
      中文提示语：请勿输入超过 【后台资产配置的小数位】位小数   
-     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places.
+     英文提示语： Do never exceed 【后台资产配置的小数位】 decimal places
       * 提示类型：Toast 
 
          校验原则：转账数量不能超过可用余额  
          中文提示语：超过您所拥有的数量总额    
-         英文提示语：Your transfer amount has exceeded the available balance.
+         英文提示语：The amount has exceeded the available balance
       * 提示类型：Toast
 
          校验原则：转账数量不能超过每笔限额
   
-         中文提示语：每笔转账数量不能超过【自定义设置的每笔出金额度限制】
+         中文提示语：金额超过了钱包风控中的每笔限额
 
-         英文提示语：Your amount of each transfer cannot exceed【自定义设置的每笔出金额度限制】
+         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
          备注：仅机构户自定义钱包转账且配置了风控策略的出金每笔额度限制才进行校验
       * 提示类型：Toast
 
          校验原则：一小时内转账总数量不能超过每小时限额
   
-         中文提示语：每小时转账数量不能超过【自定义设置的每小时出金额度限制】
+         中文提示语：金额超过了钱包风控中的每小时限额
 
-         英文提示语：Your amount of transfer per hour cannot exceed 【自定义设置的每小时出金额度限制】
+         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
          备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
       
       * 提示类型：Toast
 
          校验原则：24小时内转账总数量不能超过每天限额
   
-         中文提示语：24小时内转账数量不能超过【自定义设置的每天出金额度限制】
+         中文提示语：金额超过了钱包风控中的每日限额
 
-         英文提示语：Your amount of transfer 24 hours cannot exceed 【自定义设置的每天出金额度限制】
+         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
          备注：仅机构户自定义钱包转账且配置了风控策略的出金每小时额度限制才进行校验
       
     
