@@ -1197,7 +1197,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
     【上传居住证明】：点击“下一步”，进入【其他补充证明】页面
 
-    【上传其他证明】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”，普通认证状态翻转为“In Review”
+    【上传其他证明】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, please wait patiently”，普通认证状态翻转为“In Review”
 
 
 
@@ -1205,7 +1205,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   当普通认证通过时，才能进行专业认证,点击“开始认证//Start Verify”,进入到【上传PI证明】页面
 
-  【上传PI证明】：点击“提交”，则返回【KYC认证//KYC Verification】页面，Tab栏为“专业认证//Verified PI",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, Please wait patiently”，专业认证状态翻转为“In Review”
+  【上传PI证明】：点击“提交”，则返回【KYC认证//KYC Verification】页面，Tab栏为“专业认证//Verified PI",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, please wait patiently”，专业认证状态翻转为“In Review”
 
 
 **页面元素**
@@ -1289,7 +1289,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 通过//Approved
     * 驳回//Rejected，点击“驳回//Rejected”，展示原因弹窗
     * 认证失败//Failed，点击“认证失败//Failed”，展示原因弹窗
-  * 展示文案4：在您进行专业认证前，请先完成普通认证//Before you go to  verified PI,you have to complete the verified first
+  * 展示文案4：在您进行专业认证前，请先完成普通认证//Before you go to  verified PI, you have to complete the verified first
     * 普通认证通过后，不展示该文案
 
        **机构认证**
@@ -1324,7 +1324,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【机构认证提示弹窗】**
 
 * 标题：温馨提示//Tips
-* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication，you need to perform on the Wed terminal.
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, you need to perform on the web terminal.
 
    Web链接：https://xpert.HashKey.com/
 * 按钮：复制链接//Copy Link
@@ -1656,7 +1656,7 @@ N/A
      * 展示内容：币种logo、币种简称、币种所属链、币种数量、对应USD估值
 * 交互逻辑
   * 切换钱包
-    * 点击右上角icon，进入到选择钱包页面，可快速切换到其他钱包详情页
+    * 点击右上角文字按钮“切换//Switch”，进入到选择钱包页面（最多可展示100个钱包），可快速切换到其他钱包详情页
   * 隐藏眼睛，默认开启，点击后关闭钱包资产估值、列表币种数量及对应估值，以4个“*”显示，关闭后，估值一栏不展示内容
   * 复制钱包ID
     * 点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
@@ -1935,7 +1935,7 @@ KYC认证已通过（Verified、Verified PI）
 【确认订单//Confirm order】
 * 页面元素
   * 标题：确认订单//Confirm order
-  * 到账数量//Receive amount
+  * 页面上方展示到账数量
     * 计算公式：Receive amount= Withdraw amount - Fee
   * 接收地址//Address
     * 展示填写的提现地址
@@ -1947,6 +1947,8 @@ KYC认证已通过（Verified、Verified PI）
     * 展示填写的TAG，若未填写，则展示空
   * 币种//Coin
     * 展示提现的币种
+  * 转账数量//Amount
+    * 展示本次提现填写的数量，Withdraw amount=Receive amount + Fee
   * 手续费//Fee
     * 展示该笔提现所属的手续费
     * 后端获取该资产提现对应手续费
@@ -2331,20 +2333,20 @@ N/A
     * 交易日期选择
   * 交易列表
     * 顺序：按照交易时间由近及远进行排序
-    * 列表内容：币种简称、交易日期（精确到秒）、交易类型、交易数量（+代表钱包入金；-代表钱包出金）、手续费、订单状态
+    * 列表内容：币种简称、交易日期（精确到秒）、交易类型、交易数量（+代表钱包入金，用绿色表示；-代表钱包出金，用红色表示）、手续费、订单状态
     * 状态枚举
 
-      Done：已成功完成的订单状态。
+      Done：已成功完成的订单状态，绿色圆点标识。
 
-      Pending：正在进行中的订单状态。对于充值/提现订单需加上区块确认数，例如：pending (当前确认数/订单完成所需确认数）
+      Pending：正在进行中的订单状态。对于充值/提现订单需加上区块确认数，例如：pending (当前确认数/订单完成所需确认数），黄色圆点标识。
       
-      Awaiting approval：对于机构账户的自定义钱包，如果设置了审批策略，出金请求（提现和划出）发起后，订单状态为“awaiting approval"。
+      Awaiting approval：对于机构账户的自定义钱包，如果设置了审批策略，出金请求（提现和划出）发起后，订单状态为“awaiting approval"，黄色圆点标识。
       
-      Segregated：对于违反了AML的充值, 运营人员审核拒绝后，充值订单状态变成“segregated"。
+      Segregated：对于违反了AML的充值, 运营人员审核拒绝后，充值订单状态变成“segregated"，红色圆点标识。
       
-      Terminated：对于违反了AML的提现, 运营人员审核拒绝后，提现订单状态变成“terminated”。对于“awaiting approval"状态的订单，在用户审批拒绝后，状态变为"terminated"。
+      Terminated：对于违反了AML的提现, 运营人员审核拒绝后，提现订单状态变成“terminated”。对于“awaiting approval"状态的订单，在用户审批拒绝后，状态变为"terminated"，红色圆点标识。
       
-      Failed：订单失败状态。
+      Failed：订单失败状态，红色圆点标识。
 * 交互逻辑
   * 币种搜索//search Coin
     * 点击搜索icon后，进入到币种搜索页面，并清空默认提示语，仅限输入字母（大小写不限）与数字，限制10个字符内，超过则无法输入，根据输入的内容进行币种的模糊搜索，选中某个币种后，返回交易页面，列表结果页中按照选中的币种进行搜索展示
