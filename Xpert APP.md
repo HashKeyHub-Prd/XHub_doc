@@ -1625,6 +1625,7 @@ N/A
    * 钱包列表
       * 个人用户仅展示系统默认钱包，文案：我的钱包//My Wallet
       * 机构用户展示系统默认钱包和自定义钱包，文案：默认钱包//Default Wallet 自定义钱包//Customized Wallet
+        * 若自定义钱包没有数据，展示文案：您还未创建钱包，如有需要请到Web端创建//You have not created a wallet, please go to Web to create one if you need it
       * 数据来源：系统默认钱包可由超级管理员在Xpert后管系统中进行配置，包括钱包的名称、钱包logo、支持的币种；自定义钱包由机构用户在Web端xpert系统中进行配置，包括钱包的名称、钱包logo、支持的币种
       * 展示顺序：系统默认钱包及自定义钱包均按照钱包创建时间由远及近排序
       * 展示内容：钱包logo、钱包名称、钱包资产总额（BTC）、钱包资产总额对应USD估值
@@ -1670,7 +1671,7 @@ N/A
       * 点击进入交易页面，详见章节“4.5 交易”说明 
   * 隐藏小额币种//Hide small balances
     * 默认不勾选，勾选后，列表中数量小于0.0001的币种则隐藏不展示
-  * 币种搜索//search Coin
+  * 币种搜索//Search coin
     * 点击搜索框后，清空默认提示语“搜索//Search”，仅限输入字母（大小写不限）与数字，限制10个字符内，超过则无法输入，根据输入的内容进行币种模糊搜索
     * 输入内容后，需展示“X”按钮,点击后则清空搜索框内容
   * 币种列表
@@ -1794,6 +1795,9 @@ KYC认证已通过（Verified、Verified PI）
 ### 4.3.1 功能概述
 仅限系统默认的资金钱包及自定义钱包可提现，需通过GA、邮箱绑定、KYC认证，三者都完成了才可以进行提现；提现需进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功；用户从自定义钱包提现，除了需要做三要素验证之外，若配置了风控策略，还需进行风控策略的校验，通过之后也需要进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功
 
+风控策略生效项判断如下：
+![风控策略优先级](./image/wallet/Risk%20Control%20Strategy.png)
+
 ### 4.3.2 业务流程
 流程图链接：http://assets.processon.com/chart_image/586b21a5e4b0f7a9c3562962.png
 
@@ -1803,9 +1807,9 @@ KYC认证已通过（Verified、Verified PI）
 
 3、钱包状态正常情况下，先判断用户是否完成了三要素认证，若未完成，则弹窗引导进行认证，已完成的情况下，进入到【币种选择//Select coin】页面（若是从币种详情页点击“提现”则进入到【提现//Withdraw】页面），币种选择完成后，进入到【提现//Withdraw】页面
 
-4、填写完提现信息后，点击“提现”，需进行提现数量最小额、是否超可用余额、地址格式是否正确判断，若为自定义钱包提现还需进行提现最大限额判断；校验都通过后，进行提现订单确认，确认后，用户需填写GA或GA+资金密码（资金钱包提现仅需GA校验、自定义钱包提现需要GA+资金密码校验）
+4、填写完提现信息后，点击“提现”，需进行提现数量最小额、是否超可用余额、地址格式是否正确判断；校验都通过后，进行提现订单确认，确认后，用户需填写GA或GA+钱包密码（资金钱包提现仅需GA校验、自定义钱包提现需要GA+钱包密码校验）
 
-5、将提现资产进行冻结，流水状态更新为Pending，若是资金钱包提现则开始进行AML校验；若是自定义钱包提现还需判断是否配置了风控策略，若未设置则开始进行AML校验，若已设置则进行风控策略判断，风控策略分两种:①直接拒绝，则提现失败，释放冻结资产至可用，流水状态更新为Failed。②人工审核，此时流水状态更新为Awaiting approval，审核结果为通过，流水状态更新为Pending，并开始进行AML校验；审核结果为拒绝，则提现失败，释放冻结资产至可用，流水状态更新为Terminated
+5、将提现资产进行冻结，流水状态更新为Pending，若是资金钱包提现则开始进行AML校验；若是自定义钱包提现还需判断是否配置了风控策略，若未设置则开始进行AML校验，若已设置则进行风控策略判断，风控策略结果分两种:①直接拒绝，则提现失败，释放冻结资产至可用，流水状态更新为Failed。②人工审核，此时流水状态更新为Awaiting approval，审核结果为通过，流水状态更新为Pending，并开始进行AML校验；审核结果为拒绝，则提现失败，释放冻结资产至可用，流水状态更新为Terminated
 
 6、AM校验，若校验正常（T0地址小于阈值）,则发起链上转账，并同步瑶池订单状态；若AML校验不通过（T0地址大于等于阈值），则需要进行人工审核，审核结果若为通过，则发起链上转账，并同步瑶池订单状态；若审核结果为拒绝，则提现失败，释放冻结资产至可用，流水状态更新为Terminated
 
@@ -1864,9 +1868,9 @@ KYC认证已通过（Verified、Verified PI）
   * 手续费//Fee
     * 后端获取该资产提现对应手续费
 
-  * 收到的数量//Receive amount
+  * 收到的数量//Received amount
     * 输入提现数量后展示
-    * 计算公式：Receive amount= Withdraw amount - Fee
+    * 计算公式：Received amount= Withdraw amount - Fee
   
   * 底部提示文案
     * 从后端获取对应资产的提现提示文案
@@ -1896,34 +1900,7 @@ KYC认证已通过（Verified、Verified PI）
          校验原则：提现数量不能超过可用余额  
          中文提示语：超过您所拥有的数量总额    
          英文提示语：The amount has exceeded the available balance
-      * 提示类型：Toast
-
-         校验原则：提现数量不能超过每笔限额
-  
-         中文提示语：金额超过了钱包风控中的每笔限额
-
-         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
-
-         备注：仅机构户自定义钱包提现且配置了风控策略的出金每笔额度限制才进行校验
-      * 提示类型：Toast
-
-         校验原则：一小时内提现总数量不能超过每小时限额
-  
-         中文提示语：金额超过了钱包风控中的每小时限额
-
-         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
-
-         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
-      
-      * 提示类型：Toast
-
-         校验原则：24小时内提现总数量不能超过每天限额
-  
-         中文提示语：金额超过了钱包风控中的每日限额
-
-         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
-
-         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
+     
       * 提示类型：Toast
 
           校验原则：提币地址格式校验
@@ -1936,7 +1913,7 @@ KYC认证已通过（Verified、Verified PI）
 * 页面元素
   * 标题：确认订单//Confirm order
   * 页面上方展示到账数量
-    * 计算公式：Receive amount= Withdraw amount - Fee
+    * 计算公式：Received amount= Withdraw amount - Fee
   * 接收地址//Address
     * 展示填写的提现地址
   * MEMO
@@ -1948,7 +1925,7 @@ KYC认证已通过（Verified、Verified PI）
   * 币种//Coin
     * 展示提现的币种
   * 转账数量//Amount
-    * 展示本次提现填写的数量，Withdraw amount=Receive amount + Fee
+    * 展示本次提现填写的数量，Withdraw amount=Received amount + Fee
   * 手续费//Fee
     * 展示该笔提现所属的手续费
     * 后端获取该资产提现对应手续费
@@ -1957,7 +1934,7 @@ KYC认证已通过（Verified、Verified PI）
   * 关闭
     * 点击右上角关闭icon，关闭确认订单弹窗
   * 按钮：确认//Confirm
-    * 点击“确认//Confirm”,弹出【输入谷歌验证码】弹窗
+    * 点击“确认//Confirm”，弹出【输入谷歌验证码】或【输入谷歌验证码+钱包密码】弹窗，当提现钱包为系统默认的资金钱包时，仅需谷歌验证码校验；当提现钱包为自定义钱包时，需要谷歌验证码及钱包密码校验
 
 【输入谷歌验证码】
 * 页面元素
@@ -1972,11 +1949,70 @@ KYC认证已通过（Verified、Verified PI）
     * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
     * 校验成功后，跳转至【交易//Transaction】页面
 
+【输入谷歌验证码+钱包密码】
+* 页面元素
+  * 标题：安全验证//Safety verification
+  * 输入框：谷歌验证//Google verification
+    * 提示语：输入谷歌验证码//Enter GA code
+  * 输入框：钱包密码//Wallet password
+    * 提示语：请输入钱包密码// Enter wallet password
+    * 限制30字符内，超过则无法输入
+* 交互逻辑
+  * 粘贴//Paste
+    * 点击粘贴，自动将复制好的内容粘贴至验证码输入框， 非数字6位，则提示（Toast）“不符合格式要求//Invalid format”，为空则提示（Toast）“剪贴板没有内容//Clipboard is blank”
+  * 确认//Confirm
+    * 按钮默认置灰，输入框有内容后，变为高亮可点击状态
+    * 谷歌验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
+    * 钱包密码校验：
+      * 提示类型：Toast
+      * 场景：钱包密码不正常
+      * 中文提示：钱包密码错误
+      * 英文提示：Wallet password error
+* 谷歌验证码/谷歌验证码+钱包密码校验成功后，按以下顺序进行校验：
+    * 提示类型：Toast
+
+      校验原则：提现地址命中黑名单或不在白名单
+
+      中文提示：提现地址在黑名单中或不在白名单
+
+      英文提示：The withdrawal address in the black list or not in the white list
+      
+      备注：仅机构用户自定义钱包设置了风控策略，生效项为“地址黑白名单”，且策略为“拒绝出金请求”需进行校验
+    * 提示类型：Toast
+
+         校验原则：提现数量不能超过每笔限额
+  
+         中文提示语：金额超过了钱包风控中的每笔限额
+
+         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每笔额度限制，策略为“拒绝出金请求”需进行校验
+    * 提示类型：Toast
+
+         校验原则：一小时内提现总数量不能超过每小时限额
+  
+         中文提示语：金额超过了钱包风控中的每小时限额
+
+         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每小时额度限制，策略为“拒绝出金请求”需进行校验
+      
+    * 提示类型：Toast
+
+         校验原则：24小时内提现总数量不能超过每天限额
+  
+         中文提示语：金额超过了钱包风控中的每日限额
+
+         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每天额度限制，策略为“拒绝出金请求”需进行校验
+    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面
+
 【地址选择//Select address】
 * 页面元素
   * 标题：地址选择//Select address
   * 地址搜索框
-    * 提示语：请输入地址名称或标签//search Address name or lable
+    * 提示语：请输入地址名称或标签//Search address name or label
   * 地址列表
     * 选择哪个币种则展示对应币种的地址列表
     * 展示顺序：默认按照创建时间由近及远排序
@@ -2003,8 +2039,8 @@ KYC认证已通过（Verified、Verified PI）
     * 提示语：请输入地址//Enter address
     * 限制输入100字符，超过则无法进行输入
     * 是否必填：必填
-  * 标签//Lable
-    * 提示语：（非必填）请输入地址标签//(Optional)Enter address lable
+  * 标签//Label
+    * 提示语：（非必填）请输入地址标签//(Optional)Enter address label
     * 限制输入50字符，超过则无法进行输入
     * 是否必填：非必填
 * 交互逻辑
@@ -2016,14 +2052,14 @@ KYC认证已通过（Verified、Verified PI）
       * 详见章节“全局说明-相册调用权限”说明
   * 保存//Save
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
-  * 点击“保存//Save”，需继续地址格式及唯一性校验
+  * 点击“保存//Save”，需继续地址格式校验
     * 提示类型：Toast
 
       校验原则：地址格式校验
 
       中文提示语：地址格式错误  
           英文提示语：Incorrect address format
-    * 提示类型：Toast
+    * 提示类型：Toast【暂不实现，允许创建相同的地址】
 
       校验原则：同一个资产的地址唯一性
 
@@ -2036,7 +2072,6 @@ KYC认证已通过（Verified、Verified PI）
   * 地址添加失败，Toast提示“地址添加失败//Address added failed”
   
   
-    
 
 
 
@@ -2053,7 +2088,7 @@ KYC认证已通过（Verified、Verified PI）
 
 3、钱包状态正常情况下，先判断用户是否完成了三要素认证，若未完成，则弹窗引导进行认证，已完成的情况下，进入到【币种选择//Select coin】页面（若是从币种详情页点击“划转”则进入到【划转//Transfer】页面），币种选择完成后，进入到【划转//Transfer】页面
 
-4、填写完划转信息后，点击“确认”，需进行划转数量最小额、是否超可用余额判断，若为自定义钱包出账还需进行出金最大限额判断；校验都通过后，用户需填写GA或GA+资金密码（资金钱包及业务钱包划转仅需GA校验、自定义钱包划转需要GA+钱包密码校验）
+4、填写完划转信息后，点击“确认”，需进行划转数量最小额、是否超可用余额判断；校验都通过后，用户需填写GA或GA+钱包密码（资金钱包及业务钱包划转仅需GA校验、自定义钱包划转需要GA+钱包密码校验）
 
 5、若是自定义钱包出账还需判断是否配置了风控策略，若未设置则直接划转成功，流水状态更新为Done,From钱包可用余额减少，To钱包可用约增加；若已设置则进行风控策略判断，则将转账资产进行锁定冻结，流水状态更新为Pending，风控策略分两种:①直接拒绝，则划转失败，释放冻结资产，流水状态更新为Failed。②人工审核，此时流水状态更新为Awaiting approval，审核结果为通过，则划转成功，流水状态更新为Done；审核结果为拒绝，则划转失败，释放冻结资产至可用，流水状态更新为Terminated
 
@@ -2108,8 +2143,8 @@ KYC认证已通过（Verified、Verified PI）
   * 切换From/To钱包
     * 点击切换icon,则将From、To钱包顺序进行调换
     * 默认置灰，当From及To钱包都有内容时变为高亮可点击状态
-  * 全部//Transfer all
-    * 点击数量输入框中的“全部//Transfer all”,则将该资产可用余额全部带入到数量输入框中
+  * 全部//All
+    * 点击数量输入框中的“全部//All”,则将该资产可用余额全部带入到数量输入框中
   * 确认//Confirm
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
     * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
@@ -2208,8 +2243,8 @@ KYC认证已通过（Verified、Verified PI）
     * 点击From旁的“>”进入【钱包选择//Select Wallet】页面，选项内容包括系统默认钱包+自定义钱包，选择完成后，将选择好的钱包带入到当前页面
   * 切换Internal/External
     * 选中具体类型后，展示对应的页面元素
-  * 全部//Transfer all
-    * 点击数量输入框中的“全部//Transfer all”,则将该资产可用余额全部带入到数量输入框中
+  * 全部//All
+    * 点击数量输入框中的“全部//All”,则将该资产可用余额全部带入到数量输入框中
   * 确认//Confirm
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
     * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
@@ -2243,40 +2278,13 @@ KYC认证已通过（Verified、Verified PI）
          校验原则：转账数量不能超过可用余额  
          中文提示语：超过您所拥有的数量总额    
          英文提示语：The amount has exceeded the available balance
-      * 提示类型：Toast
-
-         校验原则：转账数量不能超过每笔限额
-  
-         中文提示语：金额超过了钱包风控中的每笔限额
-
-         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
-         备注：仅机构户自定义钱包转账且配置了风控策略的出金每笔额度限制才进行校验
-      * 提示类型：Toast
-
-         校验原则：一小时内转账总数量不能超过每小时限额
-  
-         中文提示语：金额超过了钱包风控中的每小时限额
-
-         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
-         备注：仅机构户自定义钱包提现且配置了风控策略的出金每小时额度限制才进行校验
-      
-      * 提示类型：Toast
-
-         校验原则：24小时内转账总数量不能超过每天限额
-  
-         中文提示语：金额超过了钱包风控中的每日限额
-
-         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
-         备注：仅机构户自定义钱包转账且配置了风控策略的出金每小时额度限制才进行校验
-      
-    
      
-    * 以上条件校验通过后，弹出【输入谷歌验证码】或【输入谷歌验证码钱包资金密码】弹窗，当From钱包为系统默认钱包时，仅需谷歌验证码校验；当From钱包为自定义钱包时，需要谷歌验证码及钱包资金密码校验
+    * 以上条件校验通过后，弹出【输入谷歌验证码】或【输入谷歌验证码+钱包密码】弹窗，当From钱包为系统默认钱包时，仅需谷歌验证码校验；当From钱包为自定义钱包时，需要谷歌验证码及钱包密码校验
 
 【输入谷歌验证码】
 * 参照【个人用户：内部转账】-【输入谷歌验证码】说明，不再复述
 
-【输入谷歌验证码钱包资金密码】
+【输入谷歌验证码+钱包密码】
 * 页面元素
   * 标题：安全验证//Safety verification
   * 输入框：谷歌验证//Google verification
@@ -2295,9 +2303,39 @@ KYC认证已通过（Verified、Verified PI）
       * 场景：钱包密码不正常
       * 中文提示：钱包密码错误
       * 英文提示：Wallet password error
-  * 校验成功后，按以下条件进行判断：
-    * 若From钱包为资金钱包或自定义钱包但未设置风控策略，则Toast提示“转账成功//Transfer success”，订单状态更新为Done，From钱包可用余额减少，To钱包可用余额增加
-    * 若From钱包为自定义钱包且设置风了控策略，①风控策略为“直接拒绝”，则转账失败，Toast提示“转账失败//Transfer failed”，订单状态更新为Failed；②风控策略为“人工审核”，则Toast提示“转账申请审核中//Transfer application under review”,订单状态更新为Awaiting approval,若审核结果为通过，则Toast提示“转账成功//Transfer success”,订单状态更新为Done，From钱包可用余额减少，To钱包可用余额增加；若审核结果为拒绝，则订单状态更新为Terminated，转账失败,Toast提示“转账失败//Transfer failed”
+  * 校验成功后，若From钱包为自定义钱包，且设置了风控策略，还需按以下顺序进行判断：
+   * 提示类型：Toast
+         
+         校验原则：提现数量不能超过每笔限额
+  
+         中文提示语：金额超过了钱包风控中的每笔限额
+
+         英文提示语：The amount exceeds the single transaction limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每笔额度限制，策略为“拒绝出金请求”需进行校验
+
+    * 提示类型：Toast
+
+         校验原则：一小时内提现总数量不能超过每小时限额
+  
+         中文提示语：金额超过了钱包风控中的每小时限额
+
+         英文提示语：The amount exceeds the hourly limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每小时额度限制，策略为“拒绝出金请求”需进行校验
+      
+    * 提示类型：Toast
+
+         校验原则：24小时内提现总数量不能超过每天限额
+  
+         中文提示语：金额超过了钱包风控中的每日限额
+
+         英文提示语：The amount exceeds the daily limit of spending in wallet's policy
+
+         备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每天额度限制，策略为“拒绝出金请求”需进行校验
+  * 以上校验条件通过后，才会生成订单
+    * 若From钱包为系统默认钱包或自定义钱包但未设置风控策略，则Toast提示“转账成功//Transfer success”，订单状态更新为Done，From钱包可用余额减少，To钱包可用余额增加
+    * 若From钱包为自定义钱包且设置风了控策略，策略为“人工审核”，则Toast提示“转账申请审核中//Transfer application under review”,订单状态更新为Awaiting approval,若审核结果为通过，订单状态更新为Done，From钱包可用余额减少，To钱包可用余额增加；若审核结果为拒绝，则订单状态更新为Terminated，转账失败
    
 
 ## 4.5 交易记录【1.2.0新增】
@@ -2326,8 +2364,8 @@ N/A
     * 取消//Cancel
   * 类型//Type
     * 选项内容：充值//Deposit、提现//Withdraw、内部转账//Transfer、授信//Credit
-    * 资金钱包//Custodial Wallet的交易页面类型选项内容包括：充值//Deposit、提现//Withdraw、内部转账//Transfer、授信//Credit
-    * 业务钱包的交易页面类型选项内容仅为：内部转账//Transfer
+    * 资金钱包//Custodial Wallet的交易页面类型选项内容包括：充值//Deposit、提现//Withdraw、内部转账//Transfer
+    * 业务钱包的交易页面类型选项内容为：内部转账//Transfer、授信//Credit
     * 机构用户自定义钱包的交易页面类型选项内容包括：充值//Deposit、提现//Withdraw、内部转账//Transfer
   * 日期//Date
     * 交易日期选择
@@ -2348,7 +2386,7 @@ N/A
       
       Failed：订单失败状态，红色圆点标识。
 * 交互逻辑
-  * 币种搜索//search Coin
+  * 币种搜索//Search coin
     * 点击搜索icon后，进入到币种搜索页面，并清空默认提示语，仅限输入字母（大小写不限）与数字，限制10个字符内，超过则无法输入，根据输入的内容进行币种的模糊搜索，选中某个币种后，返回交易页面，列表结果页中按照选中的币种进行搜索展示
     * 点击搜索框中的关闭icon，清空搜索框内容
     * 点击“取消//Cancel”后则取消搜索，返回交易页面 
