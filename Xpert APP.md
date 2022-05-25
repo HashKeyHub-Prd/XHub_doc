@@ -1324,7 +1324,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【机构认证提示弹窗】**
 
 * 标题：温馨提示//Tips
-* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, you need to perform on the web terminal.
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, you need to do it on the web.
 
    Web链接：https://xpert.HashKey.com/
 * 按钮：复制链接//Copy Link
@@ -1349,11 +1349,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
     
   
-      * 校验场景：证件号码已存在，不能与已认证通过的证件号码重复  
+      * 校验场景：证件号码已存在，不能与已审核汇中/认证通过的证件号码重复  
         提示类型：Toast 
       * 中文提示语：证件号码已存在，请检查后重新填写     
       * 英文提示语：ID number has been existed, please check it and refill later       
-      备注：点击“Next//下一步”校验
+      备注：最后一步提交时校验
 
 * 选择框：证件到期日//ID Expiry Date
     * 勾选框：永久（permanent)
@@ -1451,7 +1451,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
 
-## 3.3 法币结算【1.1.0.0新增】
+## 3.3 法币结算【1.1.0新增】
 
 ### 3.3.1 功能概述
 用户在做法币结算时，需要绑定银行卡，银行卡信息需进行人工审核，审核结果为通过时则绑定成功；驳回时则可修改银行卡信息，审核通过的银行卡可以解绑
@@ -2006,7 +2006,7 @@ KYC认证已通过（Verified、Verified PI）
          英文提示语：The amount exceeds the daily limit of spending in wallet's policy
 
          备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每天额度限制，策略为“拒绝出金请求”需进行校验
-    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面
+    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面，从交易页面点击返回，返回到提现页面，清空地址、数量、MEMO/Tag输入框,保留币种选择
 
 【地址选择//Select address】
 * 页面元素
@@ -2140,6 +2140,7 @@ KYC认证已通过（Verified、Verified PI）
     * 点击“>”进入【币种选择//Select Coin】页面,选择完成后，将选择好的币种带入到当前页面 
   * 选择钱包
     * 点击From/To旁的“>”进入【钱包选择//Select Wallet】页面，下拉选项仅包括系统默认钱包，选择完成后，将选择好的钱包带入到当前页面，To钱包的选项里不包含From钱包选项
+    * 重新选择其他From钱包，清空币种，币种选择框展示文案：请选择币种//Select coin
   * 切换From/To钱包
     * 点击切换icon,则将From、To钱包顺序进行调换
     * 默认置灰，当From及To钱包都有内容时变为高亮可点击状态
@@ -2202,6 +2203,7 @@ KYC认证已通过（Verified、Verified PI）
   *  From
     * 默认带入上一步所在钱包的Wallet name
     * 若从钱包总览页面的划转入口而来，则默认展示资金钱包//Custodial Wallet
+     coin
   * To
 
     **Internal**
@@ -2218,7 +2220,7 @@ KYC认证已通过（Verified、Verified PI）
     * 机构名//Team
       * To钱包所属机构名
       * 根据输入的wallet ID进行匹配
-      * 若获取不到或无，则不展示该字段
+      * 若获取不到或无，则内容展示--
     * 钱包名称//Wallet name
       * To钱包名称
       * 根据输入的wallet ID进行匹配
@@ -2241,8 +2243,10 @@ KYC认证已通过（Verified、Verified PI）
     * 点击“>”进入【币种选择//Select Coin】页面,选择完成后，将选择好的币种带入到当前页面 
   * 选择钱包
     * 点击From旁的“>”进入【钱包选择//Select Wallet】页面，选项内容包括系统默认钱包+自定义钱包，选择完成后，将选择好的钱包带入到当前页面
+    * 重新选择其他From钱包，清空币种，币种选择框展示文案：请选择币种//Select
   * 切换Internal/External
     * 选中具体类型后，展示对应的页面元素
+    * From钱包不变，即切换Internal/External，From钱包的内容都一致
   * 全部//All
     * 点击数量输入框中的“全部//All”,则将该资产可用余额全部带入到数量输入框中
   * 确认//Confirm
@@ -2397,6 +2401,7 @@ N/A
     * 文字按钮：近7天//last 7 days、近30天//last 30 days、近90天//last 90 days
     * 默认选中“近30天//last 30 days”，结束时间为当天，开始时间为当天-30天的日期；当切换选择“近7天//last 7 days”，结束时间为更新当天，开始时间为当天-7天的日期；当切换选择“近30天//last 30 days”，结束时间更新为当天，开始时间为当天-30天的日期；当切换选择“近90天//last 90 days”，结束时间更新为当天，开始时间为当天-90天的日期
     * 开始时间、结束时间均可修改，结束时间不能选择超过当天的日期
+      * 开始时间默认从选择的日期00:00:00计算，结束时间默认截止到选择的日期23:59:59
     * 点击“确认//Confirm”后，关闭日期控件，列表按照选中的日期范围进行搜索
     * 点击“重置//Reset”，重置时间，默认选择结束时间为当天，开始时间为当天-30天的日期，按钮“近30天//last 30 days”为选中状态
 
