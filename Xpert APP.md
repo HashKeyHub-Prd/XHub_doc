@@ -7,6 +7,7 @@
 | 1    | 新增Sprint1.0.0:   1、登录注册、忘记密码、修改密码、绑定/修改手机、修改邮箱 | 黄金叶 | 2022-03-14 |
 | 2    | 新增Sprint1.1.0:   1、KYC认证；2、法币结算 | 黄金叶 | 2022-04-02 |
 | 3    | 新增Sprint1.2.0:   1、钱包资产呈现；2、充值、提现、划转；3、交易记录 | 黄金叶 | 2022-04-18 |
+|4     | 新增Sprint1.2.1: 1、KYC认证信息更新；2、首页功能；3、个人中心功能| 黄金叶   | 2022-05-25 |
 <!-- TOC -->
 
     - [版本变更记录](#版本变更记录)
@@ -17,9 +18,9 @@
   - [2.2 登录【1.0.0新增】](#22-登录100新增)
   - [2.3 忘记密码【1.0.0新增】](#23-忘记密码100新增)
   - [2.4 登出【1.0.0新增】](#24-登出100新增)
-- [3.用户中心【1.0.0新增】](#3用户中心100新增)
+- [3.用户中心【1.2.1更新】](#3用户中心121更新)
   - [3.1安全设置【1.0.0新增】](#31-安全设置100新增)
-  - [3.2KYC认证【1.1.0新增】](#32-kyc认证1100新增)
+  - [3.2KYC认证【1.2.1更新】](#32-kyc认证121更新)
   - [3.3法币结算【1.1.0新增】](#33-法币结算1100新增)
 - [4.钱包【1.2.0新增】](#4钱包120新增)
   - [4.1 资产呈现【1.2.0新增】](#41-资产呈现120新增)
@@ -27,6 +28,7 @@
   - [4.3 提现【1.2.0新增】](#43-提现120新增)
   - [4.4 内部划转【1.2.0新增】](#44-内部划转120新增)
   - [4.5 交易记录【1.2.0新增】](#45-交易记录120新增)
+- [5.首页【1.2.1新增】](#5首页121新增)
 
 <!-- /TOC -->
 
@@ -105,8 +107,8 @@ UI设计稿待补充
 
 **相关域名链接：**
 
-* 用户协议：待补充
-* 隐私政策：待补充
+* 用户协议：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773294-User-Agreement
+* 隐私政策：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773414-Privacy-Policy
 
 
 **短信发送限制**
@@ -178,8 +180,9 @@ UI设计稿待补充
           中文提示语：上传失败  
           英文提示语：Upload failed    
           备注：不支持点击，放大预览图片
+      
 
-* 点击上传的图片，全屏放大预览，再次点击关闭全屏。(1.0暂不支持)
+* 点击上传的图片，可预览，根据图片尺寸全屏或居中预览，再次点击关闭全屏。【1.2.1新增】
 
  **扫一扫说明**
 
@@ -768,7 +771,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   - 确认//Confirm：进行登出，成功后到登录页面。
   - 关闭//Close：点击后，关闭当前弹窗。
 
-# 3.用户中心【1.0.0新增】
+# 3.用户中心【1.2.1更新】
  **个人信息**
 
  默认头像，暂不可修改
@@ -777,7 +780,65 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
  角色：用户机构认证总状态为Verified或Verified PI时，展示机构用户icon,若认证为个人用户，不展示个人用户icon
 
- 用户ID：UID,明码展示用户ID，点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success”
+ 用户ID：UID,明码展示用户ID，点击复制icon，复制到粘贴板，并toast提示“复制成功//Copy success” 【1.2.1 删除】
+
+* 页面元素
+  * 语言//Language
+    * 默认为英文，展示“英语//English”
+    * 点击进入【语言//Language】页面
+  * 安全设置//Security Settings
+    * 点击进入【安全设置//Security Settings】页面，详见章节3.1安全设置说明
+  * KYC 认证//KYC Verfication
+    * 默认状态为“未认证//Unverified”，状态枚举参照KYC认证章节，不在复述
+    * 点击进入【KYC 认证//KYC Verfication】页面，详见章节3.2 KYC认证说明
+  * 【法币结算//Fiat Settlement】
+    * 进入【法币结算//Fiat Settlement】页面，详见章节3.3 法币结算说明
+  * 常见问题//FQA
+    * 点击打开H5页面，链接：https://hashkey-xpert.zendesk.com/hc/en-001
+  * 联系我们//Contact Us
+    * 点击打开H5页面，链接：https://hashkey-xpert.zendesk.com/hc/en-001/articles/900006125326-5-Contact-Us
+  * 关于我们//About Us
+    * 点击进入【关于我们//About Us】页面
+
+【语言//Language】
+ * 页面元素
+   * 标题：语言//Language
+   * 可切换三种语言（单选）：English、简体中文、繁體中文
+ * 交互逻辑
+   * 单击及选中，切换中则Loading加载，加载完成后，系统按照选中的语言进行页面元素对应语言的切换
+
+【关于我们//About Us】
+* 页面元素
+  * APP LOGO
+  * APP名称
+  * 版本//Version
+    * 展示当前已下载的APP版本号
+  * 检查更新//Check for updates 【暂不实现，不可点击】
+    * 当前不是最版本，展示文案“发现最新版本//Update available”；若是最新版本，则无需展示文案，
+    * 点击>
+      * 场景：当前不是最新版本
+      * 提示类型：带标题弹窗
+
+        标题：检查更新//Check for Updates
+
+        内容：根据后台设置的更新升级版本内容显示
+
+        按钮：进行升级//Update Now 
+        
+          * 点击按钮后，跳转到APP store或谷歌商店APP详情页
+
+
+        备注：提示内容区分语言显示，根据配置项显示是否强制升级
+      场景：当前是最新版本
+      * 提示类型：Toast
+      * 内容：当前已是最新版本//This is the latest version
+    * 隐私政策//Privacy Policy
+      * 点击打开H5页面，链接：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773414-Privacy-Policy
+    * 用户协议//User Agreement
+      * 点击打开H5页面，链接：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773294-User-Agreement
+    * 关于我们//About us
+      * 点击打开H5页面，链接：https://hashkey-xpert.zendesk.com/hc/en-001/sections/900000983906-About-Us
+  
 
 ## 3.1 安全设置【1.0.0新增】
 
@@ -1130,7 +1191,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 邮箱绑定或修改成功，跳转至安全设置页面，邮箱认证显示”编辑//Edit",并掩码展示最新的邮箱，可修改
 * 修改邮箱认证，发邮件或短信提醒用户，具体查看短信邮件模版
 
-## 3.2 KYC认证【1.1.0.0新增】
+## 3.2 KYC认证【1.2.1更新】
 
 ### 3.2.1 功能概述
 支持个人用户KYC认证，暂不支持企业用户KYC认证(可查看认证进度)；个人用户KYC流程包括：普通用户认证（Verified）、专业投资者用户认证（Verified PI），普通用户认证通过后才可以进行专业投资者认证
@@ -1324,7 +1385,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【机构认证提示弹窗】**
 
 * 标题：温馨提示//Tips
-* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, you need to do it on the web.
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, Sorry, the APP does not support institutional authentication, you need to do it on the web.
 
    Web链接：https://xpert.HashKey.com/
 * 按钮：复制链接//Copy Link
@@ -1333,13 +1394,42 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 *按钮：关闭icon
   * 点击后关闭提示弹窗
 
-**【个人信息填写】**
+**【个人信息填写】**【1.2.1更新】
 * 标题：KYC认证//KYC Verification
 * 输入框：法定名称//Full legal name
     * 默认显示（中文）：请输入法定名称
     * 默认显示（英文）：Enter full legal name
     * 字符数限制：50个字符,超出禁止输入
     * 是否必填：必填
+* 选择框+输入框：电话号码//Contact number【1.2.1更新】
+  * 区域码：
+    * 默认带入用户当前手机号对应的区域码，若用户当前未绑定手机，则默认填写中国香港的区号（+852）
+    * 点击区域码，打开【国家/地区选择】页面
+    * 对应区域码参看全局说明“国家/地区选择”章节
+    * 是否必填：必填
+
+  * 输入框： 
+    * 默认带入用户当前绑定的手机号，若用户当前未绑定，则显示“请输入您的电话号码//Enter contact number r”
+    * 限制最多输入11位数字字符长度
+    * 是否必填：必填
+
+     * 提示类型：Toast    
+    场景：校验手机号格式，仅为数字         
+    中文提示语：手机号格式错误      
+    英文提示语：Invalid phone number 
+    备注：点击“下一步”校验   
+
+* 输入框：邮箱地址//Email address【1.2.1更新】
+  * 默认带入用户当前绑定的邮箱，若用户当前未绑定，则显示“请输入您的邮箱地址//Enter email address”
+  * 限制最多输入50个字符
+  * 是否必填：必填
+
+  * 提示类型：Toast  
+    场景：邮箱格式不正确 
+    校验原则：以“@”符号及“.xx”作为格式校验依据       
+    中文提示语：邮箱格式不正确    
+    英文提示语：Invalid Email address  
+    备注：点击“下一步”校验 
 
 * 输入框：证件号码//ID Number
     * 默认显示（中文）：请输入证件号码
@@ -1349,11 +1439,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
     
   
-      * 校验场景：证件号码已存在，不能与已审核汇中/认证通过的证件号码重复  
+      * 校验场景：证件号码已存在，不能与审核中/已认证通过的证件号码重复  
         提示类型：Toast 
       * 中文提示语：证件号码已存在，请检查后重新填写     
       * 英文提示语：ID number has been existed, please check it and refill later       
-      备注：最后一步提交时校验
+      备注：点击“Next//下一步”校验
 
 * 选择框：证件到期日//ID Expiry Date
     * 勾选框：永久（permanent)
@@ -1400,7 +1490,44 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 默认显示（英文）：(Optional)Enter postcode
   * 字符数限制：40个数字,超出禁止输入
   * 是否必填：非必填
+
+* 输入框：当前工作详情//Current employment details 【1.2.1更新】
+  * 默认显示（中文）：请输入职业/职位和公司名称
+  * 默认显示（英文）：Enert occupation/job title and name of company
+  * 字符数限制：100个字符，超出禁止输入
+  * 是否必填：必填
+
+* 输入框：雇主业务性质//Nature of business of employer 【1.2.1更新】
+  * 默认显示（中文）：请输入雇主业务性质
+  * 默认显示（英文）：Enert nature of business of employer
+  * 字符数限制：100个字符，超出禁止输入
+  * 是否必填：必填
+
+* 选择框（单选）：资金来源//Source of funds 【1.2.1更新】
+  * 默认显示（中文）：请选择资金来源
+  * 默认显示（英文）：Select source of funds
+  * 选项内容
+    * 业务收入和利润//Business income & profit
+    * 投资//Investment
+    * 出售财产/资产//Sale of property/assets
+    * 融资//Financing
+    * 其他//Others
+      * 当勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他资金来源//Enter other source of funds 
+  * 是否必填：必填
+* 选择框（单选）：财产来源//Source of wealth 【1.2.1更新】
+  * 默认显示（中文）：请选择财产来源
+  * 默认显示（英文）：Select source of wealth
+  * 选项内容
+    * 经营企业的所有权//Ownership of enterprises
+      * 当勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入业务详情//Enter business details
+    * 个人储蓄/投资//Personal savings/Investment
+    * 出售财产/资产//Sale of property/assets
+    * 养恤金//Pension
+    * 其他//Others
+      * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其财产来源//Enter other source of wealth
+    * 是否必填：必填
 * 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
+
 
 **【上传自拍照】**
 * 标题：KYC认证//KYC Verification
@@ -1423,6 +1550,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 自拍照//Selfie
   * 展示文案：需提供手持包含手写内容的纸张，纸张内容必须包括：“HashKey”及申请日期（年、月、日）//Please provide photo of the person holding a note showing "HashKey" and application date by handwriting together with your ID 
 * 是否必填：必填
+* 仅可上传一张
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
@@ -1431,27 +1559,109 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 地址证明//Residence proof
   * 展示文案：需提供3个月以内签发的银行或公用事业对账单，清晰地显示签发日期、地址和个人名字//Please provide a bank or utility statement no more than 3 months old, clearly showing the issuance date, address and individual's name
 * 是否必填：必填
+* 仅可上传一张
 * 按钮：上传//Upload
 * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
-**【上传其他证明】**
+**【上传声明书】** 【1.2.1新增】
+* 标题与注意事项同上一页
+* 海外账户税收合规法案及共同汇报标准的声明书//FATCA & CRS declaration form
+  * 展示文案：待补充
+  * 是否必填：必填
+  * 仅可上传一张
+  * 按钮：上传//Upload
+  * 按钮：下一步//Next，默认置灰，不可点击，上传成功后，变为高亮可点击状态
+
+
+**【上传其他证明】**【1.2.1更新】
 * 标题与注意事项同上一页
 * 其他证明//Other document
-   * 展示文案：(选填)请上传我们要求您或您希望提供给我们的其他文件//(Optional)Please upload any additional document we have requested from you or you wish to provide to us
+   * 展示文案：(选填)请上传我们要求您或您希望提供给我们的其他文件，最多5张//(Optional)Please upload any additional document we have requested from you or you wish to provide to us, up to 5 images
 * 是否必填：非必填
+* 最多上传五张
 * 按钮：上传//Upload
-* 按钮：提交//Submit，默认高亮可点
+  * 场景：选择图片，支持上传多张图片，超过规定的数量
 
-**【上传PI证明】**
+      * 提示类型：无标题弹窗  
+          中文提示语：您最多只能选择【N】张照片  
+          英文提示语：You can only select a maximum of 【N】 images  
+          按钮：我知道了//I Understand
+             * 点击该按钮，关闭弹窗  
+          备注：N为当前能添加的最大照片数，例：未添加照片，首次选择时，只能选择5张，当选择第6张时，弹窗提示最多选择5张；当已经选择了2张，再次点击上传按钮时，仅能选择3张，当选择第4张时，弹窗提示最多只能选择3张
+  * 场景：删除照片 
+    * 点击已上传的图片右上角删除按钮，可直接将该照片删除
+* 按钮：下一步//Next，默认高亮可点
+
+**【问卷调查】**【1.2.1新增】
+* 标题：KYC认证//KYC Verification
+* 页面元素
+  * 多选项：与我们交易的原因//Reasons for trading with us
+    * 选项内容
+      * 交易加密货币投资//Trading cryptocurrency investments
+      * 钱包和托管服务//Wallet and custody service
+      * 支持OTC业务交易//Trading in support of an OTC business
+      * 支持数字货币交易所业务的交易//Trading in support of digital currency exchange operations
+      * 代表客户进行交易//Trading on behalf of clients
+      * 兑换或清算在常规业务运营中获得的加密货币//Converting or liquidating cryptocurrencies obtained in regular business operations
+      * 兑换或清算在ICO/代币销售中筹集的资金//Converting or liquidating funds raised in an ICO/Tokensale
+      * 购买加密货币用于常规业务运营//Purchasing cryptocurrencies for regular business operations
+      * 使用加密货币作为支付形式//Using cryptocurrencies as form of payment
+      * 参与其他加密货币产品//Participation in other cryptocurrency products
+      * 其他//Others
+        * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他原因//Enter other reason
+    * 是否必填：必填
+    * 备注，默认收起，仅展示问题，点击展开icon,可展开选项；点击收起icon,则收起选项
+  * 单选项：加密货币交易的经验//Experience in trading cryptocurrencies
+    * 选项内容
+      * 暂无经验//No experience
+      * 1~3年//1~3 Years
+      * 3~5年//3~5 Years
+      * 5~10年//5~10 Years
+      * 10年以上//Over 10 year
+    * 是否必填：必填
+  * 多选项：意欲交易的加密货币//Cryptocurrencies you intend to trade
+    * 选项内容
+      * BTC  ETH  USDT  ADA   XRP   ATOM  LTC  SOL   AVAX  TRX  IRIS  KSM
+       DOT 
+      * 其他//Others
+        * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他加密货币名称//Enter other cryptocurrencies
+    * 是否必填：必填
+  * 多选项：您目前持有的加密货币存放在哪些平台？//Where do you keep your cryptocurrency holdings?
+    * 选项内容
+      * Binance Huobi Coinbase OKEX Cobo Kraken FTX
+      * 其他//Others
+        * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他交易所或钱包的名称//Enter other Names of exchanges and wallet providers
+    * 是否必填：必填
+  * 单选项：您在HashKey有联系人吗？//Do you have a contact at HashKey？
+    * 选项内容
+      * 否//No
+      * 是//Yes
+        * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案:
+        请输入联系人的信息//Enter the information of the contact person
+    * 是否必填：必填
+* 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
+
+**【上传PI证明】**【1.2.1更新】
 * 标题与注意事项同上
 * PI证明//PI document
-  * 展示文案：拥有至少800万港元（或等值外币）投资组合的个人//Individuals who have a portfolio of at least HK$8 million (or its foreign currency equivalent)
+  * 展示文案：拥有至少800万港元（或等值外币）投资组合的个人，最多上传5张//Individuals who have a portfolio of at least HK$8 million (or its foreign currency equivalent),up to 5 images
 * 是否必填：必填
+* 最多上传五张
 * 按钮：上传//Upload
+  * 场景：选择图片，支持上传多张图片，超过规定的数量
+
+      * 提示类型：无标题弹窗  
+          中文提示语：您最多只能选择【N】张照片  
+          英文提示语：You can only select a maximum of 【N】 images  
+          按钮：我知道了//I Understand
+             * 点击该按钮，关闭弹窗  
+          备注：N为当前能添加的最大照片数，例：未添加照片，首次选择时，只能选择5张，当选择第6张时，弹窗提示最多选择5张；当已经选择了2张，再次点击上传按钮时，仅能选择3张，当选择第4张时，弹窗提示最多只能选择3张
+  * 场景：删除照片 
+    * 点击已上传的图片右上角删除按钮，可直接将该照片删除
 * 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
 
 
-## 3.3 法币结算【1.1.0新增】
+## 3.3 法币结算【1.1.0.0新增】
 
 ### 3.3.1 功能概述
 用户在做法币结算时，需要绑定银行卡，银行卡信息需进行人工审核，审核结果为通过时则绑定成功；驳回时则可修改银行卡信息，审核通过的银行卡可以解绑
@@ -1688,9 +1898,15 @@ N/A
       * 该币种的冻结数量
   * 交互逻辑
      * 充值//Deposit（仅资金钱包//Custodial Wallet，自定义钱包展示）
-        * 点击“充值//Deposit”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【充值//Deposit】页面，详见章节“4.2 充值”说明
+        * 点击“充值//Deposit”，按以下顺序校验：
+          * 场景：币种充值开关是否关闭，若关闭 【1.2.1新增】
+            * Toast提示“该币种暂时无法充值//This coin is temporarily unavailable for deposit”
+          * 场景：三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入【充值//Deposit】页面，详见章节“4.2 充值”说明
      * 提现//Withdraw（仅资金钱包//Custodial Wallet，自定义钱包展示）
-        * 点击“提现//Withdraw”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入提现页面，详见章节“4.3 提现”说明
+        * 点击“提现//Withdraw”，按以下顺序校验：
+          * 场景：币种提现开关是否关闭，若关闭 【1.2.1新增】
+            * Toast提示“该币种暂时无法提现//This coin is temporarily unavailable for withdraw”
+          * 场景：需三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入提现页面，详见章节“4.3 提现”说明
      * 划转//Transfer
         * 点击“划转//Transfer”需进行三要素验证，未认证则弹窗提醒，详见【三要素验证引导弹窗】；已全部认证则进入划转页面，详见章节“4.4 划转”说明
      * 关闭
@@ -1751,6 +1967,9 @@ N/A
 
 KYC认证已通过（Verified、Verified PI）
 
+币种充值开关开启 【1.2.1新增】
+  * 若币种充值开关关闭，则不能进入该页面，在上一页面（币种选择），选择了该币种后，需Toast提示“该币种暂时无法充值//This coin is temporarily unavailable for deposit”
+
 **功能描述**
  
 【充值//Deposit】
@@ -1790,7 +2009,7 @@ KYC认证已通过（Verified、Verified PI）
     * 点击TAG的复制icon,将TAG复制到粘贴板，并Toast提示“复制成功//Copy success”
 
 
-## 4.3 提现【1.2.0新增】
+## 4.3 提现【1.2.1更新】
 
 ### 4.3.1 功能概述
 仅限系统默认的资金钱包及自定义钱包可提现，需通过GA、邮箱绑定、KYC认证，三者都完成了才可以进行提现；提现需进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功；用户从自定义钱包提现，除了需要做三要素验证之外，若配置了风控策略，还需进行风控策略的校验，通过之后也需要进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则提现不成功
@@ -1891,6 +2110,11 @@ KYC认证已通过（Verified、Verified PI）
   * 提现//Withdraw
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
     * 点击“提现//Withdraw”按钮后，按照以下顺序进行校验
+      * 提示类型：Toast  【1.2.1新增】 
+
+        校验原则：该资产提现开关已关闭  
+        中文提示语：该币种暂时无法提现   
+        英文提示语： This coin is temporarily unavailable for withdraw
       * 提示类型：Toast   
         校验原则：提现数量应大于等于该资产最小可提现数量。  
         中文提示语：数量必须大于【后台资产配置的最小可提现数量】   
@@ -1947,7 +2171,7 @@ KYC认证已通过（Verified、Verified PI）
   * 确认//Confirm
     * 按钮默认置灰，输入框有内容后，变为高亮可点击状态
     * 验证码校验参照【登录/Login】-2FA校验-验证码校验规则，不再复述
-    * 校验成功后，跳转至【交易//Transaction】页面
+    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面，从交易页面点击返回，返回到提现页面，清空地址、数量、MEMO/Tag输入框,保留币种选择
 
 【输入谷歌验证码+钱包密码】
 * 页面元素
@@ -2006,7 +2230,7 @@ KYC认证已通过（Verified、Verified PI）
          英文提示语：The amount exceeds the daily limit of spending in wallet's policy
 
          备注：仅机构户自定义钱包设置了风控策略，生效项为“额度限制”，且配置了出金每天额度限制，策略为“拒绝出金请求”需进行校验
-    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面，从交易页面点击返回，返回到提现页面，清空地址、数量、MEMO/Tag输入框,保留币种选择
+    * 以上条件校验通过后，才会生成提现订单，页面跳转至当前钱包【交易//Transaction】页面
 
 【地址选择//Select address】
 * 页面元素
@@ -2052,20 +2276,31 @@ KYC认证已通过（Verified、Verified PI）
       * 详见章节“全局说明-相册调用权限”说明
   * 保存//Save
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
-  * 点击“保存//Save”，需继续地址格式校验
+  * 点击“保存//Save”，需进行地址格式及唯一性校验
     * 提示类型：Toast
 
       校验原则：地址格式校验
 
       中文提示语：地址格式错误  
           英文提示语：Incorrect address format
-    * 提示类型：Toast【暂不实现，允许创建相同的地址】
+    * 提示类型：Toast【1.2.1新增】
 
-      校验原则：同一个资产的地址唯一性
+      校验原则：个人用户不允许添加已添加过的地址
 
       中文提示语：地址已存在
 
       英文提示语：Address already exists
+
+    * 提示类型：无标题弹窗【1.2.1新增】
+
+      场景：机构用户添加已存在的地址（同一机构下的用户共用一个地址薄）
+
+      提示语内容：地址已经保存过，是否继续保存？//The address has been saved, whether to continue saving?
+
+      按钮：确定//Confirm
+         * 点击则保存成功
+      按钮：取消//Cancel
+         * 点击则不保存，并关闭弹窗
   * 以上条件校验通过后，弹出【输入谷歌验证码】弹窗，弹窗说明参照提现时的【输入谷歌验证码】说明，不再复述
   * 谷歌验证通过后，地址添加成功，返回上一级页面
   * 地址添加成功，Toast提示“地址添加成功//Address added successfully"
@@ -2200,10 +2435,10 @@ KYC认证已通过（Verified、Verified PI）
   * 单选项：类型//Type
     * 选项内容：内部//Internal、外部//External
     * 默认选中“内部//Internal”
+    * 点击类型，展示文案"内部：划转到内部钱包；外部：划转到外部钱包，目标钱包不属于您的团队//Internal:Transfer to internal wallet;External:Transfer to an external wallet, the target wallet does not belong to your team" 【1.2.1新增】
   *  From
     * 默认带入上一步所在钱包的Wallet name
     * 若从钱包总览页面的划转入口而来，则默认展示资金钱包//Custodial Wallet
-     coin
   * To
 
     **Internal**
@@ -2405,6 +2640,34 @@ N/A
     * 点击“确认//Confirm”后，关闭日期控件，列表按照选中的日期范围进行搜索
     * 点击“重置//Reset”，重置时间，默认选择结束时间为当天，开始时间为当天-30天的日期，按钮“近30天//last 30 days”为选中状态
 
-  
+## 5.首页【1.2.1新增】
+
+
+**功能概述**
+
+首页功能包括：BANNER（暂不实现）、公告、充值、ETH2.0、理财、提现、交易、钱包、个人中心
+
+**页面元素**
+  * 充值//Deposit
+    * 先判断用户是否登录，若未登录，则跳转至登录页
+    * 若已登录，则默认为资金钱包充值，同章节4.1 资产呈现->钱包总览，充值功能
+  * ETH2.0
+    * 点击进入ETH2.0详情页 【暂不实现，不可点击】
+  * 投资//Invest
+    * 点击进入理财列表页 【暂不实现，不可点击】
+  * 提现//Withdraw
+    * 先判断用户是否登录，若未登录，则跳转至登录页
+    * 若已登录，则默认为资金钱包提现，同章节4.1 资产呈现->钱包总览，提现功能
+  * 固收理财//Fixed Term
+    * 暂无内容
+  * 交易//Trade
+    * 点击进入交易详情页 【暂不实现，不可点击】
+  * 钱包//Wallet
+    * 先判断用户是否登录，若未登录，则跳转至登录页
+    * 若已登录，则进入钱包总览页面，详见章节4.1 资产呈现说明
+  * 我的//Me
+    * 点击进入个人中心页面，详见章节3.0 用户中心说明
+
+
   
         
