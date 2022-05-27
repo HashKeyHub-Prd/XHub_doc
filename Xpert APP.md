@@ -238,6 +238,12 @@ UI设计稿待补充
   * 当前支持充提的币种链接：https://shimo.im/sheets/m5kv9XvKMlC4RqX0/BMkwJ
     * 参照UserHotWallet BCTSHotWallet-Coins(Support Now)部分
 
+**资产精度展示** 【1.2.1新增】
+  * 单个币种数量显示，精度按A = min(8, 后台配置)位显示，超过A位部分四舍五入
+  * 法币数值显示精确到小数点后两位
+  * 小数点后无效的0省略
+
+
 
 # 2.登录注册【1.0.0新增】
 
@@ -869,7 +875,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
       * 未设置//Disabled
       * 修改//Edit
       * 若已绑定手机，则掩码展示最新的手机号
-    * 邮件认证//Email Authentication
+    * 邮箱认证//Email Authentication
       * 未设置//Disabled
       * 修改//Edit
       * 若已绑定邮箱，则掩码展示最新的邮箱
