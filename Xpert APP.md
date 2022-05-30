@@ -24,8 +24,8 @@
   - [3.3法币结算【1.1.0新增】](#33-法币结算1100新增)
 - [4.钱包【1.2.0新增】](#4钱包120新增)
   - [4.1 资产呈现【1.2.0新增】](#41-资产呈现120新增)
-  - [4.2 充值【1.2.0新增】](#42-充值120新增)
-  - [4.3 提现【1.2.0新增】](#43-提现120新增)
+  - [4.2 充值【1.2.1更新】](#42-充值121更新)
+  - [4.3 提现【1.2.1更新】](#43-提现121更新)
   - [4.4 内部划转【1.2.0新增】](#44-内部划转120新增)
   - [4.5 交易记录【1.2.0新增】](#45-交易记录120新增)
 - [5.首页【1.2.1新增】](#5首页121新增)
@@ -33,6 +33,14 @@
 <!-- /TOC -->
 
 # 1.全局说明
+
+**名词解释**
+名词 | 含义 |
+---------|----------|
+ 个人用户钱包 | 仅包含系统默认钱包，系统默认钱包分为资金钱包+业务钱包，其中资金钱包只有一个，业务钱包可有多个|
+ 机构用户钱包 | 包含系统默认钱包+自定义钱包，系统默认钱包同上，自定义钱包由机构用户在Web端创建，可有多个|
+ 钱包冻结 |指机构用户将自定义钱包开关关闭|
+ 钱包暂停 |指管理人员将系统钱包开关关闭，可单个关闭，也可以整个关闭|
 
 **切面切换保护：**
 
@@ -239,7 +247,7 @@ UI设计稿待补充
     * 参照UserHotWallet BCTSHotWallet-Coins(Support Now)部分
 
 **资产精度展示** 【1.2.1新增】
-  * 单个币种数量显示，精度按A = min(8, 后台配置)位显示，超过A位部分四舍五入
+  * 单个币种数量显示，精度按A = min(8, 后台配置)位显示，超过A位部分直接截断
   * 法币数值显示精确到小数点后两位
   * 小数点后无效的0省略
 
@@ -1213,7 +1221,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 4、进入Jumio页面进行国家/地区及证件类型选择、证件上传、活体检测；（当用户做完Jumio认证流程后，若Jumio此时已有结果返回，无论结果如何，都暂不更新用户普通认证状态）；
 
-5、上传自拍照、地址证明、其他证明；
+5、上传自拍照、地址证明、声明书、其他证明、问卷调查；
 
 6、获取Jumio认证结果，若为通过，则普通认证状态翻转为审核中//In Review，并进入到后台进行人工审核；若未通过，则普通认证状态翻转为驳回//Rejected，并返回Jumio失败原因，用户需重新进行Jumio认证（无需填写个人信息，上传证明），直到Jumio校验结果为通过为止；
 
@@ -1262,9 +1270,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
     【上传自拍照】：点击“下一步”，进入【上传居住证明】页面
 
-    【上传居住证明】：点击“下一步”，进入【其他补充证明】页面
+    【上传居住证明】：点击“下一步”，进入【上传声明书】页面
 
-    【上传其他证明】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, please wait patiently”，普通认证状态翻转为“In Review”
+    【上传声明书】：点击“下一步”，进入【问卷调查】页面
+
+    【问卷调查】：点击“提交”,则返回【KYC认证//KYC Verification】页面，Tab栏为“普通认证//Verified",并toast进行提示“您的认证信息已提交，预计将于1-3个工作日内完成，请耐心等候//The information of your Identity certification has been submitted, it is expected to be completed in 1-3 working days, please wait patiently”，普通认证状态翻转为“In Review”
 
 
 
@@ -1402,6 +1412,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 **【个人信息填写】**【1.2.1更新】
 * 标题：KYC认证//KYC Verification
+
+个人信息填写第一页：
 * 输入框：法定名称//Full legal name
     * 默认显示（中文）：请输入法定名称
     * 默认显示（英文）：Enter full legal name
@@ -1497,6 +1509,8 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 字符数限制：40个数字,超出禁止输入
   * 是否必填：非必填
 
+个人信息填写第二页：
+
 * 输入框：当前工作详情//Current employment details 【1.2.1更新】
   * 默认显示（中文）：请输入职业/职位和公司名称
   * 默认显示（英文）：Enert occupation/job title and name of company
@@ -1509,9 +1523,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 字符数限制：100个字符，超出禁止输入
   * 是否必填：必填
 
-* 选择框（单选）：资金来源//Source of funds 【1.2.1更新】
-  * 默认显示（中文）：请选择资金来源
-  * 默认显示（英文）：Select source of funds
+* 单选项：资金来源//Source of funds 【1.2.1更新】
   * 选项内容
     * 业务收入和利润//Business income & profit
     * 投资//Investment
@@ -1520,9 +1532,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 其他//Others
       * 当勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他资金来源//Enter other source of funds 
   * 是否必填：必填
-* 选择框（单选）：财产来源//Source of wealth 【1.2.1更新】
-  * 默认显示（中文）：请选择财产来源
-  * 默认显示（英文）：Select source of wealth
+* 单选项：财产来源//Source of wealth 【1.2.1更新】
   * 选项内容
     * 经营企业的所有权//Ownership of enterprises
       * 当勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入业务详情//Enter business details
@@ -1645,7 +1655,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
         * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案:
         请输入联系人的信息//Enter the information of the contact person
     * 是否必填：必填
-* 按钮：下一步//Next，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
+* 按钮：提交//Submit，默认置灰，不可点击，所有必填项都填写完成后，变为高亮可点击状态
 
 **【上传PI证明】**【1.2.1更新】
 * 标题与注意事项同上
@@ -1819,7 +1829,7 @@ N/A
 ## 4.1 资产呈现【1.2.0新增】
 
 ### 4.1.1 功能概述
-用户通过钱包管理，可进行钱包资产查询，充值、提现、以及划转。个人用户钱包仅包含系统默认的业务钱包；机构用户钱包包含系统默认的业务钱包和自定义钱包。
+用户通过钱包管理，可进行钱包资产查询，充值、提现、以及划转。个人用户钱包仅包含系统默认钱包；机构用户钱包包含系统默认的钱包和自定义钱包。
 ### 4.1.2 业务流程
 N/A
 ### 4.1.3 UI设计稿
@@ -1936,7 +1946,7 @@ N/A
       * 若未认证，则展示“立即认证//Go”；若已认证（总状态为Verified或Verified PI），则展示已完成icon
       * 点击“立即认证//Go”，进入【KYC认证//KYC Verification】页面，详见章节“3.2 KYC认证”说明
 
-## 4.2 充值【1.2.0新增】
+## 4.2 充值【1.2.1更新】
 
 ### 4.2.1 功能概述
 仅限系统默认的资金钱包及自定义钱包可充值，用户充值，需通过GA、邮箱绑定、KYC认证，三者都完成了才可以展示充值地址；充值进行AML校验，若触发了AML策略，则会进行人工审核，若审核通过则放行，若审核不通过，则充值不成功
@@ -1973,8 +1983,8 @@ N/A
 
 KYC认证已通过（Verified、Verified PI）
 
-币种充值开关开启 【1.2.1新增】
-  * 若币种充值开关关闭，则不能进入该页面，在上一页面（币种选择），选择了该币种后，需Toast提示“该币种暂时无法充值//This coin is temporarily unavailable for deposit”
+币种充值开关关闭 【1.2.1新增】
+  * 若币种充值开关关闭，则在充值币种选择页面，无法选择该币种，币种展示状态文案为“暂不可用//Unavailable”
 
 **功能描述**
  
@@ -2055,7 +2065,10 @@ KYC认证已通过（Verified、Verified PI）
 
 已绑定邮箱
 
-KYC认证已通过（Verified、Verified PI）  
+KYC认证已通过（Verified、Verified PI） 
+
+币种提现开关关闭 【1.2.1新增】
+  * 若币种提现开关关闭，则在提现币种选择页面，无法选择该币种，币种展示状态文案为“暂不可用//Unavailable” 
 
 **功能描述**
 
@@ -2070,7 +2083,8 @@ KYC认证已通过（Verified、Verified PI）
     * 是否必填：必填
   * 输入框：数量//Amount
     * 提示语：最小数量XXX//Minimun XXX
-    * XXXX为后台资产配置的最小可提现数量
+      * XXXX为后台资产配置的最小可提现数量
+      * 精度与对应资产保持一致，超过精度则无法输入
     * 单位：对应资产
     * 按钮：全部//All
     * 限制只能输入数字及小数点，最大值为999999999，超过则无法输入
@@ -2494,6 +2508,13 @@ KYC认证已通过（Verified、Verified PI）
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
     * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
       * 提示类型：Toast 
+
+         校验原则：To钱包ID不存在
+
+         中文提示语：接收钱包ID错误   
+         英文提示语：Receiving wallet ID error
+
+      * 提示类型：Toast
 
          校验原则：To钱包用户状态为冻结
 
