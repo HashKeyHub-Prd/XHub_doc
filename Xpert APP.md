@@ -2404,9 +2404,16 @@ KYC认证已通过（Verified、Verified PI）
   * 确认//Confirm
     * 默认置灰，当所有必填项都填写成功后，变为高亮可点击状态
     * 点击“确认//Confirm”按钮后，按照以下顺序进行校验
+        * 提示类型：Toast 
+
+         校验原则：To钱包与From钱包为同一个
+
+         中文提示语：接收钱包不能与源钱包一样  
+         英文提示语：The receiving wallet cannot be the same as the source wallet
+
        * 提示类型：Toast 
 
-         校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
+         校验原则：To钱包状态为暂停使用或冻结
 
          中文提示语：接收钱包不可用   
          英文提示语：Receiving wallet is unavailable
@@ -2523,7 +2530,7 @@ KYC认证已通过（Verified、Verified PI）
 
       * 提示类型：Toast 
 
-         校验原则：To钱包状态为暂停使用（supsended）或锁定（locked）
+         校验原则：To钱包状态为暂停使用或冻结
 
          中文提示语：接收钱包不可用 
          英文提示语：Receiving wallet is unavailable
