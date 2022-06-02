@@ -1609,6 +1609,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 按钮：下一步//Next，默认高亮可点
 
 **【问卷调查】**【1.2.1新增】
+* 问卷信息
+  * 类型：单选题、多选题
+    * 单选：选中最后一项带输入框、选中最后一项不带输入框
+    * 多选：选中最后一项带输入框
+  * 选项内容展示：一行一个选项展示、一行多个选项展示
 * 标题：KYC认证//KYC Verification
 * 页面元素
   * 多选项：与我们交易的原因//Reasons for trading with us
@@ -1630,9 +1635,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 单选项：加密货币交易的经验//Experience in trading cryptocurrencies
     * 选项内容
       * 暂无经验//No experience
-      * 1~3年//1~3 Years
-      * 3~5年//3~5 Years
-      * 5~10年//5~10 Years
+      * 1\~3年//1\~3 Years
+      * 3\~5年//3\~5 Years
+      * 5\~10年//5\~10 Years
       * 10年以上//Over 10 year
     * 是否必填：必填
   * 多选项：意欲交易的加密货币//Cryptocurrencies you intend to trade
@@ -1881,6 +1886,8 @@ N/A
    * 币种列表
      * 展示顺序：默认按照资产对应USD估值由大到小排序，若估值相等，则随机排列
      * 展示内容：币种logo、币种简称、币种所属链、币种数量、对应USD估值
+       * 其中币种数量为Total数量，包含可用及冻结
+       * 对应USD估值为Total估值
 * 交互逻辑
   * 切换钱包
     * 点击右上角文字按钮“切换//Switch”，进入到选择钱包页面（最多可展示100个钱包），可快速切换到其他钱包详情页
@@ -1911,7 +1918,8 @@ N/A
     * 可用//Available
       * 该币种的可用数量
     * 冻结//Frozen
-      * 该币种的冻结数量
+      * 该币种的冻结数量=Outlocked+Outlocked fee
+      * 仅包括提现锁定、划转锁定、挂单锁定，不包含充值锁定
   * 交互逻辑
      * 充值//Deposit（仅资金钱包//Custodial Wallet，自定义钱包展示）
         * 点击“充值//Deposit”，按以下顺序校验：
