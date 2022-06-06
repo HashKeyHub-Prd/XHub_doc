@@ -104,7 +104,8 @@ UI设计稿待补充
   * 按钮：重新登录//Relogin
     * 点击则进入登录页面
 
-
+**Token过期校验**
+* Token过期，需清空用户信息并跳转至登录页面，需要用户重新进行登录
  
 
 **手机系统功能**
@@ -802,9 +803,9 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 点击进入【语言//Language】页面
   * 安全设置//Security Settings
     * 点击进入【安全设置//Security Settings】页面，详见章节3.1安全设置说明
-  * KYC 认证//KYC Verfication
+  * KYC 认证//KYC Verification
     * 默认状态为“未认证//Unverified”，状态枚举参照KYC认证章节，不在复述
-    * 点击进入【KYC 认证//KYC Verfication】页面，详见章节3.2 KYC认证说明
+    * 点击进入【KYC 认证//KYC Verification】页面，详见章节3.2 KYC认证说明
   * 【法币结算//Fiat Settlement】
     * 进入【法币结算//Fiat Settlement】页面，详见章节3.3 法币结算说明
   * 常见问题//FQA
@@ -1510,6 +1511,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 是否必填：非必填
 
 个人信息填写第二页：
+* 输入框：税务识别号码//Tax identification number【1.2.1更新】
+  * 默认显示（中文）：请输入税务识别号码
+  * 默认显示（英文）：Enert tax identification number
+  * 字符数限制：100个字符，超出禁止输入
+  * 是否必填：必填
 
 * 输入框：当前工作详情//Current employment details 【1.2.1更新】
   * 默认显示（中文）：请输入职业/职位和公司名称
@@ -2488,7 +2494,7 @@ KYC认证已通过（Verified、Verified PI）
     * 提示语：请输入需转账到的钱包ID//Enter destination wallet ID
      * 是否必填：必填
     * 机构名//Team
-      * To钱包所属机构名
+      * To钱包所属机构名（KYC填写时的法定名称），若为个人用户，则展示个人用户KYC填写的法定名称
       * 根据输入的wallet ID进行匹配
       * 若获取不到或无，则内容展示--
     * 钱包名称//Wallet name
@@ -2533,8 +2539,8 @@ KYC认证已通过（Verified、Verified PI）
 
          校验原则：To钱包用户状态为冻结
 
-         中文提示语：用户已被冻结，无法转账   
-         英文提示语：Users have been frozen, cannot transfer
+         中文提示语：对方用户已被冻结，无法转账   
+         英文提示语：Destination Client been frozen, cannot transfer
 
       * 提示类型：Toast 
 
