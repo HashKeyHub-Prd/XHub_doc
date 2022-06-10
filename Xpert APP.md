@@ -1513,19 +1513,19 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 个人信息填写第二页：
 * 输入框：税务识别号码//Tax identification number【1.2.1更新】
   * 默认显示（中文）：请输入税务识别号码
-  * 默认显示（英文）：Enert tax identification number
+  * 默认显示（英文）：Enter tax identification number
   * 字符数限制：100个字符，超出禁止输入
   * 是否必填：必填
 
 * 输入框：当前工作详情//Current employment details 【1.2.1更新】
   * 默认显示（中文）：请输入职业/职位和公司名称
-  * 默认显示（英文）：Enert occupation/job title and name of company
+  * 默认显示（英文）：Enter occupation/job title and name of company
   * 字符数限制：100个字符，超出禁止输入
   * 是否必填：必填
 
 * 输入框：雇主业务性质//Nature of business of employer 【1.2.1更新】
   * 默认显示（中文）：请输入雇主业务性质
-  * 默认显示（英文）：Enert nature of business of employer
+  * 默认显示（英文）：Enter nature of business of employer
   * 字符数限制：100个字符，超出禁止输入
   * 是否必填：必填
 
