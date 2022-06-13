@@ -1428,7 +1428,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
 
   * 输入框： 
-    * 默认带入用户当前绑定的手机号，若用户当前未绑定，则显示“请输入您的电话号码//Enter contact number r”
+    * 默认带入用户当前绑定的手机号，若用户当前未绑定，则显示“请输入您的电话号码//Enter contact number”
     * 限制最多输入11位数字字符长度
     * 是否必填：必填
 
@@ -1588,7 +1588,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【上传声明书】** 【1.2.1新增】
 * 标题与注意事项同上一页
 * 海外账户税收合规法案及共同汇报标准的声明书//FATCA & CRS declaration form
-  * 展示文案：待补充
+  * 展示文案：请上传海外账户税收合规法案及共同汇报标准的声明书//Please upload the declaration form of Foreign Account Tax Compliance Act and Common Reporting Standard
   * 是否必填：必填
   * 仅可上传一张
   * 按钮：上传//Upload
