@@ -1602,14 +1602,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 是否必填：非必填
 * 最多上传五张
 * 按钮：上传//Upload
-  * 场景：选择图片，支持上传多张图片，超过规定的数量
-
-      * 提示类型：无标题弹窗  
-          中文提示语：您最多只能选择【N】张照片  
-          英文提示语：You can only select a maximum of 【N】 images  
-          按钮：我知道了//I Understand
-             * 点击该按钮，关闭弹窗  
-          备注：N为当前能添加的最大照片数，例：未添加照片，首次选择时，只能选择5张，当选择第6张时，弹窗提示最多选择5张；当已经选择了2张，再次点击上传按钮时，仅能选择3张，当选择第4张时，弹窗提示最多只能选择3张
+  * 场景：选择图片，支持上传多张图片，超过规定的数量，无法选择
   * 场景：删除照片 
     * 点击已上传的图片右上角删除按钮，可直接将该照片删除
 * 按钮：下一步//Next，默认高亮可点
@@ -1655,7 +1648,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
   * 多选项：您目前持有的加密货币存放在哪些平台？//Where do you keep your cryptocurrency holdings?
     * 选项内容
-      * Binance Huobi Coinbase OKEX Cobo Kraken FTX
+      * Binance Huobi Coinbase OKX Cobo Kraken FTX
       * 其他//Others
         * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他交易所或钱包的名称//Enter other Names of exchanges and wallet providers
     * 是否必填：必填
