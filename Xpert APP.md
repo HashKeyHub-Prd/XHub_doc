@@ -1232,6 +1232,11 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 9、后台人工审核，若结果为通过，则专业认证状态翻转为通过//Approved,总状态翻转为PI已认证//Verified PI；若结果为驳回，则专业认证状态翻转为驳回//Rejected，并返回人工驳回原因，用户需重新上传PI证明；若结果为拒绝，则专业认证状态翻转为认证失败//Failed,并返回人工拒绝原因，用户不可再重新进行PI认证；
 
+异常流程处理：用户在进行Verified//普通认证未提交，中途退出，重新进入做普通认证时，需根据Jumio结果做不同的处理：
+* Jumio流程未走完，需要重新走Jumio流程
+* Jumio流程已走完，未返回结果，Jumio审核中，无需重新走Jumio流程
+* Jumio流程已走完，结果为通过、驳回，无需重新走Jumio流程
+
 ### 3.2.3 UI设计稿
 
 ### 3.2.3 需求详述
@@ -1630,14 +1635,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
       * 其他//Others
         * 勾选该项时，展示输入框，必填，限制100字符内，超出禁止输入，默认文案：请输入其他原因//Enter other reason
     * 是否必填：必填
-    * 备注，默认收起，仅展示问题，点击展开icon,可展开选项；点击收起icon,则收起选项
   * 单选项：加密货币交易的经验//Experience in trading cryptocurrencies
     * 选项内容
       * 暂无经验//No experience
       * 1\~3年//1\~3 Years
       * 3\~5年//3\~5 Years
       * 5\~10年//5\~10 Years
-      * 10年以上//Over 10 year
+      * 10年以上//Over 10 Years
     * 是否必填：必填
   * 多选项：意欲交易的加密货币//Cryptocurrencies you intend to trade
     * 选项内容
