@@ -307,7 +307,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 【创建账户//Create account】 
 
 * 用户名默认为用户注册账号，手机号或邮箱
-* 展示文案1：已有账号，登录//Already have an account? Log in
+* 展示文案1：已有账号？登录//Already have an account? Log in
 * 展示文案2：注册账号代表您同意了HashKey的用户协议、隐私政策//By creating an account, I agree with HashKey User Agreement, Privacy Policy
 
 * 选择区域码
@@ -1402,7 +1402,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【机构认证提示弹窗】**
 
 * 标题：温馨提示//Tips
-* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, Sorry, the APP does not support institutional authentication, you need to do it on the web.
+* 展示文案：抱歉，APP端暂不支持机构认证，您需要在Web端进行机构认证//Sorry, the APP does not support institutional authentication, you need to do it on the web.
 
    Web链接：https://xpert.HashKey.com/
 * 按钮：复制链接//Copy Link
@@ -1422,13 +1422,13 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     * 是否必填：必填
 * 选择框+输入框：电话号码//Contact number【1.2.1更新】
   * 区域码：
-    * 默认带入用户当前手机号对应的区域码，若用户当前未绑定手机，则默认填写中国香港的区号（+852）
+    * 默认带入用户当前手机号对应的区域码，可修改，若用户当前未绑定手机，则默认填写中国香港的区号（+852）
     * 点击区域码，打开【国家/地区选择】页面
     * 对应区域码参看全局说明“国家/地区选择”章节
     * 是否必填：必填
 
   * 输入框： 
-    * 默认带入用户当前绑定的手机号，若用户当前未绑定，则显示“请输入您的电话号码//Enter contact number”
+    * 默认带入用户当前绑定的手机号，可修改，若用户当前未绑定，则显示“请输入您的电话号码//Enter contact number”
     * 限制最多输入11位数字字符长度
     * 是否必填：必填
 
@@ -1668,14 +1668,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * 是否必填：必填
 * 最多上传五张
 * 按钮：上传//Upload
-  * 场景：选择图片，支持上传多张图片，超过规定的数量
-
-      * 提示类型：无标题弹窗  
-          中文提示语：您最多只能选择【N】张照片  
-          英文提示语：You can only select a maximum of 【N】 images  
-          按钮：我知道了//I Understand
-             * 点击该按钮，关闭弹窗  
-          备注：N为当前能添加的最大照片数，例：未添加照片，首次选择时，只能选择5张，当选择第6张时，弹窗提示最多选择5张；当已经选择了2张，再次点击上传按钮时，仅能选择3张，当选择第4张时，弹窗提示最多只能选择3张
+  * 场景：选择图片，支持上传多张图片，超过规定的数量，无法选择
   * 场景：删除照片 
     * 点击已上传的图片右上角删除按钮，可直接将该照片删除
 * 按钮：提交//Submit，默认置灰，不可点击，上传成功后，变为高亮可点击状态
@@ -1991,7 +1984,7 @@ N/A
 KYC认证已通过（Verified、Verified PI）
 
 币种充值开关关闭 【1.2.1新增】
-  * 若币种充值开关关闭，则在充值币种选择页面，无法选择该币种，币种展示状态文案为“暂不可用//Unavailable”
+  * 若币种充值开关关闭，则在充值币种选择页面，无法选择该币种，币种展示不可用ICON
 
 **功能描述**
  
@@ -2075,7 +2068,7 @@ KYC认证已通过（Verified、Verified PI）
 KYC认证已通过（Verified、Verified PI） 
 
 币种提现开关关闭 【1.2.1新增】
-  * 若币种提现开关关闭，则在提现币种选择页面，无法选择该币种，币种展示状态文案为“暂不可用//Unavailable” 
+  * 若币种提现开关关闭，则在提现币种选择页面，无法选择该币种，币种展示不可用ICON
 
 **功能描述**
 
