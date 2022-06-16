@@ -297,7 +297,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 点击“区域码”一栏，打开【国家/地区选择】页面
   * 手机或邮箱填写完成后，点击”下一步//Next“，先进行人机验证，通过后再进行格式校验，最后判断填写的手机或邮箱是否注册成功，若已注册成功，需提示“手机号码已存在//Phone number already exists"，“邮箱已存在//Email already exists”
   * 点击“登录//Login in”，进入到登录页面
-  * 点击“用户协议//User Agreement, 隐私政策//Privacy Policy ”，进入H5查看页面
+  * 点击“用户协议//User Agreement, 隐私政策//Privacy Policy ”，进入H5查看页面【1.2.1更新】
     * 用户协议//User Agreement：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773294-User-Agreement
     * 隐私政策//Privacy Policy:https://hashkey-xpert.zendesk.com/hc/en-001/articles/360056773414-Privacy-Policy
 * 人机校验及其他校验通过后，进入【手机/邮箱认证//Verify phone/Email】页面，验证成功后，点击”下一步Next“，进入【设置密码//Create a password】页面
@@ -502,7 +502,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
   * 按钮：已保存，下一步//I've saved, Next
   * 如何绑定GA，更多细节请点击这里//How to blind GA, more detailed approach click to check>> 
-  * 如何绑定谷歌认证，点击后页面打开H5的FAQ的相关文章页面，
+  * 如何绑定谷歌认证，点击后页面打开H5的FAQ的相关文章页面，【1.2.1更新】
     * H5链接：https://hashkey-xpert.zendesk.com/hc/en-001/articles/360044288414-4-How-to-set-up-Google-Authenticator-2FA-
    
 
@@ -597,14 +597,14 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
   * 对应区域码参看全局说明“国家/地区选择”章节。
 
 
-* 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度，若用户已登录成功过，则默认展示上一次登录成功过的区域码+掩码手机号，可编辑
+* 手机//Phone：默认显示“请输入您的手机号//Enter phone number”，限制最多输入11位数字字符长度，若用户已登录成功过，则默认展示上一次登录成功过的区域码+掩码手机号，可编辑 【1.2.1更新】
 
   * 提示类型：Toast    
     场景：校验手机号格式，仅为数字         
     中文提示语：手机号格式错误      
     英文提示语：Invalid phone number    
 
-* 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符，若用户已登录成功过，则默认展示上一次登录成功过的掩码邮箱，可编辑
+* 邮箱//Email：默认提示“请输入您的邮箱//Enter email”，限制最多输入50个字符，若用户已登录成功过，则默认展示上一次登录成功过的掩码邮箱，可编辑 【1.2.1更新】
 
   * 提示类型：Toast  
     场景：邮箱格式不正确 
@@ -1238,7 +1238,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 * Jumio流程已走完，未返回结果，Jumio审核中，无需重新走Jumio流程
 * Jumio流程已走完，结果为通过、驳回，无需重新走Jumio流程
 
-草稿信息保存要求：个人信息（第一、第二页）、传自拍照、地址证明、声明书、其他证明页面，点击下一步时，自动保存草稿信息，在未提交普通认证信息前，用户退出，重新进入APP进行普通认证，保留之前填写的草稿信息，可编辑
+草稿信息保存要求：个人信息（第一、第二页）、传自拍照、地址证明、声明书、其他证明页面，点击下一步时，自动保存草稿信息，在未提交普通认证信息前，用户退出，重新进入APP进行普通认证，保留之前填写的草稿信息，可编辑 【1.2.1更新】
 
 ### 3.2.3 UI设计稿
 
