@@ -1571,7 +1571,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 
 
 
-	•	Documents must be in the following formats: .jpg, .png 
+	•	Documents must be in the following formats: .jpg, .jpeg, .png 
 
 	•	ALL documents must be a full page image, in color and with a minimum of 300dpi resolution (each file max 10 MB, total max 500 MB)
 
@@ -1671,7 +1671,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
 **【上传PI证明】**【1.2.1更新】
 * 标题与注意事项同上
 * PI证明//PI document
-  * 展示文案：拥有至少800万港元（或等值外币）投资组合的个人，最多上传5张//Individuals who have a portfolio of at least HK$8 million (or its foreign currency equivalent),up to 5 images
+  * 展示文案：拥有至少800万港元（或等值外币）投资组合的个人，最多上传5张//Individuals who have a portfolio of at least HK$8 million (or its foreign currency equivalent), up to 5 images
 * 是否必填：必填
 * 最多上传五张
 * 按钮：上传//Upload
