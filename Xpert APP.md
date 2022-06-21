@@ -66,7 +66,7 @@ UI设计稿待补充
 * 网络加载失败
   * 提示类型：Toast
   * 中文提示语：网络加载失败,请重试
-  * 英文提示语：Failed to load,retry.
+  * 英文提示语：Failed to load, retry.
 * 加载数据超时
   * 提示类型：Toast
   * 中文提示语：加载数据超时
@@ -174,10 +174,12 @@ UI设计稿待补充
     
 * 校验以下场景：  
       
-    * 场景1：证件格式正确但体积过大,在上传时提示      
+    * 场景1：单张图片尺寸于大10M，不允许上传，在上传时提示【1.2.1更新】      
           提示类型：toast    
-          中文提示语：文件上传最大不超过10M    
-          英文提示语：Upload image within 10M.     
+          中文提示语：不支持大于10M的图片上传    
+          英文提示语：Uploading images larger than 10M is not supported
+
+          备注：上传多张图片时，大于10M的图片上传失败，并toast提示（若有多张图大小大于10M，仅提示一次），小于10M的图片上传成功
       
     * 场景2：必填项证件格式错误，点击提交验证   
           提示类型：toast
@@ -394,7 +396,7 @@ UI链接：https://lanhuapp.com/web/#/item/project/stage?tid=e44db160-5031-4fb1-
     场景：发送邮件与上次邮件成功发送的时间间隔未大于60秒  
     校验原则：再次发送邮件与上次邮件成功发送的时间需要大于60秒  
     中文提示语：请求次数太多，请稍后再试         
-    英文提示语：You have sent too many requests,please try again later 
+    英文提示语：You have sent too many requests, please try again later 
   * 提示类型：Toast    
     场景：发送短信功能异常  
     校验原则：发送短信功能异常  
@@ -2089,7 +2091,7 @@ KYC认证已通过（Verified、Verified PI）
     * 限制100字符内，超过则无法输入
     * 是否必填：必填
   * 输入框：数量//Amount
-    * 提示语：最小数量XXX//Minimun XXX
+    * 提示语：最小数量XXX//Minimum XXX
       * XXXX为后台资产配置的最小可提现数量
       * 精度与对应资产保持一致，超过精度则无法输入
     * 单位：对应资产
